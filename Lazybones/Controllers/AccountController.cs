@@ -322,6 +322,12 @@ namespace Lazybones.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
+        //view /Account/RegisterProfiles
+
+        public ActionResult RegisterProfiles()
+        {
+            return View();
+        }
         // GET: /Account/ModifyProfile
         [AllowAnonymous]
         public ActionResult ModifyProfile()
