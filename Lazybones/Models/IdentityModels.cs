@@ -11,8 +11,10 @@ namespace Lazybones.Models
     {
         internal string Address;
         internal string City;
+        internal string First_Name;
         internal bool Gig_Poster;
         internal bool Go_Getter;
+        internal string Last_Name;
         internal string Mobile_Phone;
         internal string Preferred_Contact_Method;
         internal string State;

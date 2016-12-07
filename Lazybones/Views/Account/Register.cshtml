@@ -35,6 +35,10 @@
                 Confirm Password <br />
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
             </div>       
+            <div class="row">
+                Preferred Contact Method <br />
+                @Html.EditorFor(m => m.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5">
@@ -60,23 +64,20 @@
                 Mobile Phone <br />
                 @Html.EditorFor(m => m.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
             </div>
-            <div class="row">
-                Preferred Contact Method <br />
-                @Html.EditorFor(m => m.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
+            <div style="float: right;"> <br/>
+                <strong>Register as:</strong> <br />
+                Gig Poster &nbsp;
+                <div class="checkbox-inline" style="padding-right: 5px;">
+                    @Html.EditorFor(m => m.Gig_Poster)
+                </div> <br />
+                Go-Getter &nbsp;
+                <div class="checkbox-inline">
+                    @Html.EditorFor(m => m.Go_Getter)
+                </div>
             </div>
         </div>
     </div>
-    <div>
-        <strong>I am a</strong> <br />
-        Gig Poster &nbsp;
-        <div class="checkbox-inline" style="padding-right: 5px;">
-            @Html.EditorFor(m => m.Gig_Poster)
-        </div> <br />
-        Go-Getter &nbsp;
-        <div class="checkbox-inline">
-            @Html.EditorFor(m => m.Go_Getter)
-        </div>
-    </div>
+
 
     <div class="form-group" style="margin-top: 50px;">
         <div class="col-md-offset-2 col-md-10">

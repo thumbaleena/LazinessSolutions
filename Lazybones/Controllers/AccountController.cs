@@ -155,6 +155,8 @@ namespace Lazybones.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
+                    First_Name = model.First_Name,
+                    Last_Name = model.Last_Name,
                     Mobile_Phone = model.Mobile_Phone,
                     Address = model.Address,
                     City = model.City,
