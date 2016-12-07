@@ -198,11 +198,11 @@ namespace Lazybones.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateProfile(User model)
+        public async Task<ActionResult> CreateProfile(ApplicationUser model)
         {
             if (ModelState.IsValid)
             {
-                var user = new User()
+                var user = new ApplicationUser()
                 {
                     First_Name = model.First_Name,
                     Last_Name = model.Last_Name,

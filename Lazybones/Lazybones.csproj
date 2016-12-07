@@ -202,44 +202,26 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
+      <DependentUpon>JobModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\User.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserInfo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserInfo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserInfo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserInfo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserInfo.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -250,24 +232,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\UserInfo.Context.tt">
+    <Content Include="Models\JobModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserInfo.edmx</DependentUpon>
-      <LastGenOutput>UserInfo.Context.cs</LastGenOutput>
+      <DependentUpon>JobModel.edmx</DependentUpon>
+      <LastGenOutput>JobModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\UserInfo.tt">
+    <Content Include="Models\JobModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserInfo.edmx</DependentUpon>
-      <LastGenOutput>UserInfo.cs</LastGenOutput>
+      <DependentUpon>JobModel.edmx</DependentUpon>
+      <LastGenOutput>JobModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\UserInfo.edmx">
+    <EntityDeploy Include="Models\JobModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserInfo.Designer.cs</LastGenOutput>
+      <LastGenOutput>JobModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\UserInfo.edmx.diagram">
-      <DependentUpon>UserInfo.edmx</DependentUpon>
+    <Content Include="Models\JobModel.edmx.diagram">
+      <DependentUpon>JobModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\LazinessSolutions.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

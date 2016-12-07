@@ -21,18 +21,7 @@ namespace Lazybones.Controllers
         public ActionResult About()
         {
 
-            LazinessSolutionsEntities2 dbContext = new LazinessSolutionsEntities2();
-
-
-
-            string userId = User.Identity.GetUserId();
-
-            ApplicationDbContext d = new ApplicationDbContext();
-
-            string userId2=d.Users.Find(userId).Email;
-
-
-            ViewBag.Message = User.Identity.GetUserId();
+           
             return View();
         }
 
