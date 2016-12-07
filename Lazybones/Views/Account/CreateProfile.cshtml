@@ -1,0 +1,86 @@
+﻿@model Lazybones.Models.User
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+}
+<h4>Add Profile Information</h4>
+<hr />
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="container-fluid, form-horizontal">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                
+                First Name <br />
+                @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="row">
+                Last Name <br />
+                @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="row">
+                Email <br />
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="row">
+                Home Address
+                <br />
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="row">
+                City <br />
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="row">
+                State <br />
+                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="row">
+                Zip Code <br />
+                @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="row">
+                Mobile Phone <br />
+                @Html.EditorFor(model => model.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            Preferred Contact Method <br />
+            @Html.EditorFor(model => model.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
+            <hr />
+            <strong>I am a</strong> <br />
+            Gig Poster &nbsp;
+            <div class="checkbox-inline">
+                @Html.EditorFor(model => model.Gig_Poster)
+            </div> <br />
+            Go-Getter &nbsp;
+            <div class="checkbox-inline">
+                @Html.EditorFor(model => model.Go_Getter)
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 50px; padding-bottom: 50px;">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create" class="btn btn-default" />
+    </div>
+</div>
+</div>
+
+<div>
+    @Html.ActionLink("Go Back", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

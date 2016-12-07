@@ -172,6 +172,44 @@ namespace Lazybones.Controllers
             return View(model);
         }
 
+        // GET: /Account/CreateProfile
+        [AllowAnonymous]
+        public ActionResult CreateProfile()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/CreateProfile
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateProfile(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User()
+                {
+                    First_Name = model.First_Name,
+                    Last_Name = model.Last_Name,
+                    Email = model.Email,
+                    Mobile_Phone = model.Mobile_Phone,
+                    Address = model.Address,
+                    City = model.City,
+                    State = model.State,
+                    Zip = model.Zip,
+                    Gig_Poster = model.Gig_Poster,
+                    Go_Getter = model.Go_Getter, 
+                    Preferred_Contact_Method = model.Preferred_Contact_Method, 
+                };
+
+                    return RedirectToAction("Index", "Home");
+
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
@@ -271,6 +309,8 @@ namespace Lazybones.Controllers
             return View();
         }
 
+        
+
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -280,6 +320,35 @@ namespace Lazybones.Controllers
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+        }
+
+        // GET: /Account/ModifyProfile
+        [AllowAnonymous]
+        public ActionResult ModifyProfile()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/ModifyProfile
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ModifyProfile(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    return View("ModifyProfile");
+                }
+
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         //
