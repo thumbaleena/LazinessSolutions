@@ -7,6 +7,14 @@
       <Diagram DiagramId="4f7ced63ef03490592d80808ca6b83d4" Name="Diagram1">
         <EntityTypeShape EntityType="LazinessSolutionsModel.Job" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LazinessSolutionsModel.User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LazinessSolutionsModel.C__MigrationHistory" Width="1.5" PointX="0.5" PointY="5.25" />
+        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetRole" Width="1.5" PointX="5.5" PointY="2" />
+        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetUserClaim" Width="1.5" PointX="10" PointY="3.125" />
+        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetUserLogin" Width="1.5" PointX="10" PointY="0.5" />
+        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetUser" Width="1.5" PointX="7.75" PointY="0.875" />
+        <AssociationConnector Association="LazinessSolutionsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LazinessSolutionsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LazinessSolutionsModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -9,14 +9,16 @@ namespace Lazybones.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        internal string Address;
-        internal string City;
-        internal bool Gig_Poster;
-        internal bool Go_Getter;
-        internal string Mobile_Phone;
-        internal string Preferred_Contact_Method;
-        internal string State;
-        internal string Zip;
+        public string Address { set; get;  }
+        public string City { set; get; }
+        public string First_Name { set; get; }
+        public bool Gig_Poster { set; get; }
+        public bool Go_Getter { set; get; }
+        public string Last_Name { set; get; }
+        public string Mobile_Phone { set; get; }
+        public string Preferred_Contact_Method { set; get; }
+        public string State { set; get; }
+        public string Zip { set; get; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

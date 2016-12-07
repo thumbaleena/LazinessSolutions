@@ -17,7 +17,7 @@ namespace Lazybones.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public System.DateTime Start_Time_Date { get; set; }
-        public Nullable<System.DateTime> Expirey_Time_Date { get; set; }
+        public System.DateTime Expirey_Time_Date { get; set; }
         public string Category { get; set; }
         public decimal Pay { get; set; }
         public bool Best_Bid { get; set; }
@@ -28,5 +28,6 @@ namespace Lazybones.Models
         public string Poster_Name { get; set; }
         public string Getter_Name { get; set; }
         public string Status { get; set; }
+        public string ID { get; set; }
     }
 }

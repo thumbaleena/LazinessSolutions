@@ -7,30 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace Lazybones.Models
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class User
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        [Display(Name = "First Name")]
         public string First_Name { get; set; }
-        [Display(Name = "Last Name")]
         public string Last_Name { get; set; }
-        [Display(Name = "Mobile Phone")]
+        public string Email { get; set; }
         public string Mobile_Phone { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
-        [Display(Name = "Preferred Contact Method")]
         public string Preferred_Contact_Method { get; set; }
-        [Display(Name = "Gig Poster")]
         public bool Gig_Poster { get; set; }
-        [Display(Name = "Go-Getter")]
         public bool Go_Getter { get; set; }
+        public string Password { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace Lazybones.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ldb : IMigrationMetadata
+    public sealed partial class ddb11 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ldb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ddb11));
         
         string IMigrationMetadata.Id
         {
-            get { return "201612061603568_ldb"; }
+            get { return "201612071859473_ddb11"; }
         }
         
         string IMigrationMetadata.Source
