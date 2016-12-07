@@ -151,7 +151,19 @@ namespace Lazybones.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Mobile_Phone = model.Mobile_Phone,
+                    Address = model.Address,
+                    City = model.City,
+                    State = model.State,
+                    Zip = model.Zip,
+                    Gig_Poster = model.Gig_Poster,
+                    Go_Getter = model.Go_Getter,
+                    Preferred_Contact_Method = model.Preferred_Contact_Method,
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -309,8 +321,6 @@ namespace Lazybones.Controllers
             return View();
         }
 
-        
-
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -320,41 +330,6 @@ namespace Lazybones.Controllers
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
-        }
-
-        //view /Account/RegisterProfiles
-
-        public ActionResult RegisterProfiles()
-        {
-            return View();
-        }
-        // GET: /Account/ModifyProfile
-        [AllowAnonymous]
-        public ActionResult ModifyProfile()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/ModifyProfile
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ModifyProfile(User model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
-                {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ModifyProfile");
-                }
-
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
         }
 
         //

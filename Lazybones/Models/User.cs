@@ -14,11 +14,12 @@ namespace Lazybones.Models
 
     public partial class User
     {
+        public string Email { get; set; }
+        public string Password { get; set; }
         [Display(Name = "First Name")]
         public string First_Name { get; set; }
         [Display(Name = "Last Name")]
         public string Last_Name { get; set; }
-        public string Email { get; set; }
         [Display(Name = "Mobile Phone")]
         public string Mobile_Phone { get; set; }
         public string Address { get; set; }

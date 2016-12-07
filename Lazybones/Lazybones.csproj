@@ -300,7 +300,6 @@
     <Content Include="Views\Gigs\Dashboard.cshtml" />
     <Content Include="Views\Gigs\Pickup.cshtml" />
     <Content Include="Views\Gigs\Post.cshtml" />
-    <Content Include="Views\Account\CreateProfile.cshtml" />
     <Content Include="Views\Account\ModifyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>

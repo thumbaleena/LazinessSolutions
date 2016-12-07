@@ -60,8 +60,12 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+.headSection {
+    background-image: url(http://i.imgur.com/t2CiRly.jpg);
+}
 body {
   margin: 0;
+
 }
 
 a:focus {
