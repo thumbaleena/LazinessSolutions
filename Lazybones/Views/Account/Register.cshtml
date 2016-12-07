@@ -16,6 +16,14 @@
         <!-- email & pass -->
         <div class="col-md-5">
             <div class="row">
+                First Name <br />
+                @Html.EditorFor(m => m.First_Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                Last Name <br />
+                @Html.EditorFor(m => m.Last_Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="row">
                 Email <br />
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
@@ -26,56 +34,51 @@
             <div class="row">
                 Confirm Password <br />
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            </div>
-            Preferred Contact Method <br />
-            @Html.EditorFor(m => m.Preferred_Contact_Method, new { @class = "form-control" })
-            <br/>
-            <hr />
-            <br/>
-            <strong>I am a</strong> <br />
-            Gig Poster &nbsp;
-            <div class="checkbox-inline" style="padding-right: 5px;">
-                @Html.EditorFor(m => m.Gig_Poster)
-            </div> <br />
-            Go-Getter &nbsp;
-            <div class="checkbox-inline">
-                @Html.EditorFor(m => m.Go_Getter)
-            </div>
+            </div>       
         </div>
         <div class="col-md-1"></div>
-            <div class="col-md-5">
-                <div class="row">
-                    First Name <br />
-                    @Html.EditorFor(m => m.First_Name, new { @class = "form-control" })
-                </div>
-                <div class="row">
-                    Last Name <br />
-                    @Html.EditorFor(m => m.Last_Name, new {@class = "form-control" })
-                </div>
-                <div class="row">
-                    Home Address
-                    <br />
-                    @Html.EditorFor(m => m.Address, new { @class = "form-control" })
-                </div>
-                <div class="row">
-                    City <br />
-                    @Html.EditorFor(m => m.City, new { @class = "form-control" })
-                </div>
-                <div class="row">
-                    State <br />
-                    @Html.EditorFor(m => m.State, new { @class = "form-control" })
-                </div>
-                <div class="row">
-                    Zip Code <br />
-                    @Html.EditorFor(m => m.Zip, new { @class = "form-control" })
-                </div>
-                <div class="row">
-                    Mobile Phone <br />
-                    @Html.EditorFor(m => m.Mobile_Phone, new { @class = "form-control" })
-                </div>
-            </div>        
+        <div class="col-md-5">
+
+            <div class="row">
+                Home Address
+                <br />
+                @Html.EditorFor(m => m.Address, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                City <br />
+                @Html.EditorFor(m => m.City, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                State <br />
+                @Html.EditorFor(m => m.State, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                Zip Code <br />
+                @Html.EditorFor(m => m.Zip, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                Mobile Phone <br />
+                @Html.EditorFor(m => m.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                Preferred Contact Method <br />
+                @Html.EditorFor(m => m.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
     </div>
-    <div class="form-group">
+    <div>
+        <strong>I am a</strong> <br />
+        Gig Poster &nbsp;
+        <div class="checkbox-inline" style="padding-right: 5px;">
+            @Html.EditorFor(m => m.Gig_Poster)
+        </div> <br />
+        Go-Getter &nbsp;
+        <div class="checkbox-inline">
+            @Html.EditorFor(m => m.Go_Getter)
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 50px;">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
@@ -83,6 +86,6 @@
 
 }
 
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
