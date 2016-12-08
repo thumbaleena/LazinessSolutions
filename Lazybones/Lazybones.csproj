@@ -299,9 +299,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Gigs\Dashboard.cshtml" />
-    <Content Include="Views\Gigs\Pickup.cshtml" />
-    <Content Include="Views\Gigs\Post.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Account\ModifyProfile.cshtml" />
     <Content Include="Views\Job\Create.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
