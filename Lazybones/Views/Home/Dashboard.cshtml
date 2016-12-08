@@ -1,8 +1,21 @@
-﻿@model Lazybones.Models.Job
-
-@{
+﻿@{
     ViewBag.Title = "Dashboard";
 }
 
 <h2>Dashboard</h2>
 
+@Html.Partial("~/Views/Manage/UserProfile.cshtml")
+@Html.DevExpress().TabControl(settings =>
+{
+    settings.Name = "TabControl";
+    settings.Tabs.Add(tab =>
+    {
+        tab.Name = "Gig Poster";
+        tab.Text = "Gig Poster";
+    });
+    settings.Tabs.Add(tab =>
+    {
+        tab.Name = "Go-Getter";
+        tab.Text = "Go-Getter";
+    });
+}).GetHtml()
