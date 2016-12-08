@@ -10,9 +10,17 @@
 </section>
 <div class="col-md-10" style="margin-top: 375px; text-align: center;">
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <a class="btn btn-default" href="/Home/Index">Search &raquo;</a>
+    @if (User.Identity.IsAuthenticated)
+    {<a class="btn btn-default" href="/Job/Search">Search &raquo;</a>
+    }
+    else
+    { <a class="btn btn-default" href="/Account/Login">Search &raquo;</a>}
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <a class="btn btn-default" href="/Job/Create">Post &raquo;</a>
+    @if (User.Identity.IsAuthenticated)
+    {<a class="btn btn-default" href="/Job/Create">Post &raquo;</a>
+    }
+    else
+    { <a class="btn btn-default" href="/Account/Login">Post &raquo;</a>}
 </div>
     
 <div class="row" style="margin-top: 500px;">
