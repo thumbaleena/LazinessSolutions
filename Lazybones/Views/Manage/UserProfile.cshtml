@@ -9,85 +9,55 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            First Name
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="container-fluid">
+            <div class="col-md-8">
+                <div class="form-group">
+                    First Name <br />
+                    @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    Last Name <br />
+                    @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    Street Address <br />
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    City <br />
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    State <br />
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                    Zip Code <br />
+                    @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })>
+                    Mobile Phone Number <br />
+                    @Html.EditorFor(model => model.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    Preferred Contact Method (Call, Text, Email) <br />
+                    @Html.EditorFor(model => model.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
             </div>
-        </div>
+            <div class="col-md-4">
+                <h3>I am a:</h3>
+                <div class="form-group">
+                    Gig Poster
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Gig_Poster)
+                        </div>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            Last Name
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-
-        <div class="form-group">
-            Street Address
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            City
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            State
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Zip Code
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Mobile Phone Number
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Preferred Contact Method (Call, Text, Email)
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <h3>I am a:</h3>
-        <div class="form-group">
-            Gig Poster
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Gig_Poster)
+                <div class="form-group">
+                    Go-Getter
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Go_Getter)
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            Go-Getter
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Go_Getter)
+        
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
         </div>
-    </div>
-}
+        }
 
