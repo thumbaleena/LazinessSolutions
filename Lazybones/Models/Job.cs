@@ -11,23 +11,25 @@ namespace Lazybones.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Job
-    {
+    {[Required]
         public string Title { get; set; }
         public string Description { get; set; }
-        public System.DateTime Start_Time_Date { get; set; }
-        public System.DateTime Expirey_Time_Date { get; set; }
+        public Nullable<System.DateTime> Start_Time_Date { get; set; }
+        public Nullable<System.DateTime> Expirey_Time_Date { get; set; }
         public string Category { get; set; }
-        public decimal Pay { get; set; }
-        public bool Best_Bid { get; set; }
+        [Required]
+        public Nullable<decimal> Pay { get; set; }
+        public Nullable<bool> Best_Bid { get; set; }
         public string Location { get; set; }
         public string Preferred_Contact_Method { get; set; }
         public string Picture_Location { get; set; }
-        public System.DateTime Date_Completed { get; set; }
+        public Nullable<System.DateTime> Date_Completed { get; set; }
         public string Poster_Name { get; set; }
         public string Getter_Name { get; set; }
         public string Status { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
     }
 }
