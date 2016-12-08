@@ -104,7 +104,6 @@ namespace Lazybones.Controllers
         {
                 LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();
                AspNetUser model= dbContext.AspNetUsers.Find(User.Identity.GetUserId());
-                return View(model);
             return RedirectToAction("Dashboard", "Home");
         }
 

@@ -338,7 +338,6 @@
     <Content Include="Views\Job\Create.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\Search.cshtml" />
-    <Content Include="Views\Manage\ProfileView.cshtml" />
     <Content Include="Views\Manage\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
