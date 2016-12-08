@@ -13,10 +13,10 @@ namespace Lazybones.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LazinessSolutionsEntities4 : DbContext
+    public partial class LazinessSolutionsEntities5 : DbContext
     {
-        public LazinessSolutionsEntities4()
-            : base("name=LazinessSolutionsEntities4")
+        public LazinessSolutionsEntities5()
+            : base("name=LazinessSolutionsEntities5")
         {
         }
     

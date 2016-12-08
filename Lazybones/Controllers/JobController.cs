@@ -33,7 +33,7 @@ namespace Lazybones.Controllers
         {
             
             // Creates a database reference to the user db
-            LazinessSolutionsEntities4 jobDB = new LazinessSolutionsEntities4();
+            LazinessSolutionsEntities5 jobDB = new LazinessSolutionsEntities5();
             if (User.Identity.IsAuthenticated) {
                 job.Poster_Name = User.Identity.GetUserId();
             }
