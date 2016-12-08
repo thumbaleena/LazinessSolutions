@@ -62,6 +62,56 @@ namespace Lazybones.Models
         public bool RememberMe { get; set; }
     }
 
+    public class ProfileViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string First_Name { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string Last_Name { get; set; }
+
+        [Required]
+        [Display(Name = "Mobile Phone")]
+        public string Mobile_Phone { get; set; }
+
+        [Required]
+        public string Address { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string State { get; set; }
+
+        [Required]
+        public string Zip { get; set; }
+
+        [Display(Name = "Preferred Contact Method")]
+        public string Preferred_Contact_Method { get; set; }
+
+        [Display(Name = "Gig Poster")]
+        public bool Gig_Poster { get; set; }
+        [Display(Name = "Go-Getter")]
+        public bool Go_Getter { get; set; }
+    }
     public class RegisterViewModel
     {
         [Required]
