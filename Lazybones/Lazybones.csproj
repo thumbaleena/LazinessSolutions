@@ -303,6 +303,7 @@
     <Content Include="Views\Account\ModifyProfile.cshtml" />
     <Content Include="Views\Job\Create.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

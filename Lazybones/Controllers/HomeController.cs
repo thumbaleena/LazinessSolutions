@@ -18,16 +18,9 @@ namespace Lazybones.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Search()
         {
-
-           
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Search Postings";
 
             return View();
         }
