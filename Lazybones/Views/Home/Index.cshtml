@@ -6,10 +6,25 @@
         <h1 style="margin-top: 215px; text-align: center; color: #FFF; font-family: 'Shadows Into Light Two', cursive; font-size: 60px;">&nbsp;I really don't want to do this...&nbsp;</h1>
         <div style="margin-bottom: 185px; text-align: center; color: #FFF; font-size: 30px;">&nbsp; &nbsp; Using our platform, you can outsource any task, and get it done fast.</div>
     </div>
+    
 </section>
-
+<div class="col-md-10" style="margin-top: 375px; text-align: center;">
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    @if (User.Identity.IsAuthenticated)
+    {<a class="btn btn-default" href="/Job/Search">Search &raquo;</a>
+    }
+    else
+    { <a class="btn btn-default" href="/Account/Login">Search &raquo;</a>}
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    @if (User.Identity.IsAuthenticated)
+    {<a class="btn btn-default" href="/Job/Create">Post &raquo;</a>
+    }
+    else
+    { <a class="btn btn-default" href="/Account/Login">Post &raquo;</a>}
+</div>
+    
 <div class="row" style="margin-top: 500px;">
-    <h1  style="text-align: center;">All of the tasks you don't want to do - get them done today.</h1>
+    <h1  style="text-align: center;">maybe your dirty dishes <em>can</em> wash themselves</h1>
     <br/> <br/>
     <div class="col-md-4" style="text-align: center;">
         <img src="http://i.imgur.com/Nl9vH98.png"/>
@@ -17,21 +32,18 @@
         <p>
             Do you dream of a life where you literally don't have to do anything for yourself? Indulge. Don't you dare lift a finger.  Unless you're using it to post a gig, that is. 
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a>
-        </p>
+        
     </div>
     <div class="col-md-4" style="text-align: center;">
         <img src="http://i.imgur.com/R2kz1qd.png"/>
         <h2>Get the help you need</h2>
         <p>Are you frequently short on time, or need an extra set of hands? This is the closest that you can get to cloning yourself, without breaking the laws of humanity.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a>
-        </p>
+     
     </div>
     <div class="col-md-4" style="text-align: center;">
         <img src="http://i.imgur.com/FRkuJS7.png"/>
         <h2>Get that Mummy Money</h2>
         <p>Could you use a couple extra bucks to pay the bills or buy something fancy? No, it isn't a pyramid scheme. Find a quick gig nearby to make those ends meet.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
-        </p>
+       
     </div>
 </div>

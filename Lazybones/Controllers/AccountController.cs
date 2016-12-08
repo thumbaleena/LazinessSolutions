@@ -79,7 +79,7 @@ namespace Lazybones.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Dashboard", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -177,7 +177,7 @@ namespace Lazybones.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Dashboard", "Home");
                 }
                 AddErrors(result);
             }
@@ -186,44 +186,52 @@ namespace Lazybones.Controllers
             return View(model);
         }
 
-        // GET: /Account/CreateProfile
-        [AllowAnonymous]
-        public ActionResult CreateProfile()
+        //// GET: /Account/CreateProfile
+        //[AllowAnonymous]
+        //public ActionResult CreateProfile()
+        //{
+        //    return View();
+        //}
+
+        ////
+        //// POST: /Account/CreateProfile
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> CreateProfile(ApplicationUser model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser()
+        //        {
+        //            First_Name = model.First_Name,
+        //            Last_Name = model.Last_Name,
+        //            Email = model.Email,
+        //            Mobile_Phone = model.Mobile_Phone,
+        //            Address = model.Address,
+        //            City = model.City,
+        //            State = model.State,
+        //            Zip = model.Zip,
+        //            Gig_Poster = model.Gig_Poster,
+        //            Go_Getter = model.Go_Getter, 
+        //            Preferred_Contact_Method = model.Preferred_Contact_Method, 
+        //        };
+
+        //            return RedirectToAction("Index", "Home");
+
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
+
+     /*   public async Task<ActionResult> ViewProfile(ApplicationUser model)
         {
-            return View();
-        }
+            var user = await UserManager.FindByNameAsync(model.Email);
+            var result = await UserManager.UpdateAsync(user.Id, model.First_Name, model.Last_Name, model.Mobile_Phone, model.Address, model.City, model.State, model.Zip, model.Preferred_Contact_Method, model.Gig_Poster, model.Go_Getter);
+                return RedirectToAction("Dashboard", "Home");
 
-        //
-        // POST: /Account/CreateProfile
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateProfile(ApplicationUser model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser()
-                {
-                    First_Name = model.First_Name,
-                    Last_Name = model.Last_Name,
-                    Email = model.Email,
-                    Mobile_Phone = model.Mobile_Phone,
-                    Address = model.Address,
-                    City = model.City,
-                    State = model.State,
-                    Zip = model.Zip,
-                    Gig_Poster = model.Gig_Poster,
-                    Go_Getter = model.Go_Getter, 
-                    Preferred_Contact_Method = model.Preferred_Contact_Method, 
-                };
-
-                    return RedirectToAction("Index", "Home");
-
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        } */
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]

@@ -54,5 +54,12 @@ namespace Lazybones.Controllers
 
             return RedirectToAction("Index", "Job");
         }
+
+        public ActionResult Search()
+        {
+            ViewBag.Message = "Search Postings";
+
+            return View("Search");
+        }
     }
 }
