@@ -51,5 +51,7 @@ namespace Lazybones.Models
         }
     
         public virtual DbSet<Job> Jobs { get; set; }
+
+        public System.Data.Entity.DbSet<Lazybones.Models.ProfileViewModel> ProfileViewModels { get; set; }
     }
 }

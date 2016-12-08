@@ -18,13 +18,6 @@ namespace Lazybones.Controllers
             return View();
         }
 
-        public ActionResult Search()
-        {
-            ViewBag.Message = "Search Postings";
-
-            return View();
-        }
-
         public ActionResult Dashboard()
         {
             ViewBag.Message = "Dashboard";

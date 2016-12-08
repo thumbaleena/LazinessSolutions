@@ -86,6 +86,11 @@ namespace Lazybones
             }
             return manager;
         }
+
+        internal Task UpdateAsync(string id, string first_Name, string last_Name, string mobile_Phone, string address, string city, string state, string zip, string preferred_Contact_Method, bool gig_Poster, bool go_Getter)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     // Configure the application sign-in manager which is used in this application.

@@ -203,6 +203,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>ProfileViewORM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs">
       <DependentUpon>JobModel.tt</DependentUpon>
@@ -223,6 +226,21 @@
       <DependentUpon>JobModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProfileViewORM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileViewORM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProfileViewORM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileViewORM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProfileViewORM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileViewORM.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -243,6 +261,16 @@
       <DependentUpon>JobModel.edmx</DependentUpon>
       <LastGenOutput>JobModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\ProfileViewORM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProfileViewORM.edmx</DependentUpon>
+      <LastGenOutput>ProfileViewORM.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ProfileViewORM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProfileViewORM.edmx</DependentUpon>
+      <LastGenOutput>ProfileViewORM.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\JobModel.edmx">
@@ -251,6 +279,13 @@
     </EntityDeploy>
     <Content Include="Models\JobModel.edmx.diagram">
       <DependentUpon>JobModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ProfileViewORM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProfileViewORM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ProfileViewORM.edmx.diagram">
+      <DependentUpon>ProfileViewORM.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\LazinessSolutions.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -300,10 +335,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
-    <Content Include="Views\Account\ModifyProfile.cshtml" />
     <Content Include="Views\Job\Create.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Job\Search.cshtml" />
+    <Content Include="Views\Manage\ProfileView.cshtml" />
+    <Content Include="Views\Manage\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
