@@ -34,7 +34,7 @@ namespace Lazybones.Controllers
         {
             
             // Creates a database reference to the user db
-            LazinessSolutionsEntities5 jobDB = new LazinessSolutionsEntities5();
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             if (User.Identity.IsAuthenticated) {
                 job.Poster_Name = User.Identity.GetUserId();
             }
@@ -59,7 +59,7 @@ namespace Lazybones.Controllers
         public ActionResult Search()
         {
 
-            LazinessSolutionsEntities5 jobDB = new LazinessSolutionsEntities5();
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             ViewBag.Message = "Search Postings";
             var searchList = jobDB.Jobs.ToList();
             List<Job> jobs = new List<Job>();

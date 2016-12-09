@@ -4,16 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e8892078a8384b738bb850a93997d606" Name="Diagram1" ZoomLevel="109">
+      <Diagram DiagramId="c638e04df8404391b05bb282d402602a" Name="Diagram1" ZoomLevel="79">
         <EntityTypeShape EntityType="LazinessSolutionsModel.Job" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LazinessSolutionsModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetRole" Width="1.5" PointX="3.75" PointY="3.25" />
-        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetUserClaim" Width="1.5" PointX="8.25" PointY="1.75" />
-        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetUserLogin" Width="1.5" PointX="8.25" PointY="4.5" />
-        <EntityTypeShape EntityType="LazinessSolutionsModel.AspNetUser" Width="1.5" PointX="6" PointY="1.125" />
-        <AssociationConnector Association="LazinessSolutionsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="LazinessSolutionsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="LazinessSolutionsModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

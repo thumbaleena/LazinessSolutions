@@ -203,20 +203,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>JobModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>JobModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>JobModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>JobModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>JobModel.tt</DependentUpon>
+      <DependentUpon>ProfileViewORM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs">
@@ -285,19 +273,19 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\JobModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JobModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\JobModel.edmx.diagram">
-      <DependentUpon>JobModel.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\ProfileViewORM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProfileViewORM.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\ProfileViewORM.edmx.diagram">
       <DependentUpon>ProfileViewORM.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\JobModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JobModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\JobModel.edmx.diagram">
+      <DependentUpon>JobModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\LazinessSolutions.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

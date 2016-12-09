@@ -13,10 +13,10 @@ namespace Lazybones.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LazinessSolutionsEntities5 : DbContext
+    public partial class LazinessSolutionsEntities6 : DbContext
     {
-        public LazinessSolutionsEntities5()
-            : base("name=LazinessSolutionsEntities5")
+        public LazinessSolutionsEntities6()
+            : base("name=LazinessSolutionsEntities6")
         {
         }
     
@@ -26,10 +26,5 @@ namespace Lazybones.Models
         }
     
         public virtual DbSet<Job> Jobs { get; set; }
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }
