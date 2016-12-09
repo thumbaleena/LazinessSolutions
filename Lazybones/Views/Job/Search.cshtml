@@ -1,19 +1,54 @@
-﻿@model Lazybones.Models.Job
+﻿@model IEnumerable<Lazybones.Models.Job>
 
 @{
     ViewBag.Title = "Search";
 }
 
-<!DOCTYPE html>
+<h2>Search</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    
-</head>
-<body>
-    <h2>Search</h2>
-    <div> 
-    </div>
-</body>
-</html>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Job Title
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Last Day
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Pay
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expirey_Time_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pay)
+        <td>
+            
+            @Html.ActionLink("Details", "Details", "Job")            
+        </td>
+    </tr>
+}
+
+</table>

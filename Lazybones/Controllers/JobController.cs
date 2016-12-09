@@ -57,9 +57,28 @@ namespace Lazybones.Controllers
 
         public ActionResult Search()
         {
-            ViewBag.Message = "Search Postings";
 
-            return View("Search");
+            LazinessSolutionsEntities5 jobDB = new LazinessSolutionsEntities5();
+            ViewBag.Message = "Search Postings";
+            var searchList = jobDB.Jobs.ToList();
+            List<Job> jobs = new List<Job>();
+
+
+
+
+
+            ApplicationDbContext d = new ApplicationDbContext();
+            ApplicationUser u = d.Users.Find(User.Identity.GetUserName());
+            
+            foreach (var job in searchList)
+            {
+
+                if (job.City == u.City)
+                {
+                    jobs.Add(job);
+                }
+            }
+            return View(jobs);
         }
     }
 }
