@@ -64,13 +64,12 @@ namespace Lazybones.Controllers
             var searchList = jobDB.Jobs.ToList();
             List<Job> jobs = new List<Job>();
 
-
-
-
-
             ApplicationDbContext d = new ApplicationDbContext();
-            ApplicationUser u = d.Users.Find(User.Identity.GetUserName());
 
+            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+
+            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+            
             foreach (var job in searchList)
             {
                 if (job.City != null)
