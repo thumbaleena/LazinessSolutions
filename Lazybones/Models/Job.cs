@@ -11,12 +11,15 @@ namespace Lazybones.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Job
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Starts")]
         public Nullable<System.DateTime> Start_Time_Date { get; set; }
+        [Display(Name = "Expires")]
         public Nullable<System.DateTime> Expirey_Time_Date { get; set; }
         public string Category { get; set; }
         public Nullable<decimal> Pay { get; set; }
