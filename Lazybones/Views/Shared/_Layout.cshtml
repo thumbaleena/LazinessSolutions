@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Baby Sloth Blessings</title>
+    <title>@ViewBag.Title - Task Jeeves</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Html.DevExpress().GetStyleSheets(
@@ -27,7 +27,7 @@ new Script { ExtensionSuite = ExtensionSuite.Editors }
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Baby Sloth Blessings", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Task Jeeves", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -45,6 +45,7 @@ new Script { ExtensionSuite = ExtensionSuite.Editors }
                     }
                     
                 </ul>
+                Baby Sloth Blessings
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -56,7 +57,6 @@ new Script { ExtensionSuite = ExtensionSuite.Editors }
             <p>&copy; @DateTime.Now.Year #BABYSLOTHBLESSYOU</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

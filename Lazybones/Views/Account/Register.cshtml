@@ -13,7 +13,7 @@
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="container-fluid, form-horizontal">
         <!-- email & pass -->
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="row">
                 First Name <br />
                 @Html.EditorFor(m => m.First_Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -35,13 +35,6 @@
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
             </div>
             <div class="row">
-                Preferred Contact Method <br />
-                @Html.EditorFor(m => m.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
-            </div></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-
-            <div class="row">
                 Home Address
                 <br />
                 @Html.EditorFor(m => m.Address, new { htmlAttributes = new { @class = "form-control" } })
@@ -62,7 +55,7 @@
                 Mobile Phone <br />
                 @Html.EditorFor(m => m.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
             </div>
-            <br/>
+            <br />
             <div style="float: right;">
                 <strong>I am a</strong> <br />
                 Gig Poster &nbsp;
@@ -74,6 +67,10 @@
                     @Html.EditorFor(m => m.Go_Getter)
                 </div>
             </div>
+        </div>
+        <div class="col-md-4">
+            
+            <img width="100%" style="padding-top: 20px;" src="http://static.boredpanda.com/blog/wp-content/uploads/2016/10/cute-sloths-57f269182f5ab__700.jpg"/>
         </div>
     </div>
 
