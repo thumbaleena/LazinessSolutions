@@ -81,10 +81,36 @@ namespace Lazybones.Controllers
             
             return View(jobs);
         }
- //       public ActionResult Details()
- //       {
- //           return View("Details");
- //       }
+
+        public ActionResult InnerSearch()
+        {
+
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+            ViewBag.Message = "Search Postings";
+            var searchList = jobDB.Jobs.ToList();
+            List<Job> jobs = new List<Job>();
+
+            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+
+            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+
+            foreach (var job in searchList)
+            {
+                if (job.City != null)
+                {
+                    if (job.City == u.City)
+                    {
+                        jobs.Add(job);
+                    }
+                }
+            }
+         //   return View(jobs);
+            return View("../Home/Dashboard", jobs);
+        }
+        //       public ActionResult Details()
+        //       {
+        //           return View("Details");
+        //       }
 
         public async Task<ActionResult> Details(int id)
         {
@@ -94,6 +120,15 @@ namespace Lazybones.Controllers
             //figure out how to set keyvalue from referring link
 
             var model = dbContext.Jobs.Find(id);
+            return View(model);
+        }
+
+        public async Task<ActionResult> Edit(int id)
+        {
+            LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
+
+            var model = dbContext.Jobs.Find(id);
+
             return View(model);
         }
     }
