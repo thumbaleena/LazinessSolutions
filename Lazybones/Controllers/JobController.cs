@@ -69,15 +69,18 @@ namespace Lazybones.Controllers
 
             ApplicationDbContext d = new ApplicationDbContext();
             ApplicationUser u = d.Users.Find(User.Identity.GetUserName());
-            
+
             foreach (var job in searchList)
             {
-
-                if (job.City == u.City)
+                if (job.City != null)
                 {
-                    jobs.Add(job);
+                    if (job.City == u.City)
+                    {
+                        jobs.Add(job);
+                    }
                 }
             }
+            
             return View(jobs);
         }
     }

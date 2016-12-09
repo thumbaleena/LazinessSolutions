@@ -9,6 +9,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
 <table class="table">
     <tr>
         <th>
@@ -27,9 +29,10 @@
             Pay
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
+    
+            @foreach (var item in Model)
+            {
+<tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -40,7 +43,7 @@
             @Html.DisplayFor(modelItem => item.Expirey_Time_Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Location)
+            @Html.DisplayFor(modelItem => item.City)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Pay)
