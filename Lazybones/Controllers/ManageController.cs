@@ -100,11 +100,14 @@ namespace Lazybones.Controllers
         }
 
         //[HttpGet]
-        public async Task<ActionResult> UserProfile()
+        public ActionResult UserProfile()
         {
                 LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();
                AspNetUser model= dbContext.AspNetUsers.Find(User.Identity.GetUserId());
-            return RedirectToAction("Dashboard", "Home");
+            //return RedirectToAction("Dashboard", "Home");
+
+            return View(model);
+
         }
 
         //[HttpPost]

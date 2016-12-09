@@ -64,8 +64,6 @@ namespace Lazybones.Controllers
             var searchList = jobDB.Jobs.ToList();
             List<Job> jobs = new List<Job>();
 
-            ApplicationDbContext d = new ApplicationDbContext();
-
             LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
 
             var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
@@ -88,13 +86,15 @@ namespace Lazybones.Controllers
  //           return View("Details");
  //       }
 
-        public async Task<ActionResult> Details()
+        public async Task<ActionResult> Details(int id)
         {
-            LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();
+            LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
+
+
             //figure out how to set keyvalue from referring link
-            var keyValues = new Job();
-     //       Job model = dbContext.Jobs.Find(keyValues);
-            return View();
+
+            var model = dbContext.Jobs.Find(id);
+            return View(model);
         }
     }
 }
