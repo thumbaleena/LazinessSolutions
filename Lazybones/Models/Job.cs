@@ -22,25 +22,34 @@ namespace Lazybones.Models
         [Display(Name = "Expires")]
         public Nullable<System.DateTime> Expirey_Time_Date { get; set; }
         public string Category { get; set; }
+        [Display(Name = "Flat rate pay")]
         public Nullable<decimal> Pay { get; set; }
-        public Nullable<bool> Best_Bid { get; set; }
+        [Display(Name = "Or best bid")]
+        public bool Best_Bid { get; set; }
         public string Picture_Location { get; set; }
+        [Display(Name = "Date completed")]
         public Nullable<System.DateTime> Date_Completed { get; set; }
         public string Poster_Name { get; set; }
         public string Getter_Name { get; set; }
         public string Status { get; set; }
         public int ID { get; set; }
+        [Display(Name = "Payment status")]
         public string Payment_Status { get; set; }
-        public Nullable<bool> Contact_By_Phone { get; set; }
-        public Nullable<bool> Contact_By_Email { get; set; }
-        public Nullable<bool> Contact_By_Text { get; set; }
+        [Display(Name = "Call")]
+        public bool Contact_By_Phone { get; set; }
+        [Display(Name = "Email")]
+        public bool Contact_By_Email { get; set; }
+        [Display(Name = "Text")]
+        public bool Contact_By_Text { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Zip { get; set; }
         public string State { get; set; }
         public string Getter { get; set; }
         public string Poster { get; set; }
+        [Display(Name = "Current bid amount")]
         public Nullable<decimal> Bid_Amount { get; set; }
-        public Nullable<bool> Same_as_Home { get; set; }
+        [Display(Name = "Gig location same as home?")]
+        public bool Same_as_Home { get; set; }
     }
 }

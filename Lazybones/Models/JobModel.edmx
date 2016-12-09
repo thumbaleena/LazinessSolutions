@@ -52,7 +52,7 @@
           <Property Name="Expirey_Time_Date" Type="DateTime" Precision="3" />
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Pay" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Best_Bid" Type="Boolean" />
+          <Property Name="Best_Bid" Type="Boolean" Nullable="false" />
           <Property Name="Picture_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date_Completed" Type="DateTime" Precision="0" />
           <Property Name="Poster_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -60,9 +60,9 @@
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Payment_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Contact_By_Phone" Type="Boolean" />
-          <Property Name="Contact_By_Email" Type="Boolean" />
-          <Property Name="Contact_By_Text" Type="Boolean" />
+          <Property Name="Contact_By_Phone" Type="Boolean" Nullable="false" />
+          <Property Name="Contact_By_Email" Type="Boolean" Nullable="false" />
+          <Property Name="Contact_By_Text" Type="Boolean" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Zip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -70,7 +70,7 @@
           <Property Name="Getter" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Poster" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Bid_Amount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Same_as_Home" Type="Boolean" />
+          <Property Name="Same_as_Home" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Jobs" EntityType="Self.Job" />
