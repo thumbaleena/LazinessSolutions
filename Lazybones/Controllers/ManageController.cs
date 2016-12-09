@@ -106,7 +106,7 @@ namespace Lazybones.Controllers
                AspNetUser model= dbContext.AspNetUsers.Find(User.Identity.GetUserId());
             //return RedirectToAction("Dashboard", "Home");
 
-            return View(model);
+            return View("../Home/Dashboard",model);
 
         }
 

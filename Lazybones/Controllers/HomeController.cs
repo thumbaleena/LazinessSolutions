@@ -22,7 +22,7 @@ namespace Lazybones.Controllers
         {
             ViewBag.Message = "Dashboard";
 
-            return View();
+            return RedirectToAction("UserProfile", "Manage");
         }
     }
 }
