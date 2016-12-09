@@ -37,5 +37,10 @@ namespace Lazybones.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string Zip { get; set; }
+        public string State { get; set; }
+        public string Getter { get; set; }
+        public string Poster { get; set; }
+        public Nullable<decimal> Bid_Amount { get; set; }
+        public Nullable<bool> Same_as_Home { get; set; }
     }
 }

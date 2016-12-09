@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LazinessSolutionsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LazinessSolutionsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Job">
           <Key>
             <PropertyRef Name="ID" />
@@ -29,12 +29,16 @@
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="City" Type="nvarchar" MaxLength="50" />
           <Property Name="Zip" Type="nchar" MaxLength="10" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Getter" Type="nvarchar" MaxLength="256" />
+          <Property Name="Poster" Type="nvarchar" MaxLength="256" />
+          <Property Name="Bid Amount" Type="money" />
+          <Property Name="Same as Home" Type="bit" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsModelStoreContainer">
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LazinessSolutionsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -62,6 +66,11 @@
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Zip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Getter" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Poster" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Bid_Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Same_as_Home" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Jobs" EntityType="Self.Job" />
@@ -75,6 +84,11 @@
           <EntitySetMapping Name="Jobs">
             <EntityTypeMapping TypeName="LazinessSolutionsModel.Job">
               <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="Same_as_Home" ColumnName="Same as Home" />
+                <ScalarProperty Name="Bid_Amount" ColumnName="Bid Amount" />
+                <ScalarProperty Name="Poster" ColumnName="Poster" />
+                <ScalarProperty Name="Getter" ColumnName="Getter" />
+                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Start_Time_Date" ColumnName="Start Time Date" />
