@@ -52,7 +52,7 @@ namespace Lazybones.Controllers
             }
             jobDB.SaveChanges();
 
-            return RedirectToAction("Index", "Job");
+            return RedirectToAction("Dashboard", "Home");
         }
 
         public ActionResult Search()
