@@ -1,0 +1,166 @@
+﻿@model Lazybones.Models.Job
+
+@using (Html.BeginForm())
+{
+    <div>
+        <h4>Gig Details</h4>
+        <hr/>
+        <div class="form-horizontal">
+            <table>
+                <tr>
+                    <th>
+                        Title:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Title)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Description:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Description)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Starts:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Start_Time_Date)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Category:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Category)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Flat Rate Pay:
+                    </th>
+                    <td>
+                        $ @Html.DisplayFor(model => model.Pay)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Or best offer:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Best_Bid)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Expires:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Expirey_Time_Date)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Status:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Status)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Date Completed or Expired:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Date_Completed)
+                    </td>
+                </tr>
+                <tr>
+                <th>
+                    Payment Status:
+                </th>
+                <tr>
+                    @Html.DisplayFor(model => model.Payment_Status)
+                </tr>
+                <tr>
+                    <th>
+                        Posted By:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Poster_Name)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Gig Address:</th>
+                    <td>
+                        @Html.DisplayFor(model => model.Address)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Gig City:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.City)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Gig State:
+                    </th>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>Gig Zip Code:</th>
+                    <td>
+                        @Html.DisplayFor(model => model.Zip)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Assigned To:</th>
+                    <td>
+                        @Html.DisplayFor(model => model.Getter_Name)
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        Call
+                    </td>
+                    <td>
+                        Text
+                    </td>
+                    <td>
+                        Email
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Contact Poster Via:
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Contact_By_Phone)           
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Contact_By_Text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Contact_By_Email)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        </div>
+    
+}

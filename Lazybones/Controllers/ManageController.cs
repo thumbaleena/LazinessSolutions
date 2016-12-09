@@ -99,7 +99,7 @@ namespace Lazybones.Controllers
             return RedirectToAction("ManageLogins", new {Message = message});
         }
 
-
+        //[HttpGet]
         public async Task<ActionResult> UserProfile()
         {
                 LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();

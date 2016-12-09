@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -79,6 +80,19 @@ namespace Lazybones.Controllers
                 }
             }
             return View(jobs);
+        }
+ //       public ActionResult Details()
+ //       {
+ //           return View("Details");
+ //       }
+
+        public async Task<ActionResult> Details()
+        {
+            LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();
+            //figure out how to set keyvalue from referring link
+            var keyValues = new Job();
+     //       Job model = dbContext.Jobs.Find(keyValues);
+            return View();
         }
     }
 }
