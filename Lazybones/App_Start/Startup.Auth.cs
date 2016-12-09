@@ -54,15 +54,15 @@ namespace Lazybones
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+            appId: "1818591911714922",
+            appSecret: "406d2b00d1c032c732230247a265e2b5");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+           // {
+            //    ClientId = "113964548159-8emirtgdpte1518rkvobikevhlnflfc6.apps.googleusercontent.com",
+           //     ClientSecret = "dOvfJoomc4FETCeahTMrsWBs"
+           // });
         }
     }
 }

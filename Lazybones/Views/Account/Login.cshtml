@@ -53,9 +53,11 @@
     </div>
     <div class="col-md-4">
         <section id="socialLoginForm">
-            <img width="100%" src="https://s-media-cache-ak0.pinimg.com/originals/5f/fc/db/5ffcdbe79c7a97edfe2572798757159d.png"/>
-            <!-- @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl}) -->
-
+            
+            <!-- <img width="100%" src="https://s-media-cache-ak0.pinimg.com/originals/5f/fc/db/5ffcdbe79c7a97edfe2572798757159d.png"/> -->
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
+            <br/>
+            You will need to complete your user profile from the Dashboard page before creating or taking a gig.
         </section>
     </div>
 </div>

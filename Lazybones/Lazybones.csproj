@@ -336,7 +336,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Job\Create.cshtml" />
-    <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\Search.cshtml" />
     <Content Include="Views\Manage\UserProfile.cshtml" />
   </ItemGroup>
