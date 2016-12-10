@@ -164,7 +164,9 @@ namespace Lazybones.Controllers
                     Zip = model.Zip,
                     Gig_Poster = model.Gig_Poster,
                     Go_Getter = model.Go_Getter,
-                    Preferred_Contact_Method = model.Preferred_Contact_Method,
+                    ByCall = model.ByCall,
+                    ByEmail = model.ByEmail,
+                    ByText = model.ByText,
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

@@ -15,7 +15,7 @@
     <h3>All fields are required</h3>
     <div class="container-fluid, form-horizontal">
         <!-- email & pass -->
-        <div class="col-md-8">
+        <div class="col-sm-9">
             <div class="row">
                 First Name <br />
                 @Html.EditorFor(m => m.First_Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -57,32 +57,32 @@
                 Mobile Phone <br />
                 @Html.EditorFor(m => m.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
             </div>
-            <br />
-            <div style="float: right;">
+            <br/>
+        </div>
+        <div class="col-sm-3">
+            <div style="float: right;"> <br/>
                 <strong>I am a</strong> <br />
                 Gig Poster &nbsp;
-                <div class="checkbox-inline" style="padding-right: 5px;">
-                    @Html.EditorFor(m => m.Gig_Poster)
-                </div> <br />
+                @Html.CheckBoxFor(m => m.Gig_Poster)
+                <br />
                 Go-Getter &nbsp;
-                <div class="checkbox-inline">
-                    @Html.EditorFor(m => m.Go_Getter)
-                </div>
+                @Html.CheckBoxFor(m => m.Go_Getter)
+                <hr />
+                <strong>Preferred Contact Method:</strong> <br />
+                Call &nbsp; @Html.CheckBoxFor(m => m.ByCall) <br />
+                Text &nbsp;@Html.CheckBoxFor(m => m.ByText)<br />
+                Email &nbsp;@Html.CheckBoxFor(m => m.ByEmail)<br />
             </div>
         </div>
-        <div class="col-md-4">
-            
-            <img width="100%" style="padding-top: 20px;" src="http://static.boredpanda.com/blog/wp-content/uploads/2016/10/cute-sloths-57f269182f5ab__700.jpg"/> 
+    </div> 
+    <div class="row">
+        <div class="form-group">
+            <br />
+            <div class="col-sm-offset-9 col-sm-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
         </div>
     </div>
-
-
-    <div class="form-group" style="margin-top: 50px;">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-
 }
 
 @section Scripts {

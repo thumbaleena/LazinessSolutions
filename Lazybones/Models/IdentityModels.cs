@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lazybones.Models
 {
@@ -16,7 +17,12 @@ namespace Lazybones.Models
         public bool Go_Getter { set; get; }
         public string Last_Name { set; get; }
         public string Mobile_Phone { set; get; }
-        public string Preferred_Contact_Method { set; get; }
+        [Display(Name = "By Call")]
+        public bool ByCall { get; set; }
+        [Display(Name = "By Text")]
+        public bool ByText { get; set; }
+        [Display(Name = "By Email")]
+        public bool ByEmail { get; set; }
         public string State { set; get; }
         public string Zip { set; get; }
 

@@ -58,44 +58,6 @@ namespace Lazybones.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class ProfileViewModel
-    {
-        [Key]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        //     [Required]
-        [Display(Name = "First Name")]
-        public string First_Name { get; set; }
-
-   //     [Required]
-        [Display(Name = "Last Name")]
-        public string Last_Name { get; set; }
-
-   //     [Required]
-        [Display(Name = "Mobile Phone")]
-        public string Mobile_Phone { get; set; }
-
-   //     [Required]
-        public string Address { get; set; }
-
-   //     [Required]
-        public string City { get; set; }
-
-   //     [Required]
-        public string State { get; set; }
-
-   //     [Required]
-        public string Zip { get; set; }
-
-        [Display(Name = "Preferred Contact Method")]
-        public string Preferred_Contact_Method { get; set; }
-
-        [Display(Name = "Gig Poster")]
-        public bool Gig_Poster { get; set; }
-        [Display(Name = "Go-Getter")]
-        public bool Go_Getter { get; set; }
-    }
 
     public class AddPhoneNumberViewModel
     {

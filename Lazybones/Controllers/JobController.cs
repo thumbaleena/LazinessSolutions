@@ -112,6 +112,17 @@ namespace Lazybones.Controllers
         //           return View("Details");
         //       }
 
+            //this method is incomplete
+        public ActionResult GetterDash()
+        {
+            return View();
+        }
+
+        //this method is incomplete
+        public ActionResult PosterDash()
+        {
+            return View();
+        }
         public async Task<ActionResult> Details(int id)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();

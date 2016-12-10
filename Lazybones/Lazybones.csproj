@@ -56,6 +56,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -341,6 +345,8 @@
     <Content Include="Views\Job\Create.cshtml" />
     <Content Include="Views\Job\Edit.cshtml" />
     <Content Include="Views\Job\InnerSearch.cshtml" />
+    <Content Include="Views\Job\GetterDash.cshtml" />
+    <Content Include="Views\Job\PosterDash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
