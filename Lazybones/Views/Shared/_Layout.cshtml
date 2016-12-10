@@ -41,6 +41,10 @@ new Script { ExtensionSuite = ExtensionSuite.Editors }
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("Browse", "Browse", "Job")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <li>@Html.ActionLink("Post", "Create", "Job")</li>
                     }
                     
