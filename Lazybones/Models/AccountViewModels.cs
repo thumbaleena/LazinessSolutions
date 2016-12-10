@@ -104,12 +104,8 @@ namespace Lazybones.Models
         [Required]
         public string Zip { get; set; }
 
-        [Display(Name = "By Call")]
-        public bool ByCall { get; set; }
-        [Display(Name = "By Text")]
-        public bool ByText { get; set; }
-        [Display(Name = "By Email")]
-        public bool ByEmail { get; set; }
+        [Display(Name = "Preferred Contact Method")]
+        public string Preferred_Contact_Method { get; set; }
 
         [Display(Name = "Gig Poster")]
         public bool Gig_Poster { get; set; }

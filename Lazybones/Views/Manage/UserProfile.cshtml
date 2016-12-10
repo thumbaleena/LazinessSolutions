@@ -29,9 +29,8 @@
                     @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
                     Mobile Phone Number <br />
                     @Html.EditorFor(model => model.Mobile_Phone, new { htmlAttributes = new { @class = "form-control" } })
-                    Preferred Contact Method: <br />
-                    @Html.CheckBoxFor(model => model.ByCall, new { htmlAttributes = new { @class = "form-control" } })
-
+                    Preferred Contact Method (Call, Text, Email) <br />
+                    @Html.EditorFor(model => model.Preferred_Contact_Method, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
             <div class="col-md-4" style="float: right;">

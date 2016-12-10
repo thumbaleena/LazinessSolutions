@@ -112,17 +112,6 @@ namespace Lazybones.Controllers
         //           return View("Details");
         //       }
 
-            //this method is incomplete
-        public ActionResult GetterDash()
-        {
-            return View();
-        }
-
-        //this method is incomplete
-        public ActionResult PosterDash()
-        {
-            return View();
-        }
         public async Task<ActionResult> Details(int id)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
@@ -141,6 +130,16 @@ namespace Lazybones.Controllers
             var model = dbContext.Jobs.Find(id);
 
             return View(model);
+        }
+
+        public ActionResult GetterDash()
+        {
+            return View();
+        }
+
+        public ActionResult PosterDash()
+        {
+            return View();
         }
     }
 }
