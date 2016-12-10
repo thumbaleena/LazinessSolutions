@@ -33,8 +33,10 @@ namespace Lazybones.Models
         public bool Go_Getter { get; set; }
         public string Last_Name { get; set; }
         public string Mobile_Phone { get; set; }
-        public string Preferred_Contact_Method { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
+        public bool ByCall { get; set; }
+        public bool ByText { get; set; }
+        public bool ByEmail { get; set; }
     }
 }
