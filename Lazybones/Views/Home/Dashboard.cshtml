@@ -12,6 +12,17 @@
 </section>
 <hr/>
 
-<section>
-@Html.Action("InnerSearch","Job")
-</section>
+    <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist" style="font-size: large;">
+            <li role="presentation" class="active"><a href="#home1" data-toggle="tab" role="tab" aria-controls="tab1">My Active Posts</a></li>
+            <li role="presentation"><a href="#paneTwo1" data-toggle="tab" role="tab" aria-controls="tab2">Gigs I'm Working</a></li>
+        </ul>
+        <div id="tabContent1" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="home1">
+                @Html.Action("InnerSearch", "Job")
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="paneTwo1">
+                @Html.Action("GetterDash", "Job")
+            </div>
+        </div>
+    </div>

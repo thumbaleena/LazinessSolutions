@@ -85,7 +85,7 @@ namespace Lazybones.Controllers
         public ActionResult InnerSearch()
         {
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
-            ViewBag.Message = "My Active Postings";
+            ViewBag.Message = "Active Postings";
             var searchList = jobDB.Jobs.ToList();
             List<Job> jobs = new List<Job>();
             LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
@@ -146,13 +146,27 @@ namespace Lazybones.Controllers
 
         public ActionResult GetterDash()
         {
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+            ViewBag.Message = "My Active Postings";
+            var searchList = jobDB.Jobs.ToList();
+            List<Job> jobs = new List<Job>();
+            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+            foreach (var job in searchList)
+            {
+                if (job.Getter != null)
+                {
+                    if (job.Getter == u.UserName && (job.Status != "Complete" || job.Status != "Closed"))
+                    {
+                        jobs.Add(job);
+                    }
+                }
+            }
+            ViewBag.Jobs = jobs;
+            // return View("../Home/Dashboard");
             return View();
         }
 
-        public ActionResult PosterDash()
-        {
-            return View();
-        }
  //       public ActionResult SetGigAddress(Job job)
   //      {
  //           LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
