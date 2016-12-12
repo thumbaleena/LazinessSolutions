@@ -77,7 +77,7 @@
                         </th>
                         <td>
                             <form>
-                                @Html.RadioButtonFor(m => m.Status, "Created", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Created<br/>
+                                @Html.RadioButtonFor(m => m.Status, "Created", new { htmlAttributes = new { @class = "form-control", @checked=true } }) &nbsp; Created<br/>
                                 @Html.RadioButtonFor(m => m.Status, "Assigned", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Assigned<br />
                                 @Html.RadioButtonFor(m => m.Status, "In Progress", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; In Progress<br />
                                 @Html.RadioButtonFor(m => m.Status, "Complete", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Complete<br />
@@ -112,7 +112,7 @@
                     </tr>
                     <tr>
                         <th>Gig Location</th>
-                        <td>Same as home? &nbsp; @Html.CheckBoxFor(model => model.Same_as_Home, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        <td>Same as home? &nbsp; @Html.EditorFor(model => model.Same_as_Home, new { htmlAttributes = new { @class = "form-control"} })</td>
                     </tr>
                     <tr>
                         <th>Address:</th>

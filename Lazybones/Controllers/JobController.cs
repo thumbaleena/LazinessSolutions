@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -111,12 +112,36 @@ namespace Lazybones.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> Edit(int id)
+        public ActionResult Edit(int id)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
             var model = dbContext.Jobs.Find(id);
             return View(model);
         }
+
+        [HttpPost, ActionName("Edit")]
+        public ActionResult EditGig(int id)
+        {
+            LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
+            var model = dbContext.Jobs.Find(id);
+            if (TryUpdateModel(dbContext, "",
+      new string[] { "Title", "Description", "Start_Time_Date", "Expirey_Time_Date", "Category", "Pay", "Best_Bid", "Date_Completed", "Status", "Payment_Status", "Contact_By_Phone", "Contact_By_Text", "Contact_By_Email", "Address", "City", "State", "Zip", "Same_As_Home", "Getter", "Poster", "Bid_Amount" }))
+            {
+                try
+                {
+                    dbContext.SaveChanges();
+
+                    return View(model);
+                }
+                catch (DataException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(model);
+        }
+
 
         public ActionResult GetterDash()
         {
