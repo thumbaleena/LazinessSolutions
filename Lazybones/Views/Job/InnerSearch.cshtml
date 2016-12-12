@@ -3,55 +3,55 @@
 @{
     ViewBag.Title = "Search";
 }
+<section>
+    <h4>My Postings</h4>
 
-<h2>Search</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-<table class="table">
-    <tr>
-        <th>
-            Job Title
-        </th>
-        <th>
-            Category
-        </th>
-        <th>
-            Last Day
-        </th>
-        <th>
-            City
-        </th>
-        <th>
-            Pay
-        </th>
-    </tr>
-
-    @foreach (var item in ViewBag.Jobs)
-            {
+    <table class="table">
         <tr>
-            <td>
-                @item.Title
-            </td>
-            <td>
-                @item.Category
-            </td>
-            <td>
-                @item.Expirey_Time_Date
-            </td>
-            <td>
-                @item.City
-            </td>
-            <td>
-                @item.Pay
-            </td>
-            <td>
-                <a href="Details?id=@item.ID.ToString()"> Details</a>
-            </td>
+            <th>
+                Job Title
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Expires On
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Pay
+            </th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in ViewBag.Jobs)
+            {
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Category
+                </td>
+                <td>
+                    @item.Expirey_Time_Date
+                </td>
+                <td>
+                    @item.City
+                </td>
+                <td>
+                    @item.Pay
+                </td>
+                <td>
+                    <a href="Details?id=@item.ID.ToString()"> Details</a>
+                </td>
+            </tr>
+        }
 
+    </table>
+</section>

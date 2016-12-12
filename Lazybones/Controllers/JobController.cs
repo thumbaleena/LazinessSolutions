@@ -28,6 +28,7 @@ namespace Lazybones.Controllers
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             if (User.Identity.IsAuthenticated) {
                 job.Poster_Name = User.Identity.GetUserId();
+                job.Poster = User.Identity.GetUserName();
             }
             else
             {
@@ -84,16 +85,16 @@ namespace Lazybones.Controllers
         public ActionResult InnerSearch()
         {
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
-            ViewBag.Message = "Search Postings";
+            ViewBag.Message = "My Active Postings";
             var searchList = jobDB.Jobs.ToList();
             List<Job> jobs = new List<Job>();
             LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
             var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
             foreach (var job in searchList)
             {
-                if (job.City != null)
+                if (job.Poster != null)
                 {
-                    if (job.City == u.City)
+                    if (job.Poster == u.UserName && (job.Status!="Complete" || job.Status!="Closed"))
                     {
                         jobs.Add(job);
                     }
@@ -152,5 +153,11 @@ namespace Lazybones.Controllers
         {
             return View();
         }
+ //       public ActionResult SetGigAddress(Job job)
+  //      {
+ //           LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+//            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+ //       }
     }
+
 }

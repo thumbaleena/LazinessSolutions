@@ -3,11 +3,15 @@
 }
 
 <h2>Dashboard</h2>
-
-@Html.Partial("~/Views/Manage/UserProfile.cshtml")
-
+<section>
+    <div class="container-fluid"></div>
+    <div class="row">
+        <div class="col-sm-12">@Html.Partial("~/Views/Manage/UserProfile.cshtml")</div>
+    </div>
+    
+</section>
 <hr/>
 
-@*Html.Partial("~/Views/Job/InnerSearch.cshtml")*@
-
+<section>
 @Html.Action("InnerSearch","Job")
+</section>
