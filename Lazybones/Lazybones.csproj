@@ -339,11 +339,11 @@
     <Content Include="Views\Manage\UserProfile.cshtml" />
     <Content Include="Views\Job\Details.cshtml" />
     <Content Include="Views\Job\Create.cshtml" />
-    <Content Include="Views\Job\Edit.cshtml" />
     <Content Include="Views\Job\InnerSearch.cshtml" />
     <Content Include="Views\Job\GetterDash.cshtml" />
     <Content Include="Views\Job\PosterDash.cshtml" />
     <Content Include="Views\Job\Browse.cshtml" />
+    <Content Include="Views\Job\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

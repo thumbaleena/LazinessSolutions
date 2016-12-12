@@ -2,7 +2,6 @@
 
 @using (Html.BeginForm())
 {
-    <div>
         <h4>Gig Details</h4>
         <hr/>
         <div class="form-horizontal">
@@ -161,6 +160,7 @@
             </table>
         </div>
 
-        </div>
-    
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) <br/>
+        @Html.ActionLink("Back to List", "Search")
+
 }
