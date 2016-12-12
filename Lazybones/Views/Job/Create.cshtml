@@ -78,10 +78,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <form>
+                @Html.RadioButtonFor(m => m.Status, "Created", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Created<br />
+                @Html.RadioButtonFor(m => m.Status, "Assigned", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Assigned<br />
+                @Html.RadioButtonFor(m => m.Status, "In Progress", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; In Progress<br />
+                @Html.RadioButtonFor(m => m.Status, "Complete", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Complete<br />
+                @Html.RadioButtonFor(m => m.Status, "Cancelled", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Cancelled<br />
+                @Html.RadioButtonFor(m => m.Status, "Expired", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Expired<br />
+            </form>
+            <!-- @Html.LabelFor(model => model.Status, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
+                @Html.EditorFor(model => model.Status, new {htmlAttributes = new {@class = "form-control"}})
+            </div> -->
         </div>
 
         <div class="form-group">
@@ -134,6 +142,13 @@
             @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 

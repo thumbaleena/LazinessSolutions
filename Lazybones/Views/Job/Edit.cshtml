@@ -1,4 +1,6 @@
-﻿@model Lazybones.Models.Job
+﻿@using Lazybones.Models
+@using Microsoft.AspNet.Identity
+@model Lazybones.Models.Job
 
 @{
     ViewBag.Title = "Edit";
@@ -74,7 +76,14 @@
                             Status:
                         </th>
                         <td>
-                            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                            <form>
+                                @Html.RadioButtonFor(m => m.Status, "Created", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Created<br/>
+                                @Html.RadioButtonFor(m => m.Status, "Assigned", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Assigned<br />
+                                @Html.RadioButtonFor(m => m.Status, "In Progress", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; In Progress<br />
+                                @Html.RadioButtonFor(m => m.Status, "Complete", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Complete<br />
+                                @Html.RadioButtonFor(m => m.Status, "Cancelled", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Cancelled<br />
+                                @Html.RadioButtonFor(m => m.Status, "Expired", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Expired<br />
+                            </form>
                         </td>
                     </tr>
                     <tr>
@@ -103,13 +112,25 @@
                     </tr>
                     <tr>
                         <th>Gig Location</th>
-                        <td>Same as home? </td>
+                        <td>Same as home? &nbsp; @Html.CheckBoxFor(model => model.Same_as_Home, new { htmlAttributes = new { @class = "form-control" } })</td>
                     </tr>
                     <tr>
                         <th>Address:</th>
                         <td>
-                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                        </td>
+
+    @if (Model.Same_as_Home == true)
+    {
+        LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+        var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+        @Html.TextBoxFor(model => model.Address,
+            new {@Value = u.Address})
+    }
+    else
+    {
+        @Html.EditorFor(model => model.Address, new {htmlAttributes = new {@class = "form-control"}})
+    }
+                    </td>
+
                     </tr>
                     <tr>
                         <th>
@@ -123,7 +144,9 @@
                         <th>
                             Gig State:
                         </th>
-                        <td></td>
+                        <td>
+                            @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
                     </tr>
                     <tr>
                         <th>Gig Zip Code:</th>
@@ -176,7 +199,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Search")
 </div>
 
 @section Scripts {
