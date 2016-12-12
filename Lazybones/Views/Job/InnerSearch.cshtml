@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lazybones.Models.Job>
+﻿
 
 @{
     ViewBag.Title = "Search";
@@ -29,23 +29,23 @@
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in ViewBag.Jobs)
             {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @item.Title
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category)
+                @item.Category
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Expirey_Time_Date)
+                @item.Expirey_Time_Date
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.City)
+                @item.City
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pay)
+                @item.Pay
             </td>
             <td>
                 <a href="Details?id=@item.ID.ToString()"> Details</a>
