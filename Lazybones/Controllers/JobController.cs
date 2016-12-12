@@ -98,7 +98,10 @@ namespace Lazybones.Controllers
                     }
                 }
             }
-            return View("../Home/Dashboard", jobs);
+            ViewBag.Jobs = jobs;
+           // return View("../Home/Dashboard");
+            return View();
+
         }
 
         public async Task<ActionResult> Details(int id)
