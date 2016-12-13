@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -68,20 +69,6 @@ namespace Lazybones.Controllers
             return View(searchList);
         }
 
-        public ActionResult Browse()
-        {
-            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
-            ViewBag.Message = "Search Postings";
-            var searchList = jobDB.Jobs.ToList();
-            List<Job> jobs = new List<Job>();
-            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-            foreach (var job in searchList)
-            {
-                        jobs.Add(job);
-            }
-            return View(jobs);
-        }
-
         public ActionResult InnerSearch()
         {
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
@@ -142,7 +129,6 @@ namespace Lazybones.Controllers
             }
             return View(model);
         }
-
 
         public ActionResult GetterDash()
         {
