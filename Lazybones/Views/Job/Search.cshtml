@@ -12,7 +12,8 @@
 </p>
 
     <form action="/Job/SearchFilter">
-        <select name="Category">
+        <input type="text" name="Title" value="Title Keyword"/>
+        <select name="Category" style="margin-right: 70px">
             <option value="Category">Category</option>
             <option value="Sloth Giving">Sloth Giving</option>
             <option value="Dry Cleaning">Dry Cleaning</option>
@@ -20,14 +21,12 @@
             <option value="Test">Test</option>
             <option value="Other">Other</option>
         </select>
-        <input type="text" value="City" />
-        <select name="Pay">
-            <option value="none">Pay</option>
-            <option value="Under">Under</option>
-            <option value="Equals">Equals</option>
-            <option value="Over">Over</option>
-        </select>
-        <input type="number" value="Price" placeholder="0"/>
+        <input type="date" name="Date" value="Date"/>
+        
+        <input type="text" name="City" value="City" style="margin-right: 70px"/>
+        Price:
+        <input type="number" name="Low" value="Low" placeholder="Low" style="margin-left: 10px; width:70px"/>
+        <input type="number" name="High" value="High" placeholder="High" style="width: 70px"/>
         <input type="submit" value="Search" />
         
     </form>
