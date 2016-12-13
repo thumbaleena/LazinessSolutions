@@ -15,7 +15,7 @@
 
                 var u = userProf.AspNetUsers.Find(User.Identity.GetUserId()).First_Name;
             }
-            <a href="Manage/Index">Hello @u!</a>
+            <!--<a href="Manage/Index">Hello @u!</a>--> @Html.ActionLink("Hello, "+@u+"!", "Index", "Manage" )
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
