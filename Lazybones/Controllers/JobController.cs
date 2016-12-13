@@ -121,26 +121,52 @@ namespace Lazybones.Controllers
         }
 
         [HttpPost, ActionName("Edit")]
-        public ActionResult EditGig(int id)
+        public ActionResult Edit(Lazybones.Models.Job editedJob)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
-            var model = dbContext.Jobs.Find(id);
-            if (TryUpdateModel(dbContext, "",
-      new string[] { "Title", "Description", "Start_Time_Date", "Expirey_Time_Date", "Category", "Pay", "Best_Bid", "Date_Completed", "Status", "Payment_Status", "Contact_By_Phone", "Contact_By_Text", "Contact_By_Email", "Address", "City", "State", "Zip", "Same_As_Home", "Getter", "Poster", "Bid_Amount" }))
-            {
-                try
-                {
-                    dbContext.SaveChanges();
+            Lazybones.Models.Job existingJob = dbContext.Jobs.Find(editedJob.ID);
+            existingJob.Title = editedJob.Title;
+            existingJob.Description = editedJob.Description;
+            existingJob.Start_Time_Date = editedJob.Start_Time_Date;
+            existingJob.Expirey_Time_Date = editedJob.Expirey_Time_Date;
+            existingJob.Category = editedJob.Category;
+            existingJob.Pay = editedJob.Pay;
 
-                    return View(model);
-                }
-                catch (DataException /* dex */)
-                {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
+            existingJob.Best_Bid = editedJob.Best_Bid;
+            existingJob.Picture_Location = editedJob.Picture_Location;
+            existingJob.Date_Completed = editedJob.Date_Completed;
+            //existingJob.Poster_Name = editedJob.Poster_Name;
+            existingJob.Getter_Name = editedJob.Getter_Name;
+            existingJob.Status = editedJob.Status;
+            existingJob.Payment_Status = editedJob.Payment_Status;
+            existingJob.Contact_By_Phone = editedJob.Contact_By_Phone;
+            existingJob.Contact_By_Email = editedJob.Contact_By_Email;
+            existingJob.Contact_By_Text = editedJob.Contact_By_Text;
+            existingJob.Address = editedJob.Address;
+            existingJob.City = editedJob.City;
+            existingJob.Zip = editedJob.Zip;
+            existingJob.State = editedJob.State;
+            existingJob.Getter = editedJob.Getter;
+            existingJob.Poster = editedJob.Poster;
+            existingJob.Bid_Amount = editedJob.Bid_Amount;
+            existingJob.Same_as_Home = editedJob.Same_as_Home;
+
+
+
+
+            try
+            {
+                dbContext.SaveChanges();
+
+                return RedirectToAction("Dashboard", "Home");
             }
-            return View(model);
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+
+            }
+            return RedirectToAction("Dashboard", "Home");
         }
 
 
