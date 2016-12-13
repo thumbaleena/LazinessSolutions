@@ -180,6 +180,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AppActions.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -341,7 +342,6 @@
     <Content Include="Views\Job\Create.cshtml" />
     <Content Include="Views\Job\InnerSearch.cshtml" />
     <Content Include="Views\Job\GetterDash.cshtml" />
-    <Content Include="Views\Job\Browse.cshtml" />
     <Content Include="Views\Job\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>

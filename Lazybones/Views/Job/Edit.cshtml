@@ -2,6 +2,11 @@
 @using Microsoft.AspNet.Identity
 @model Lazybones.Models.Job
 
+<script>
+ var currentUser = @HttpContext.Current.User.Identity.Name;
+     document.getElementById("Getter").value = currentUser;
+</script>
+
 @{
     ViewBag.Title = "Edit";
 }
@@ -116,7 +121,7 @@
                     </tr>
                     <tr>
                         <th>Gig Location</th>
-                        <td>Same as home? &nbsp; @Html.EditorFor(model => model.Same_as_Home, new { htmlAttributes = new { @class = "form-control" } })</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th>Address:</th>
@@ -150,7 +155,7 @@
                     <tr>
                         <th>Assigned To:</th>
                         <td>
-                            @Html.EditorFor(model => model.Getter, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Getter, new { htmlAttributes = new { @class = "form-control", id="Getter"} })
                         </td>
                     </tr>
                 </table>
@@ -190,6 +195,7 @@
                 </div>
             </div>
 }
+<a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png"/> Send Payment with Venmo</a>
 
 <div>
     @Html.ActionLink("Back to List", "Search")

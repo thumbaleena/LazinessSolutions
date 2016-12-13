@@ -163,7 +163,7 @@
                 </tr>
             </table>
         </div>
-
+        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) <br/>
         @Html.ActionLink("Back to List", "Search")
 
