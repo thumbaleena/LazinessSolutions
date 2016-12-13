@@ -9,8 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@Html.DropDownListFor(model => model.Cats,
+                    new SelectList(Enum.GetValues(typeof(Job.Categories))),
+                    "Select Status",
+                    new { @class = "form-control" })
+@foreach (var item in Model)
+{
+    
 
-
+}
 <table class="table">
     <tr>
         <th>
