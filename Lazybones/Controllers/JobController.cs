@@ -48,23 +48,13 @@ namespace Lazybones.Controllers
         
         public ActionResult Search()
         {
-
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             ViewBag.Message = "Search Postings";
             List<Job> searchList = jobDB.Jobs.ToList();
-            List<Job> jobs = new List<Job>();
-            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());            
-            foreach (var job in searchList)
+            foreach (Job x in searchList)
             {
-                if (job.City != null)
-                {
-                    if (job.City == u.City)
-                    {
-                        jobs.Add(job);
-                    }
-                }
-            }            
+                x.Pay.ToString();
+            }
             return View(searchList);
         }
         public ActionResult SearchFilter(String Category, String City, String Pay, decimal Price=0)
@@ -187,35 +177,35 @@ namespace Lazybones.Controllers
         }
 
         [HttpPost, ActionName("Edit")]
-        public ActionResult Edit(Lazybones.Models.Job editedJob)
+        public ActionResult Edit(Lazybones.Models.Job editedProfile)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
-            Lazybones.Models.Job existingJob = dbContext.Jobs.Find(editedJob.ID);
-            existingJob.Title = editedJob.Title;
-            existingJob.Description = editedJob.Description;
-            existingJob.Start_Time_Date = editedJob.Start_Time_Date;
-            existingJob.Expirey_Time_Date = editedJob.Expirey_Time_Date;
-            existingJob.Category = editedJob.Category;
-            existingJob.Pay = editedJob.Pay;
+            Lazybones.Models.Job existingJob = dbContext.Jobs.Find(editedProfile.ID);
+            existingJob.Title = editedProfile.Title;
+            existingJob.Description = editedProfile.Description;
+            existingJob.Start_Time_Date = editedProfile.Start_Time_Date;
+            existingJob.Expirey_Time_Date = editedProfile.Expirey_Time_Date;
+            existingJob.Category = editedProfile.Category;
+            existingJob.Pay = editedProfile.Pay;
 
-            existingJob.Best_Bid = editedJob.Best_Bid;
-            existingJob.Picture_Location = editedJob.Picture_Location;
-            existingJob.Date_Completed = editedJob.Date_Completed;
-            //existingJob.Poster_Name = editedJob.Poster_Name;
-            existingJob.Getter_Name = editedJob.Getter_Name;
-            existingJob.Status = editedJob.Status;
-            existingJob.Payment_Status = editedJob.Payment_Status;
-            existingJob.Contact_By_Phone = editedJob.Contact_By_Phone;
-            existingJob.Contact_By_Email = editedJob.Contact_By_Email;
-            existingJob.Contact_By_Text = editedJob.Contact_By_Text;
-            existingJob.Address = editedJob.Address;
-            existingJob.City = editedJob.City;
-            existingJob.Zip = editedJob.Zip;
-            existingJob.State = editedJob.State;
-            existingJob.Getter = editedJob.Getter;
-            existingJob.Poster = editedJob.Poster;
-            existingJob.Bid_Amount = editedJob.Bid_Amount;
-            existingJob.Same_as_Home = editedJob.Same_as_Home;
+            existingJob.Best_Bid = editedProfile.Best_Bid;
+            existingJob.Picture_Location = editedProfile.Picture_Location;
+            existingJob.Date_Completed = editedProfile.Date_Completed;
+            //existingJob.Poster_Name = editedProfile.Poster_Name;
+            existingJob.Getter_Name = editedProfile.Getter_Name;
+            existingJob.Status = editedProfile.Status;
+            existingJob.Payment_Status = editedProfile.Payment_Status;
+            existingJob.Contact_By_Phone = editedProfile.Contact_By_Phone;
+            existingJob.Contact_By_Email = editedProfile.Contact_By_Email;
+            existingJob.Contact_By_Text = editedProfile.Contact_By_Text;
+            existingJob.Address = editedProfile.Address;
+            existingJob.City = editedProfile.City;
+            existingJob.Zip = editedProfile.Zip;
+            existingJob.State = editedProfile.State;
+            existingJob.Getter = editedProfile.Getter;
+            existingJob.Poster = editedProfile.Poster;
+            existingJob.Bid_Amount = editedProfile.Bid_Amount;
+            existingJob.Same_as_Home = editedProfile.Same_as_Home;
 
 
 

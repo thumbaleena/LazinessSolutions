@@ -49,14 +49,6 @@
                 </tr>
                 <tr>
                     <th>
-                        Or best offer:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Best_Bid)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
                         Expires:
                     </th>
                     <td>
@@ -91,7 +83,8 @@
                         Posted By:
                     </th>
                     <td>
-                        @Html.DisplayFor(model => model.Poster_Name)
+                        @if(Model.Getter==User.Identity.GetUserName() || Model.Poster==User.Identity.GetUserName())
+                        { @Html.DisplayFor(model => model.Poster)}                     
                     </td>
                 </tr>
                 <tr>
@@ -125,10 +118,11 @@
                 <tr>
                     <th>Assigned To:</th>
                     <td>
-                        @Html.DisplayFor(model => model.Getter_Name)
+                        @if (Model.Getter == User.Identity.GetUserName() || Model.Poster == User.Identity.GetUserName())
+                        {@Html.DisplayFor(model => model.Getter)}
+                        
                     </td>
                     <td>
-                        <button onclick=""></button>
                     </td>
                 </tr>
             </table>
@@ -163,8 +157,10 @@
                 </tr>
             </table>
         </div>
-        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) <br/>
+    <br/>
+        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
+   
+         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) <br/>
         @Html.ActionLink("Back to List", "Search")
 
 }

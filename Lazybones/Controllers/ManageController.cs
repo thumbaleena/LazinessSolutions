@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -109,24 +110,47 @@ namespace Lazybones.Controllers
             return View("../Home/Dashboard",model);
 
         }
+        [HttpPost, ActionName("UserProfile")]
+        public ActionResult UserProfile(Lazybones.Models.AspNetUser editedProfile)
+        {
+            LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();
+            Lazybones.Models.AspNetUser existingProfile = dbContext.AspNetUsers.Find(User.Identity.GetUserId());
+            existingProfile.First_Name = editedProfile.First_Name;
+            existingProfile.Last_Name = editedProfile.Last_Name;
+            existingProfile.Email = editedProfile.Email;
+            existingProfile.Address = editedProfile.Address;
+            existingProfile.City = editedProfile.City;
+            existingProfile.State = editedProfile.State;
+            existingProfile.Zip = editedProfile.Zip;
+            existingProfile.Mobile_Phone = editedProfile.Mobile_Phone;
+            existingProfile.ByCall = editedProfile.ByCall;
+            existingProfile.ByEmail = editedProfile.ByEmail;
+            existingProfile.ByText = editedProfile.ByText;
+            existingProfile.Badge_Count = editedProfile.Badge_Count;
+            existingProfile.Gig_Poster = editedProfile.Gig_Poster;
+            existingProfile.Go_Getter = editedProfile.Go_Getter;
 
-        //[HttpPost]
-        //public async Task<ActionResult> UserProfile(AspNetUser model)
-        //{
-        //    LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();
-        //    AspNetUser model = dbContext.AspNetUsers.Find(User.Identity.GetUserId());
-        //}
+            try
+            {
+                dbContext.SaveChanges();
 
-        //
+                return RedirectToAction("Dashboard", "Home");
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+
+            }
+            return RedirectToAction("Dashboard", "Home");
+        }
+
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {
             return View();
         }
 
-
-
-        //
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]

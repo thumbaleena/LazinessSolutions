@@ -5,7 +5,6 @@
 @{
     ViewBag.Title = "Search";
 }
-
 <h2>Search</h2>
 
 <p>
@@ -46,7 +45,7 @@
         <th>
             City
         </th>
-        <th>
+        <th style="text-align: right; padding-right: 50px;">
             Pay
         </th>
     </tr>
@@ -66,8 +65,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.City)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pay)
+        <td style="text-align: right; padding-right: 50px;">
+            @Decimal.Round(item.Pay, 2)
+            
         </td>       
     <td>
         <a href="Details?id=@item.ID.ToString()"> Details</a>

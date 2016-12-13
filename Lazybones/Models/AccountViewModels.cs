@@ -111,6 +111,9 @@ namespace Lazybones.Models
         public bool Gig_Poster { get; set; }
         [Display(Name = "Go-Getter")]
         public bool Go_Getter { get; set; }
+
+        [Display(Name = "Badge Count")]
+        public int Badge_Count { get; set; }
     }
 
     public class ResetPasswordViewModel

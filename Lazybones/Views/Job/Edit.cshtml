@@ -2,10 +2,6 @@
 @using Microsoft.AspNet.Identity
 @model Lazybones.Models.Job
 
-<script>
- var currentUser = @HttpContext.Current.User.Identity.Name;
-     document.getElementById("Getter").value = currentUser;
-</script>
 
 @{
     ViewBag.Title = "Edit";
@@ -17,7 +13,6 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
             <div class="form-horizontal">
                 <table width="550px">
                     <tr>
@@ -62,14 +57,6 @@
                     </tr>
                     <tr>
                         <th>
-                            Or best offer:
-                        </th>
-                        <td>
-                            @Html.EditorFor(model => model.Best_Bid)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             Expires:
                         </th>
                         <td>
@@ -81,10 +68,6 @@
                             Status:
                         </th>
                         <td>
-                            @Html.DropDownListFor(model => model.GigStatus,
-                    new SelectList(Enum.GetValues(typeof(Job.GigStatuses))),
-                    "Select Status",
-                    new { @class = "form-control" })
                           <!--  <form>
                                 @Html.RadioButtonFor(m => m.Status, "Created", new {htmlAttributes = new {@class = "form-control", @checked = true}}) &nbsp; Created<br/>
                                 @Html.RadioButtonFor(m => m.Status, "Assigned", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Assigned<br/>
@@ -195,8 +178,9 @@
                 </div>
             </div>
 }
-<a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png"/> Send Payment with Venmo</a>
-
+<br/>
+<a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png"/> Send Payment with Venmo</a>
+<br/>
 <div>
     @Html.ActionLink("Back to List", "Search")
 </div>
