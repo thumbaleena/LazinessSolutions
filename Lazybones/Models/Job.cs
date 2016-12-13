@@ -29,7 +29,27 @@ namespace Lazybones.Models
         public Nullable<System.DateTime> Date_Completed { get; set; }
         public string Poster_Name { get; set; }
         public string Getter_Name { get; set; }
-        public string Status { get; set; }
+  //      public string Status { get; set; }
+        //this holds the actual DB value
+        public virtual string Status
+        {
+            get { return this.GigStatus.ToString(); }
+            set
+            {
+                ;
+            }
+        }
+
+        //variable for form field
+        public GigStatuses GigStatus { get; set; }
+        public enum GigStatuses
+        {
+            Created,
+            Assigned,
+            Complete,
+            Cancelled,
+            Expired,
+        }
         public int ID { get; set; }
         public string Payment_Status { get; set; }
         [Display(Name = "Call")]

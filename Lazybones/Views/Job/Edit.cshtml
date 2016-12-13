@@ -76,14 +76,18 @@
                             Status:
                         </th>
                         <td>
-                            <form>
-                                @Html.RadioButtonFor(m => m.Status, "Created", new { htmlAttributes = new { @class = "form-control", @checked=true } }) &nbsp; Created<br/>
-                                @Html.RadioButtonFor(m => m.Status, "Assigned", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Assigned<br />
-                                @Html.RadioButtonFor(m => m.Status, "In Progress", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; In Progress<br />
-                                @Html.RadioButtonFor(m => m.Status, "Complete", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Complete<br />
-                                @Html.RadioButtonFor(m => m.Status, "Cancelled", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Cancelled<br />
-                                @Html.RadioButtonFor(m => m.Status, "Expired", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Expired<br />
-                            </form>
+                            @Html.DropDownListFor(model => model.GigStatus,
+                    new SelectList(Enum.GetValues(typeof(Job.GigStatuses))),
+                    "Select Status",
+                    new { @class = "form-control" })
+                          <!--  <form>
+                                @Html.RadioButtonFor(m => m.Status, "Created", new {htmlAttributes = new {@class = "form-control", @checked = true}}) &nbsp; Created<br/>
+                                @Html.RadioButtonFor(m => m.Status, "Assigned", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Assigned<br/>
+                                @Html.RadioButtonFor(m => m.Status, "In Progress", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; In Progress<br/>
+                                @Html.RadioButtonFor(m => m.Status, "Complete", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Complete<br/>
+                                @Html.RadioButtonFor(m => m.Status, "Cancelled", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Cancelled<br/>
+                                @Html.RadioButtonFor(m => m.Status, "Expired", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Expired<br/>
+                            </form>  -->
                         </td>
                     </tr>
                     <tr>
@@ -112,23 +116,12 @@
                     </tr>
                     <tr>
                         <th>Gig Location</th>
-                        <td>Same as home? &nbsp; @Html.EditorFor(model => model.Same_as_Home, new { htmlAttributes = new { @class = "form-control"} })</td>
+                        <td>Same as home? &nbsp; @Html.EditorFor(model => model.Same_as_Home, new { htmlAttributes = new { @class = "form-control" } })</td>
                     </tr>
                     <tr>
                         <th>Address:</th>
                         <td>
-
-    @if (Model.Same_as_Home == true)
-    {
-        LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-        var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
-        @Html.TextBoxFor(model => model.Address,
-            new {@Value = u.Address})
-    }
-    else
-    {
-        @Html.EditorFor(model => model.Address, new {htmlAttributes = new {@class = "form-control"}})
-    }
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                     </td>
 
                     </tr>

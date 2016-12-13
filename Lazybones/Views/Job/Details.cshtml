@@ -1,5 +1,6 @@
-﻿@model Lazybones.Models.Job
-
+﻿@using Microsoft.AspNet.Identity
+@model Lazybones.Models.Job
+}
 @using (Html.BeginForm())
 {
         <h4>Gig Details</h4>
@@ -125,6 +126,9 @@
                     <th>Assigned To:</th>
                     <td>
                         @Html.DisplayFor(model => model.Getter_Name)
+                    </td>
+                    <td>
+                        <button onclick=""></button>
                     </td>
                 </tr>
             </table>

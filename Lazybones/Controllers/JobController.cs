@@ -65,7 +65,7 @@ namespace Lazybones.Controllers
                     }
                 }
             }            
-            return View(jobs);
+            return View(searchList);
         }
 
         public ActionResult Browse()
