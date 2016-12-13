@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -68,6 +67,75 @@ namespace Lazybones.Controllers
             }            
             return View(searchList);
         }
+        public ActionResult SearchFilter(String Category, String City, String Pay, decimal Price=0)
+        {
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+            List<Job> jobs = jobDB.Jobs.ToList();
+            List<Job> testJobs = jobDB.Jobs.ToList();
+            if (Category != "Category")
+            {
+                foreach (Job x in jobs)
+                {
+                    if (x.Category.ToLower() != Category.ToLower())
+                    {
+                        testJobs.Remove(x);
+                    }
+                }
+                jobs = testJobs;
+            }
+            if (Pay != "none")
+            {
+                if (Pay == "Under" && Price != 0)
+                {
+                    foreach (Job x in jobs)
+                    {
+                        if (x.Pay > Price)
+                        {
+                            testJobs.Remove(x);
+                        }
+                    }
+                    jobs = testJobs;
+                }
+                else if(Pay == "Equals")
+                {
+                    foreach (Job x in jobs)
+                    {
+                        if (x.Pay != Price)
+                        {
+                            testJobs.Remove(x);
+                        }
+                    }
+                    jobs = testJobs;
+                }
+                else if (Pay == "Over")
+                {
+                    foreach (Job x in jobs)
+                    {
+                        if (x.Pay < Price)
+                        {
+                            testJobs.Remove(x);
+                        }
+                    }
+                    jobs = testJobs;
+                }
+            }
+            
+            return View("Search",jobs);
+
+        }
+        public ActionResult Browse()
+        {
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+            ViewBag.Message = "Search Postings";
+            var searchList = jobDB.Jobs.ToList();
+            List<Job> jobs = new List<Job>();
+            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+            foreach (var job in searchList)
+            {
+                        jobs.Add(job);
+            }
+            return View(jobs);
+        }
 
         public ActionResult InnerSearch()
         {
@@ -108,27 +176,54 @@ namespace Lazybones.Controllers
         }
 
         [HttpPost, ActionName("Edit")]
-        public ActionResult EditGig(int id)
+        public ActionResult Edit(Lazybones.Models.Job editedJob)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
-            var model = dbContext.Jobs.Find(id);
-            if (TryUpdateModel(dbContext, "",
-      new string[] { "Title", "Description", "Start_Time_Date", "Expirey_Time_Date", "Category", "Pay", "Best_Bid", "Date_Completed", "Status", "Payment_Status", "Contact_By_Phone", "Contact_By_Text", "Contact_By_Email", "Address", "City", "State", "Zip", "Same_As_Home", "Getter", "Poster", "Bid_Amount" }))
-            {
-                try
-                {
-                    dbContext.SaveChanges();
+            Lazybones.Models.Job existingJob = dbContext.Jobs.Find(editedJob.ID);
+            existingJob.Title = editedJob.Title;
+            existingJob.Description = editedJob.Description;
+            existingJob.Start_Time_Date = editedJob.Start_Time_Date;
+            existingJob.Expirey_Time_Date = editedJob.Expirey_Time_Date;
+            existingJob.Category = editedJob.Category;
+            existingJob.Pay = editedJob.Pay;
 
-                    return View(model);
-                }
-                catch (DataException /* dex */)
-                {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
+            existingJob.Best_Bid = editedJob.Best_Bid;
+            existingJob.Picture_Location = editedJob.Picture_Location;
+            existingJob.Date_Completed = editedJob.Date_Completed;
+            //existingJob.Poster_Name = editedJob.Poster_Name;
+            existingJob.Getter_Name = editedJob.Getter_Name;
+            existingJob.Status = editedJob.Status;
+            existingJob.Payment_Status = editedJob.Payment_Status;
+            existingJob.Contact_By_Phone = editedJob.Contact_By_Phone;
+            existingJob.Contact_By_Email = editedJob.Contact_By_Email;
+            existingJob.Contact_By_Text = editedJob.Contact_By_Text;
+            existingJob.Address = editedJob.Address;
+            existingJob.City = editedJob.City;
+            existingJob.Zip = editedJob.Zip;
+            existingJob.State = editedJob.State;
+            existingJob.Getter = editedJob.Getter;
+            existingJob.Poster = editedJob.Poster;
+            existingJob.Bid_Amount = editedJob.Bid_Amount;
+            existingJob.Same_as_Home = editedJob.Same_as_Home;
+
+
+
+
+            try
+            {
+                dbContext.SaveChanges();
+
+                return RedirectToAction("Dashboard", "Home");
             }
-            return View(model);
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+
+            }
+            return RedirectToAction("Dashboard", "Home");
         }
+
 
         public ActionResult GetterDash()
         {
