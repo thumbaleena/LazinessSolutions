@@ -83,6 +83,17 @@ namespace Lazybones.Controllers
                 }
                 jobs = testJobs;
             }
+            if (City != "City")
+            {
+                foreach (Job x in jobs)
+                {
+                    if (x.City.ToLower() != City.ToLower())
+                    {
+                        testJobs.Remove(x);
+                    }
+                }
+                jobs = testJobs;
+            }
             if (Pay != "none")
             {
                 if (Pay == "Under" && Price != 0)
