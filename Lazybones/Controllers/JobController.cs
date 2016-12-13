@@ -67,7 +67,62 @@ namespace Lazybones.Controllers
             }            
             return View(searchList);
         }
+        public ActionResult SearchFilter(String Category, String City, String Pay, decimal Price=0)
+        {
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+            List<Job> jobs = jobDB.Jobs.ToList();
+            List<Job> testJobs = jobDB.Jobs.ToList();
+            if (Category != "Category")
+            {
+                foreach (Job x in jobs)
+                {
+                    if (x.Category.ToLower() != Category.ToLower())
+                    {
+                        testJobs.Remove(x);
+                    }
+                }
+                jobs = testJobs;
+            }
+            if (Pay != "none")
+            {
+                if (Pay == "Under" && Price != 0)
+                {
+                    foreach (Job x in jobs)
+                    {
+                        if (x.Pay > Price)
+                        {
+                            testJobs.Remove(x);
+                        }
+                    }
+                    jobs = testJobs;
+                }
+                else if(Pay == "Equals")
+                {
+                    foreach (Job x in jobs)
+                    {
+                        if (x.Pay != Price)
+                        {
+                            testJobs.Remove(x);
+                        }
+                    }
+                    jobs = testJobs;
+                }
+                else if (Pay == "Over")
+                {
+                    foreach (Job x in jobs)
+                    {
+                        if (x.Pay < Price)
+                        {
+                            testJobs.Remove(x);
+                        }
+                    }
+                    jobs = testJobs;
+                }
+            }
+            
+            return View("Search",jobs);
 
+        }
         public ActionResult Browse()
         {
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();

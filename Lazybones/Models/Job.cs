@@ -50,6 +50,25 @@ namespace Lazybones.Models
             Cancelled,
             Expired,
         }
+
+        public virtual string CatDrop
+        {
+            get { return this.Cats.ToString(); }
+            set
+            {
+                ;
+            }
+        }
+        //variable for form field
+        public Categories Cats { get; set; }
+        public enum Categories
+        {
+            Sloth_Giving,
+            Dry_Cleaning,
+            Test,
+            Delivery,
+            Other,
+        }
         public int ID { get; set; }
         public string Payment_Status { get; set; }
         [Display(Name = "Call")]

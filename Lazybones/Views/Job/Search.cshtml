@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Lazybones.Models.Job>
+﻿@using Lazybones.Models
+
+@model IEnumerable<Lazybones.Models.Job>
 
 @{
     ViewBag.Title = "Search";
@@ -9,15 +11,27 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@Html.DropDownListFor(model => model.Cats,
-                    new SelectList(Enum.GetValues(typeof(Job.Categories))),
-                    "Select Status",
-                    new { @class = "form-control" })
-@foreach (var item in Model)
-{
-    
 
-}
+    <form action="/Job/SearchFilter">
+        <select name="Category">
+            <option value="Category">Category</option>
+            <option value="Sloth Giving">Sloth Giving</option>
+            <option value="Dry Cleaning">Dry Cleaning</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Test">Test</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="text" value="City" />
+        <select name="Pay">
+            <option value="none">Pay</option>
+            <option value="Under">Under</option>
+            <option value="Equals">Equals</option>
+            <option value="Over">Over</option>
+        </select>
+        <input type="number" value="Price" placeholder="0"/>
+        <input type="submit" value="Search" />
+        
+    </form>
 <table class="table">
     <tr>
         <th>
