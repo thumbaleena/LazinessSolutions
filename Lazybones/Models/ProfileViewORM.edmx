@@ -69,9 +69,6 @@
           <Property Name="Preferred_Contact_Method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ByCall" Type="Boolean" />
-          <Property Name="ByText" Type="Boolean" />
-          <Property Name="ByEmail" Type="Boolean" />
           <Property Name="Badge_Count" Type="Int32" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsEntities4" annotation:LazyLoadingEnabled="true">
@@ -87,9 +84,6 @@
             <EntityTypeMapping TypeName="LazinessSolutionsModel1.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Badge_Count" ColumnName="Badge_Count" />
-                <ScalarProperty Name="ByEmail" ColumnName="ByEmail" />
-                <ScalarProperty Name="ByText" ColumnName="ByText" />
-                <ScalarProperty Name="ByCall" ColumnName="ByCall" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
