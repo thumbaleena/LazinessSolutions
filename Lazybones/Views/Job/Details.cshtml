@@ -10,7 +10,7 @@
         {
             <a href="SetGetter?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Take this Gig</a>
         }
-        @if ((Model.Poster == User.Identity.GetUserName()) || (Model.Getter==User.Identity.GetUserName()) && (Model.Getter != null) && (Model.Status == "Assigned"))
+        @if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter==User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned"))
         {
             <a href="MarkComplete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Complete</a>
         }
@@ -175,11 +175,13 @@
             
             if (Model.Poster == User.Identity.GetUserName() || ViewBag.isAdmin)
             {
-        
-
                 @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
                 <br />
-            }
+
+    }
+    if ((Model.Status == "Assigned") || (Model.Status == "Created"))
+    {
+        <a href="Delete?ID=@Model.ID" style="font-size: larger;">Delete</a> <br /> }
             @Html.ActionLink("Back to List", "Search")
 
         }

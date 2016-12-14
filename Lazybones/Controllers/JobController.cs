@@ -240,7 +240,7 @@ namespace Lazybones.Controllers
             {
                 if (job.Poster != null)
                 {
-                    if (job.Poster == u.UserName && (job.Status!="Complete" || job.Status!="Closed"))
+                    if (job.Poster == u.UserName && (job.Status=="Assigned" || job.Status=="Created"))
                     {
                         jobs.Add(job);
                     }
@@ -342,7 +342,7 @@ namespace Lazybones.Controllers
             {
                 if (job.Getter != null)
                 {
-                    if (job.Getter == u.UserName && (job.Status != "Complete" || job.Status != "Closed"))
+                    if ((job.Getter == u.UserName) && (job.Status == "Assigned"))
                     {
                         jobs.Add(job);
                     }
@@ -362,23 +362,22 @@ namespace Lazybones.Controllers
             u.Status = "Assigned";
             userProf.SaveChanges();
 
-
-            return RedirectToAction("Details");
+            return View("Details", u);
 
 
         }
         public ActionResult Delete(int ID)
         {
             LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
-            var u = userProf.Jobs.Find(ID);
+            var u = userProf.Jobs.Find( ID);
 
-            u.Getter = User.Identity.GetUserName();
             u.Status = "Cancelled";
             userProf.SaveChanges();
 
-            return RedirectToAction("Details");
+            return View("Details", u);
 
         }
+
         public ActionResult MarkComplete(int ID)
         {
             LazinessSolutionsEntities6 userJob = new LazinessSolutionsEntities6();
@@ -386,12 +385,13 @@ namespace Lazybones.Controllers
             u.Status = "Complete";    
             userJob.SaveChanges();
 
-       //     LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-       //     var z = userProf.AspNetUsers.Find(User.Identity.GetUserId());
-        //    z.Badge_Count = z.Badge_Count++;
-        //    userProf.SaveChanges();
+            LazinessSolutionsEntities4 userDeet = new LazinessSolutionsEntities4();
+            var z = userDeet.AspNetUsers.Find(User.Identity.GetUserId());
+            var count = z.Badge_Count+1;
+            z.Badge_Count = count;
+            userDeet.SaveChanges();
 
-            return RedirectToAction("Details");
+            return View("Details", u);
 
         }
     }
