@@ -36,9 +36,6 @@ namespace Lazybones.Models
         public string Preferred_Contact_Method { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
-        public Nullable<bool> ByCall { get; set; }
-        public Nullable<bool> ByText { get; set; }
-        public Nullable<bool> ByEmail { get; set; }
         public Nullable<int> Badge_Count { get; set; }
     }
 }

@@ -52,7 +52,15 @@ namespace Lazybones.Controllers
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             ViewBag.Message = "Search Postings";
             List<Job> searchList = jobDB.Jobs.ToList();
-            return View(searchList);
+            List<Job> jobReturn = new List<Job>();
+            foreach (Job x in searchList)
+            {
+                if (x.Status.Trim() == "Created")
+                {
+                    jobReturn.Add(x);
+                }
+            }
+            return View(jobReturn);
         }
 
         public ActionResult SearchFilter(String Title, String Category, String City, String Date, decimal Low = -1, decimal High = -1)

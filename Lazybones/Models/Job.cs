@@ -20,16 +20,16 @@ namespace Lazybones.Models
         public Nullable<System.DateTime> Expirey_Time_Date { get; set; }
         public string Category { get; set; }
         public Nullable<decimal> Pay { get; set; }
-        public bool Best_Bid { get; set; }
+        public Nullable<bool> Best_Bid { get; set; }
         public string Picture_Location { get; set; }
         public Nullable<System.DateTime> Date_Completed { get; set; }
         public string Poster_Name { get; set; }
         public string Getter_Name { get; set; }
         public string Status { get; set; }
         public int ID { get; set; }
-        public bool Contact_By_Phone { get; set; }
-        public bool Contact_By_Email { get; set; }
-        public bool Contact_By_Text { get; set; }
+        public Nullable<bool> Contact_By_Phone { get; set; }
+        public Nullable<bool> Contact_By_Email { get; set; }
+        public Nullable<bool> Contact_By_Text { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Zip { get; set; }
@@ -37,7 +37,8 @@ namespace Lazybones.Models
         public string Getter { get; set; }
         public string Poster { get; set; }
         public Nullable<decimal> Bid_Amount { get; set; }
-        public bool Same_as_Home { get; set; }
+        public Nullable<bool> Same_as_Home { get; set; }
         public bool Payment_Complete { get; set; }
+        public string Comments { get; set; }
     }
 }
