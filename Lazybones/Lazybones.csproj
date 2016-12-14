@@ -343,6 +343,7 @@
     <Content Include="Views\Job\InnerSearch.cshtml" />
     <Content Include="Views\Job\GetterDash.cshtml" />
     <Content Include="Views\Job\Edit.cshtml" />
+    <Content Include="Views\Job\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

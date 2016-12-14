@@ -214,19 +214,19 @@ namespace Lazybones.Controllers
             }
             return jobReturn;
         }
-        public ActionResult Browse()
-        {
-            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
-            ViewBag.Message = "Search Postings";
-            var searchList = jobDB.Jobs.ToList();
-            List<Job> jobs = new List<Job>();
-            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-            foreach (var job in searchList)
-            {
-                        jobs.Add(job);
-            }
-            return View(jobs);
-        }
+        //public ActionResult Browse()
+        //{
+        //    LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+        //    ViewBag.Message = "Search Postings";
+        //    var searchList = jobDB.Jobs.ToList();
+        //    List<Job> jobs = new List<Job>();
+        //    LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+        //    foreach (var job in searchList)
+        //    {
+        //                jobs.Add(job);
+        //    }
+        //    return View(jobs);
+        //}
 
         public ActionResult InnerSearch()
         {
@@ -352,7 +352,29 @@ namespace Lazybones.Controllers
             // return View("../Home/Dashboard");
             return View();
         }
-         
+        public ActionResult History()
+        {
+            LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+            ViewBag.Message = "My Archived Gigs & Postings";
+            var searchList = jobDB.Jobs.ToList();
+            List<Job> jobs = new List<Job>();
+            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+            foreach (var job in searchList)
+            {
+                if (job.Getter != null)
+                {
+                    if (((job.Getter == u.UserName) || (job.Poster == u.UserName)) && ((job.Status == "Completed") || (job.Status =="Cancelled")))
+                    {
+                        jobs.Add(job);
+                    }
+                }
+            }
+            ViewBag.Jobs = jobs;
+            // return View("../Home/Dashboard");
+            return View();
+        }
+
         public ActionResult SetGetter(int ID)
         {
             LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
@@ -383,6 +405,7 @@ namespace Lazybones.Controllers
             LazinessSolutionsEntities6 userJob = new LazinessSolutionsEntities6();
             var u = userJob.Jobs.Find( ID);
             u.Status = "Complete";    
+            u.Date_Completed = DateTime.Now;
             userJob.SaveChanges();
 
             LazinessSolutionsEntities4 userDeet = new LazinessSolutionsEntities4();
