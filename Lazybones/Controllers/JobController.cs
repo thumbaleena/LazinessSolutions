@@ -52,93 +52,133 @@ namespace Lazybones.Controllers
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             ViewBag.Message = "Search Postings";
             List<Job> searchList = jobDB.Jobs.ToList();
-            foreach (Job x in searchList)
-            {
-                x.Pay.ToString();
-            }
             return View(searchList);
         }
-       
-        public ActionResult SearchFilter(String Title, String Category, String City, string Date , decimal Low = -1, decimal High=-1)
+
+        public ActionResult SearchFilter(String Title, String Category, String City, String Date, decimal Low = -1, decimal High = -1)
         {
-            
+            List<String> catList = new List<string>();
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             List<Job> jobs = jobDB.Jobs.ToList();
-            List<Job> testJobs = jobDB.Jobs.ToList();
-
-            if (Title != "Title Keyword")
+            catList.Add("Sloth Giving"); catList.Add("Dry Cleaning"); catList.Add("Delivery");catList.Add("Test");
+            /*foreach (Job x in jobs)
             {
-                foreach (Job x in jobs)
+                String cat = x.Category;
+                if (!catList.Contains(cat))
                 {
-                    bool wordIsThere = false;
-                    string t = x.Title;
-                    string[] title = t.Split(' ');
-
-                    foreach (string word in title)
-                    {
-                        if (word.ToLower() == Title.ToLower())
-                        {
-                            wordIsThere = true;
-                        }
-                    }
-                    if (!wordIsThere)
-                    {
-                        testJobs.Remove(x);
-                    }
+                    catList.Add(cat.ToLower());
                 }
-                jobs = testJobs;
-            }
+            }*/
 
+            if (Title != "")
+            {
+                jobs = searchTitle(Title, jobs);
+            }
             if (Category != "Category")
             {
-                foreach (Job x in jobs)
-                {
-                    if (x.Category.ToLower() != Category.ToLower())
-                    {
-                        testJobs.Remove(x);
-                    }
-                }
-                jobs = testJobs;
+                jobs = searchCategory(Category, jobs, catList);
             }
-
-            if (City != "City")
+            if (City != "")
             {
-                foreach (Job x in jobs)
-                {
-                    if (x.City.ToLower() != City.ToLower())
-                    {
-                        testJobs.Remove(x);
-                    }
-                }
-                jobs = testJobs;
+                jobs = searchCity(City, jobs);
             }
-
-            if (Low >= 0 && High >= 0)
-            {
-                    foreach (Job x in jobs)
-                    {
-                        if (x.Pay < Low || x.Pay > High)
-                        {
-                            testJobs.Remove(x);
-                        }
-                    }
-                    jobs = testJobs;
-            }
-
             if (Date != "")
             {
-                DateTime date = new DateTime();
-                date = DateTime.Parse(Date);
-                foreach (Job x in jobs)
-                {
-                    if (date.Date != x.Expirey_Time_Date.Value.Date)
-                    {
-                        testJobs.Remove(x);
-                    }
-                }
-                jobs = testJobs;
+                jobs = searchDate(Date, jobs);
+            }
+            if (Low >= 0 && High >= 0)
+            {
+                jobs = searchPay(Low, High, jobs);
             }
             return View("Search",jobs);
+        }
+        public List<Job> searchTitle(String key, List<Job> jobs)
+        {
+            List<Job> jobReturn = new List<Job>();
+            foreach (Job x in jobs)
+            {
+                string t = x.Title;
+                string[] title = t.Split(' ');
+
+                foreach (string word in title)
+                {
+                    if (word.ToLower() == key.ToLower())
+                    {
+                        jobReturn.Add(x);
+                    }
+                }
+            }
+            return jobReturn;
+        }
+
+        public List<Job> searchCategory(String cat, List<Job> jobs, List<String> catList)
+        {
+
+            List<Job> jobReturn = new List<Job>();
+            if (cat == "Other")
+            {
+                 foreach (Job x in jobs)
+                    {
+                        /*if (!catList.Contains(x.Category))
+                        {
+                        jobReturn.Add(x);
+                        }*/
+                        if (x.Category.ToLower() != "test" && x.Category.ToLower() != "sloth giving" && x.Category.ToLower() != "dry cleaning" && x.Category.ToLower() != "delivery")
+                            {
+                                jobReturn.Add(x);
+                            }
+                    }   
+            }
+            else
+            {
+                foreach (Job x in jobs)
+                {
+
+                    if (x.Category.ToLower() == cat.ToLower())
+                    {
+                        jobReturn.Add(x);
+                    }
+                }
+            }
+            return jobReturn;
+        }
+        public List<Job> searchCity(String city, List<Job> jobs)
+        {
+            List<Job> jobReturn = new List<Job>();
+            foreach (Job x in jobs)
+            {
+                if (x.City.ToLower() == city.ToLower())
+                {
+                    jobReturn.Add(x);
+                }
+            }
+            return jobReturn;
+        }
+        public List<Job> searchDate(String Date, List<Job> jobs)
+        {
+            List<Job> jobReturn = new List<Job>();
+            DateTime date = new DateTime();
+            date = DateTime.Parse(Date);
+            foreach (Job x in jobs)
+            {
+                if (date.Date == x.Expirey_Time_Date.Value.Date)
+                {
+                    jobReturn.Add(x);
+                }
+            }
+            return jobReturn;
+        }
+        public List<Job> searchPay(decimal low, decimal high, List<Job> jobs)
+        {
+            List<Job> jobReturn = new List<Job>();
+            foreach (Job x in jobs)
+            {
+                if (x.Pay >= low && x.Pay <= high)
+                {
+                    jobReturn.Add(x);
+                }
+            }
+            return jobReturn;
         }
         public ActionResult Browse()
         {
