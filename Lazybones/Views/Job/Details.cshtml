@@ -32,7 +32,7 @@
                         Starts:
                     </th>
                     <td>
-                        @Html.DisplayFor(model => model.Start_Time_Date)
+                        @Html.DisplayFor(model => model.Start_Time_Date.Value.Month)/@Html.DisplayFor(model => model.Start_Time_Date.Value.Day)/@Html.DisplayFor(model => model.Start_Time_Date.Value.Year)
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         Expires:
                     </th>
                     <td>
-                        @Html.DisplayFor(model => model.Expirey_Time_Date)
+                        @Html.DisplayFor(model => model.Expirey_Time_Date.Value.Month)/@Html.DisplayFor(model => model.Expirey_Time_Date.Value.Day)/@Html.DisplayFor(model => model.Expirey_Time_Date.Value.Year)
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +72,7 @@
                             Date Completed or Expired:
                         </th>
                         <td>
-                            @Html.DisplayFor(model => model.Date_Completed)
+                            @Html.DisplayFor(model => model.Date_Completed.Value.Month)/@Html.DisplayFor(model => model.Date_Completed.Value.Day)/@Html.DisplayFor(model => model.Date_Completed.Value.Year)
                         </td>
                     </tr>
                     <tr>
