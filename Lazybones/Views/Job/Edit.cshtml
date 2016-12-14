@@ -14,8 +14,9 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
+        
         @Html.DisplayFor(model => model.ID)
-        <a href="SetBadges?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Complete</a>
+        
         <table width="550px">
             <tr>
                 <th>
@@ -54,7 +55,7 @@
                     Flat Rate Pay:
                 </th>
                 <td>
-                    $ @Html.EditorFor(model => model.Pay, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.EditorFor(model => model.Pay, new {htmlAttributes = new {@class = "form-control"}})
                 </td>
             </tr>
             <tr>
@@ -70,14 +71,7 @@
                     Status:
                 </th>
                 <td>
-                    <form>
-                        @Html.RadioButtonFor(m => m.Status, "Created", new {htmlAttributes = new {@class = "form-control", @checked = true}}) &nbsp; Created<br/>
-                        @Html.RadioButtonFor(m => m.Status, "Assigned", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Assigned<br/>
-                        @Html.RadioButtonFor(m => m.Status, "In Progress", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; In Progress<br/>
-                        @Html.RadioButtonFor(m => m.Status, "Complete", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Complete<br/>
-                        @Html.RadioButtonFor(m => m.Status, "Cancelled", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Cancelled<br/>
-                        @Html.RadioButtonFor(m => m.Status, "Expired", new {htmlAttributes = new {@class = "form-control"}}) &nbsp; Expired<br/>
-                    </form>
+                    @Html.DisplayFor(model => model.Status)
                 </td>
             </tr>
             <tr>
@@ -92,13 +86,13 @@
                 <th>
                     Payment Complete?
                 </th>
-                <td>
-                    @Html.EditorFor(model => model.Payment_Complete, new {htmlAttributes = new {@class = "form-control"}})
-                </td>
-            </tr>
-            <tr>
-                <th>Gig Location</th>
-                <td></td>
+                <td>                    
+                    @Html.EditorFor(model => model.Payment_Complete, new {htmlAttributes = new {@class = "form-control"}}) &nbsp;
+                </td>               
+                    @if (Model.Payment_Complete == false)
+                    {
+                        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
+                    }               
             </tr>
             <tr>
                 <th>Address:</th>
@@ -109,7 +103,7 @@
             </tr>
             <tr>
                 <th>
-                    Gig City:
+                    City:
                 </th>
                 <td>
                     @Html.EditorFor(model => model.City, new {htmlAttributes = new {@class = "form-control"}})
@@ -117,14 +111,14 @@
             </tr>
             <tr>
                 <th>
-                    Gig State:
+                    State:
                 </th>
                 <td>
                     @Html.EditorFor(model => model.State, new {htmlAttributes = new {@class = "form-control"}})
                 </td>
             </tr>
             <tr>
-                <th>Gig Zip Code:</th>
+                <th>Zip Code:</th>
                 <td>
                     @Html.EditorFor(model => model.Zip, new {htmlAttributes = new {@class = "form-control"}})
                 </td>
@@ -165,11 +159,7 @@
             </div>
         </div>
     </div>
-    if (Model.Payment_Complete == false && Model.Poster == User.Identity.GetUserName())
-    {
-        <br/>
-        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png"/> Send Payment with Venmo</a>
-    }
+    <a href="Delete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Delete</a>
     <br/>
     <div style="font-size: larger;">
         @Html.ActionLink("Back to List", "Search")

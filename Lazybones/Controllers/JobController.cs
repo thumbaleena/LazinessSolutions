@@ -314,6 +314,18 @@ namespace Lazybones.Controllers
 
 
         }
+        public ActionResult Delete(int ID)
+        {
+            LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
+            var u = userProf.Jobs.Find(ID);
+
+            u.Getter = User.Identity.GetUserName();
+            u.Status = "Delete";
+            userProf.SaveChanges();
+
+            return RedirectToAction("Search");
+
+        }
         public ActionResult SetBadges(int ID)
         {
             LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
