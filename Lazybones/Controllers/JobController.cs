@@ -51,18 +51,37 @@ namespace Lazybones.Controllers
         {
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             ViewBag.Message = "Search Postings";
-            List<Job> searchList = jobDB.Jobs.ToList();
+            List<Job> jobReturn = jobDB.Jobs.ToList();
+            jobReturn = checkStatus(jobReturn);
+            jobReturn = checkDate(jobReturn);
+            return View(jobReturn);
+        }
+
+        public List<Job> checkStatus(List<Job> jobs)
+        {
             List<Job> jobReturn = new List<Job>();
-            foreach (Job x in searchList)
+            foreach (Job x in jobs)
             {
                 if (x.Status.Trim() == "Created")
                 {
                     jobReturn.Add(x);
                 }
             }
-            return View(jobReturn);
-        }
 
+            return jobReturn;
+        }
+        public List<Job> checkDate(List<Job> jobs)
+        {
+            List<Job> jobReturn = new List<Job>();
+            foreach (Job x in jobs)
+            {
+                if (x.Expirey_Time_Date.Value.CompareTo(DateTime.Now)>0)
+                {
+                    jobReturn.Add(x);
+                }
+            }
+            return jobReturn;
+        }
         public ActionResult SearchFilter(String Title, String Category, String City, String Date, decimal Low = -1, decimal High = -1)
         {
             List<String> catList = new List<string>();
@@ -77,7 +96,8 @@ namespace Lazybones.Controllers
                     catList.Add(cat.ToLower());
                 }
             }*/
-
+            jobs = checkStatus(jobs);
+            jobs = checkDate(jobs);
             if (Title != "")
             {
                 jobs = searchTitle(Title, jobs);
