@@ -2,6 +2,7 @@
 @model Lazybones.Models.Job
 @using (Html.BeginForm())
 {
+
     <h4>Gig Details</h4>
     <hr />
     <div class="form-horizontal">
@@ -171,9 +172,10 @@
                 <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
             }
             <br />
-            if (Model.Poster == User.Identity.GetUserName())
+            
+            if (Model.Poster == User.Identity.GetUserName() || ViewBag.isAdmin)
             {
-
+        
 
                 @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
                 <br />

@@ -47,6 +47,12 @@ namespace Lazybones.Controllers
             return RedirectToAction("Dashboard", "Home");
         }
         
+        public AspNetUser getCurrentUser()
+        {
+            LazinessSolutionsEntities4 userDB = new LazinessSolutionsEntities4();
+            var u = userDB.AspNetUsers.Find(User.Identity.GetUserId());
+            return u;
+        }
         public ActionResult Search()
         {
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
@@ -246,10 +252,25 @@ namespace Lazybones.Controllers
 
         }
 
-        public async Task<ActionResult> Details(int id)
+        public ActionResult Details(int id)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
             var model = dbContext.Jobs.Find(id);
+            if (model.Status.Trim() != "Created")
+            {
+                if (model.Status.Trim() == "Cancelled")
+                {
+                    if (model.Poster != User.Identity.GetUserName() && !getCurrentUser().Admin)
+                    {
+                        return Redirect("../../Home/Index");
+                    }
+                }
+                else if (model.Poster != User.Identity.GetUserName() && model.Getter != User.Identity.GetUserName() && !getCurrentUser().Admin)
+                {
+                    return Redirect("../../Home/Index");
+                }
+            }
+            ViewBag.isAdmin = getCurrentUser().Admin;
             return View(model);
         }
 
@@ -257,6 +278,10 @@ namespace Lazybones.Controllers
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
             var model = dbContext.Jobs.Find(id);
+            if (model.Poster != User.Identity.GetUserName() && !getCurrentUser().Admin)
+                {
+                    return Redirect("../../Home/Index");
+                }
             return View(model);
         }
 
