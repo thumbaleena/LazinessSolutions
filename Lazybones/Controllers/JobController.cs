@@ -60,9 +60,21 @@ namespace Lazybones.Controllers
                     jobReturn.Add(x);
                 }
             }
+            jobReturn = checkDate(jobReturn);
             return View(jobReturn);
         }
-
+        public List<Job> checkDate(List<Job> jobs)
+        {
+            List<Job> jobReturn = new List<Job>();
+            foreach (Job x in jobs)
+            {
+                if (x.Expirey_Time_Date.Value.CompareTo(DateTime.Now)>0)
+                {
+                    jobReturn.Add(x);
+                }
+            }
+            return jobReturn;
+        }
         public ActionResult SearchFilter(String Title, String Category, String City, String Date, decimal Low = -1, decimal High = -1)
         {
             List<String> catList = new List<string>();
