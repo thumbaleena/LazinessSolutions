@@ -310,7 +310,7 @@ namespace Lazybones.Controllers
             userProf.SaveChanges();
 
 
-            return RedirectToAction("Search");
+            return RedirectToAction("Details");
 
 
         }
@@ -320,25 +320,25 @@ namespace Lazybones.Controllers
             var u = userProf.Jobs.Find(ID);
 
             u.Getter = User.Identity.GetUserName();
-            u.Status = "Delete";
+            u.Status = "Cancelled";
             userProf.SaveChanges();
 
-            return RedirectToAction("Search");
+            return RedirectToAction("Details");
 
         }
-        public ActionResult SetBadges(int ID)
+        public ActionResult MarkComplete(int ID)
         {
-            LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
-            var u = userProf.Jobs.Find( ID);
+            LazinessSolutionsEntities6 userJob = new LazinessSolutionsEntities6();
+            var u = userJob.Jobs.Find( ID);
             u.Status = "Complete";    
-            userProf.SaveChanges();
+            userJob.SaveChanges();
 
-      //      LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-      //      var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
-      //      u.Badge_Count = u.Badge_Count++;
-       //     userProf.SaveChanges();
+       //     LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+       //     var z = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+        //    z.Badge_Count = z.Badge_Count++;
+        //    userProf.SaveChanges();
 
-            return RedirectToAction("Search");
+            return RedirectToAction("Details");
 
         }
     }

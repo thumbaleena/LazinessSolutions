@@ -112,6 +112,13 @@ namespace Lazybones.Models
         [Display(Name = "Go-Getter")]
         public bool Go_Getter { get; set; }
 
+        [Display(Name = "By Call")]
+        public int ByCall { get; set; }
+        [Display(Name = "By Text")]
+        public bool ByText { get; set; }
+        [Display(Name = "By Email")]
+        public bool ByEmail { get; set; }
+
         [Display(Name = "Badge Count")]
         public int Badge_Count { get; set; }
     }

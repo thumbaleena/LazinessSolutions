@@ -14,7 +14,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        
+
         @Html.DisplayFor(model => model.ID)
         
         <table width="550px">
@@ -86,13 +86,13 @@
                 <th>
                     Payment Complete?
                 </th>
-                <td>                    
+                <td>
                     @Html.EditorFor(model => model.Payment_Complete, new {htmlAttributes = new {@class = "form-control"}}) &nbsp;
-                </td>               
-                    @if (Model.Payment_Complete == false)
-                    {
-                        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
-                    }               
+                </td>
+                @if (Model.Payment_Complete == false)
+                {
+                    <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png"/> Send Payment with Venmo</a>
+                }
             </tr>
             <tr>
                 <th>Address:</th>
@@ -157,9 +157,10 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default"/>
             </div>
+            <div style="text-align: right;"><a href="Delete?ID=@Model.ID" style="font-size: larger;">Delete</a></div>
         </div>
     </div>
-    <a href="Delete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Delete</a>
+    
     <br/>
     <div style="font-size: larger;">
         @Html.ActionLink("Back to List", "Search")
