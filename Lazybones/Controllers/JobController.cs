@@ -68,7 +68,7 @@ namespace Lazybones.Controllers
             List<Job> jobReturn = new List<Job>();
             foreach (Job x in jobs)
             {
-                if (x.Status.Trim() == "Created")
+                if (x.Status == "Created")
                 {
                     jobReturn.Add(x);
                 }
@@ -256,9 +256,9 @@ namespace Lazybones.Controllers
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
             var model = dbContext.Jobs.Find(id);
-            if (model.Status.Trim() != "Created")
+            if (model.Status != "Created")
             {
-                if (model.Status.Trim() == "Cancelled")
+                if (model.Status == "Cancelled")
                 {
                     if (model.Poster != User.Identity.GetUserName() && !getCurrentUser().Admin)
                     {
