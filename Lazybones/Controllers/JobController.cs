@@ -29,6 +29,7 @@ namespace Lazybones.Controllers
             if (User.Identity.IsAuthenticated) {
                 job.Poster_Name = User.Identity.GetUserId();
                 job.Poster = User.Identity.GetUserName();
+                job.Status = "Created";
             }
             else
             {
@@ -194,7 +195,7 @@ namespace Lazybones.Controllers
             //existingJob.Poster_Name = editedProfile.Poster_Name;
             existingJob.Getter_Name = editedProfile.Getter_Name;
             existingJob.Status = editedProfile.Status;
-            existingJob.Payment_Status = editedProfile.Payment_Status;
+            existingJob.Payment_Complete = editedProfile.Payment_Complete;
             existingJob.Contact_By_Phone = editedProfile.Contact_By_Phone;
             existingJob.Contact_By_Email = editedProfile.Contact_By_Email;
             existingJob.Contact_By_Text = editedProfile.Contact_By_Text;
@@ -248,12 +249,21 @@ namespace Lazybones.Controllers
             // return View("../Home/Dashboard");
             return View();
         }
+         
+        public ActionResult SetGetter(int ID)
+        {
+            LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
+            var u = userProf.Jobs.Find( ID);
 
- //       public ActionResult SetGigAddress(Job job)
-  //      {
- //           LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-//            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
- //       }
+            u.Getter = User.Identity.GetUserName();
+            u.Status = "Assigned";
+            userProf.SaveChanges();
+
+
+            return RedirectToAction("Search");
+
+
+        }
     }
 
 }

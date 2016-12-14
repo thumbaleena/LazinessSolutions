@@ -23,7 +23,7 @@
             <th>
                 City
             </th>
-            <th>
+            <th style="text-align: right; padding-right: 50px;">
                 Pay
             </th>
         </tr>
@@ -43,8 +43,8 @@
                 <td>
                     @item.City
                 </td>
-                <td>
-                    @item.Pay
+                <td style="text-align: right; padding-right: 50px;">
+                    @Math.Round(item.Pay, 2)
                 </td>
                 <td>
                     <a href="~/Job/Details?id=@item.ID.ToString()"> Details</a>

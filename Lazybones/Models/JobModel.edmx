@@ -16,13 +16,13 @@
           <Property Name="Category" Type="nvarchar" MaxLength="50" />
           <Property Name="Pay" Type="money" />
           <Property Name="Best Bid" Type="bit" />
-          <Property Name="Picture Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Picture Location" Type="nvarchar(max)" />
           <Property Name="Date Completed" Type="date" />
           <Property Name="Poster Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Getter Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="nchar" MaxLength="10" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Payment Status" Type="varchar" MaxLength="50" />
+          <Property Name="Payment Complete" Type="bit" Nullable="false" />
           <Property Name="Contact By Phone" Type="bit" />
           <Property Name="Contact By Email" Type="bit" />
           <Property Name="Contact By Text" Type="bit" />
@@ -51,18 +51,17 @@
           <Property Name="Start_Time_Date" Type="DateTime" Precision="3" />
           <Property Name="Expirey_Time_Date" Type="DateTime" Precision="3" />
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pay" Type="Decimal" />
-          <Property Name="Best_Bid" Type="Boolean" Nullable="false" />
-          <Property Name="Picture_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pay" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best_Bid" Type="Boolean" />
+          <Property Name="Picture_Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date_Completed" Type="DateTime" Precision="0" />
           <Property Name="Poster_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Getter_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Payment_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Contact_By_Phone" Type="Boolean" Nullable="false" />
-          <Property Name="Contact_By_Email" Type="Boolean" Nullable="false" />
-          <Property Name="Contact_By_Text" Type="Boolean" Nullable="false" />
+          <Property Name="Contact_By_Phone" Type="Boolean" />
+          <Property Name="Contact_By_Email" Type="Boolean" />
+          <Property Name="Contact_By_Text" Type="Boolean" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Zip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -70,7 +69,8 @@
           <Property Name="Getter" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Poster" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Bid_Amount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Same_as_Home" Type="Boolean" Nullable="false" />
+          <Property Name="Same_as_Home" Type="Boolean" />
+          <Property Name="Payment_Complete" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Jobs" EntityType="Self.Job" />
@@ -84,6 +84,7 @@
           <EntitySetMapping Name="Jobs">
             <EntityTypeMapping TypeName="LazinessSolutionsModel.Job">
               <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="Payment_Complete" ColumnName="Payment Complete" />
                 <ScalarProperty Name="Same_as_Home" ColumnName="Same as Home" />
                 <ScalarProperty Name="Bid_Amount" ColumnName="Bid Amount" />
                 <ScalarProperty Name="Poster" ColumnName="Poster" />
@@ -102,7 +103,6 @@
                 <ScalarProperty Name="Getter_Name" ColumnName="Getter Name" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Payment_Status" ColumnName="Payment Status" />
                 <ScalarProperty Name="Contact_By_Phone" ColumnName="Contact By Phone" />
                 <ScalarProperty Name="Contact_By_Email" ColumnName="Contact By Email" />
                 <ScalarProperty Name="Contact_By_Text" ColumnName="Contact By Text" />

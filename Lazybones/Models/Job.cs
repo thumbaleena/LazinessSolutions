@@ -27,7 +27,7 @@ namespace Lazybones.Models
         public string Getter_Name { get; set; }
         public  string Status { get; set; }
         public int ID { get; set; }
-        public string Payment_Status { get; set; }
+        public bool Payment_Complete { get; set; }
         public bool Contact_By_Phone { get; set; }
         public bool Contact_By_Email { get; set; }
         public bool Contact_By_Text { get; set; }

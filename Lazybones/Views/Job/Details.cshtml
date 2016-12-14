@@ -1,11 +1,15 @@
 ﻿@using Microsoft.AspNet.Identity
 @model Lazybones.Models.Job
-}
 @using (Html.BeginForm())
 {
-        <h4>Gig Details</h4>
-        <hr/>
+    <h4>Gig Details</h4>
+        <hr />
         <div class="form-horizontal">
+            @if(Model.Poster != User.Identity.GetUserName() && Model.Getter == null)
+            { 
+            <a href="SetGetter?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Take this Gig</a>
+            }
+            @Html.HiddenFor(model => model.ID)
             <table>
                 <tr>
                     <th>
@@ -63,104 +67,106 @@
                         @Html.DisplayFor(model => model.Status)
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        Date Completed or Expired:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Date_Completed)
-                    </td>
-                </tr>
-                <tr>
-                <th>
-                    Payment Status:
-                </th>
-                <tr>
-                    @Html.DisplayFor(model => model.Payment_Status)
-                </tr>
-                <tr>
-                    <th>
-                        Posted By:
-                    </th>
-                    <td>
-                        @if(Model.Getter==User.Identity.GetUserName() || Model.Poster==User.Identity.GetUserName())
-                        { @Html.DisplayFor(model => model.Poster)}                     
-                    </td>
-                </tr>
-                <tr>
-                    <th>Gig Address:</th>
-                    <td>
-                        @Html.DisplayFor(model => model.Address)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Gig City:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.City)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Gig State:
-                    </th>
-                    <td>
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <th>Gig Zip Code:</th>
-                    <td>
-                        @Html.DisplayFor(model => model.Zip)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Assigned To:</th>
-                    <td>
-                        @if (Model.Getter == User.Identity.GetUserName() || Model.Poster == User.Identity.GetUserName())
-                        {@Html.DisplayFor(model => model.Getter)}
-                        
-                    </td>
-                    <td>
-                    </td>
-                </tr>
+                    <tr>
+                        <th>
+                            Date Completed or Expired:
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Date_Completed)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Payment Complete?
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Payment_Complete)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Posted By:
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Poster)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Gig Address:</th>
+                        <td>
+                            @Html.DisplayFor(model => model.Address)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Gig City:
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.City)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Gig State:
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.State)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Gig Zip Code:</th>
+                        <td>
+                            @Html.DisplayFor(model => model.Zip)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Assigned To:</th>
+                        <td>
+                            @Html.DisplayFor(model => model.Getter)
+                        </td>
+                        <td></td>
+                    </tr>
             </table>
-            <table>
-                <tr>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        Call
-                    </td>
-                    <td>
-                        Text
-                    </td>
-                    <td>
-                        Email
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Contact Poster Via:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Contact_By_Phone)           
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Contact_By_Text)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Contact_By_Email)
-                    </td>
-                </tr>
-            </table>
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                Call
+            </td>
+            <td>
+                Text
+            </td>
+            <td>
+                Email
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Contact Poster Via:
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.Contact_By_Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Contact_By_Text)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Contact_By_Email)
+            </td>
+        </tr>
+    </table>
+
         </div>
+    //   string getterEmail = Model.Getter.ToString();
+    // only show payment button if current user is the poster and payment is not marked complete
+    if (Model.Payment_Complete == false & Model.Poster == User.Identity.GetUserName())
+    {
+        <br/>
+        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png"/> Send Payment with Venmo</a>
+    }
     <br/>
-        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
-   
-         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) <br/>
-        @Html.ActionLink("Back to List", "Search")
+         @Html.ActionLink("Edit", "Edit", new {id = Model.ID})
+         <br/>
+    @Html.ActionLink("Back to List", "Search")
 
 }

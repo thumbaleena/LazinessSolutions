@@ -57,27 +57,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Best_Bid, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                    @Html.CheckBoxFor(model => model.Best_Bid)            
-            </div>
-        </div>
-
-      <!--  <div class="form-group">
-            @Html.LabelFor(model => model.Picture_Location, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Picture_Location, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div> -->
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date_Completed, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date_Completed, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
             <form>
                 @Html.RadioButtonFor(m => m.Status, "Created", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Created<br />
                 @Html.RadioButtonFor(m => m.Status, "Assigned", new { htmlAttributes = new { @class = "form-control" } }) &nbsp; Assigned<br />
@@ -90,13 +69,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Status, new {htmlAttributes = new {@class = "form-control"}})
             </div> -->
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Payment_Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Payment_Status, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
         </div>
 
         <div class="form-group">
