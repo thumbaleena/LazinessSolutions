@@ -123,9 +123,6 @@ namespace Lazybones.Controllers
             existingProfile.State = editedProfile.State;
             existingProfile.Zip = editedProfile.Zip;
             existingProfile.Mobile_Phone = editedProfile.Mobile_Phone;
-            existingProfile.ByCall = editedProfile.ByCall;
-            existingProfile.ByEmail = editedProfile.ByEmail;
-            existingProfile.ByText = editedProfile.ByText;
             existingProfile.Badge_Count = editedProfile.Badge_Count;
             existingProfile.Gig_Poster = editedProfile.Gig_Poster;
             existingProfile.Go_Getter = editedProfile.Go_Getter;
