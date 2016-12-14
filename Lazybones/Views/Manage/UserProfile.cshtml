@@ -5,10 +5,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-        <h3>Account Profile</h3>
+    <h3>Account Profile</h3>
 
         @Html.HiddenFor(model => model.Id)
-    <div>Badge count: @Html.DisplayFor(model => model.Badge_Count) </div>
         <div class="row">
             <div class="col-sm-8">
                 <div class="row">
@@ -58,15 +57,17 @@
                 @Html.EditorFor(model => model.Go_Getter)
                 Gig Poster &nbsp;
                 @Html.EditorFor(model => model.Gig_Poster)
-                <br /> <hr />                
+                <br /> <hr />
+                <h3 style="text-align: center;"><strong>Proud owner of @Html.DisplayFor(model => model.Badge_Count) Beautiful Baby Sloth Badges</strong></h3>
+                <div style="text-align: right"><em>Good job, me!</em></div>
             </div>
         </div>
-    <div class="row">
-        <br/>
-        <div class="col-sm-offset-10 col-sm-12">
-            <input type="submit" value="Save" class="btn btn-lg"/>
+        <div class="row">
+            <br />
+            <div class="col-sm-offset-10 col-sm-12">
+                <input type="submit" value="Save" class="btn btn-lg" style="background: beige;" />
+            </div>
         </div>
-    </div>
 
 }
 
