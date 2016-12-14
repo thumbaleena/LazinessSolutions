@@ -58,11 +58,37 @@ namespace Lazybones.Controllers
             }
             return View(searchList);
         }
-        public ActionResult SearchFilter(String Category, String City, String Pay, decimal Price=0)
+       
+        public ActionResult SearchFilter(String Title, String Category, String City, string Date , decimal Low = -1, decimal High=-1)
         {
+            
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
             List<Job> jobs = jobDB.Jobs.ToList();
             List<Job> testJobs = jobDB.Jobs.ToList();
+
+            if (Title != "Title Keyword")
+            {
+                foreach (Job x in jobs)
+                {
+                    bool wordIsThere = false;
+                    string t = x.Title;
+                    string[] title = t.Split(' ');
+
+                    foreach (string word in title)
+                    {
+                        if (word.ToLower() == Title.ToLower())
+                        {
+                            wordIsThere = true;
+                        }
+                    }
+                    if (!wordIsThere)
+                    {
+                        testJobs.Remove(x);
+                    }
+                }
+                jobs = testJobs;
+            }
+
             if (Category != "Category")
             {
                 foreach (Job x in jobs)
@@ -74,6 +100,7 @@ namespace Lazybones.Controllers
                 }
                 jobs = testJobs;
             }
+
             if (City != "City")
             {
                 foreach (Job x in jobs)
@@ -85,45 +112,33 @@ namespace Lazybones.Controllers
                 }
                 jobs = testJobs;
             }
-            if (Pay != "none")
-            {
-                if (Pay == "Under" && Price != 0)
-                {
-                    foreach (Job x in jobs)
-                    {
-                        if (x.Pay > Price)
-                        {
-                            testJobs.Remove(x);
-                        }
-                    }
-                    jobs = testJobs;
-                }
-                else if(Pay == "Equals")
-                {
-                    foreach (Job x in jobs)
-                    {
-                        if (x.Pay != Price)
-                        {
-                            testJobs.Remove(x);
-                        }
-                    }
-                    jobs = testJobs;
-                }
-                else if (Pay == "Over")
-                {
-                    foreach (Job x in jobs)
-                    {
-                        if (x.Pay < Price)
-                        {
-                            testJobs.Remove(x);
-                        }
-                    }
-                    jobs = testJobs;
-                }
-            }
-            
-            return View("Search",jobs);
 
+            if (Low >= 0 && High >= 0)
+            {
+                    foreach (Job x in jobs)
+                    {
+                        if (x.Pay < Low || x.Pay > High)
+                        {
+                            testJobs.Remove(x);
+                        }
+                    }
+                    jobs = testJobs;
+            }
+
+            if (Date != "")
+            {
+                DateTime date = new DateTime();
+                date = DateTime.Parse(Date);
+                foreach (Job x in jobs)
+                {
+                    if (date.Date != x.Expirey_Time_Date.Value.Date)
+                    {
+                        testJobs.Remove(x);
+                    }
+                }
+                jobs = testJobs;
+            }
+            return View("Search",jobs);
         }
         public ActionResult Browse()
         {
