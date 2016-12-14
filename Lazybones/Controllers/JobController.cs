@@ -203,7 +203,6 @@ namespace Lazybones.Controllers
             existingJob.Expirey_Time_Date = editedProfile.Expirey_Time_Date;
             existingJob.Category = editedProfile.Category;
             existingJob.Pay = editedProfile.Pay;
-
             existingJob.Best_Bid = editedProfile.Best_Bid;
             existingJob.Picture_Location = editedProfile.Picture_Location;
             existingJob.Date_Completed = editedProfile.Date_Completed;
@@ -223,9 +222,6 @@ namespace Lazybones.Controllers
             existingJob.Bid_Amount = editedProfile.Bid_Amount;
             existingJob.Same_as_Home = editedProfile.Same_as_Home;
 
-
-
-
             try
             {
                 dbContext.SaveChanges();
@@ -240,7 +236,6 @@ namespace Lazybones.Controllers
             }
             return RedirectToAction("Dashboard", "Home");
         }
-
 
         public ActionResult GetterDash()
         {
@@ -277,6 +272,21 @@ namespace Lazybones.Controllers
 
             return RedirectToAction("Search");
 
+
+        }
+        public ActionResult SetBadges(int ID)
+        {
+            LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
+            var u = userProf.Jobs.Find( ID);
+            u.Status = "Complete";    
+            userProf.SaveChanges();
+
+      //      LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
+      //      var u = userProf.AspNetUsers.Find(User.Identity.GetUserId());
+      //      u.Badge_Count = u.Badge_Count++;
+       //     userProf.SaveChanges();
+
+            return RedirectToAction("Search");
 
         }
     }
