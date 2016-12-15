@@ -409,8 +409,10 @@ namespace Lazybones.Controllers
             LazinessSolutionsEntities4 userDeet = new LazinessSolutionsEntities4();
             var z = userDeet.AspNetUsers.Find(User.Identity.GetUserId());
             u.Getter = User.Identity.GetUserName();
+            u.Getter_Name = User.Identity.GetUserId();
             u.Status = "Assigned";
             u.Getter_Badges = z.Badge_Count;
+            u.Getter_Phone = z.Mobile_Phone;
             userProf.SaveChanges();
 
             string AccountSid = "ACcd539f756b9224060b4e0568d0c614b3";
@@ -418,7 +420,7 @@ namespace Lazybones.Controllers
             TwilioRestClient client;
             client = new TwilioRestClient(AccountSid, AuthToken);
             Message result = client.SendMessage(
-                "+13132419747", "+1"+u.Poster_Phone, "Greetings, from Alfred! Your task '" + u.Title + "' has been picked up.");
+                "+13132419747", "+1"+u.Getter_Phone, "Greetings, from Alfred! Your task '" + u.Title + "' has been picked up.");
 
             return View("Details", u);
         }
@@ -432,6 +434,23 @@ namespace Lazybones.Controllers
             return View("Details", u);
         }
 
+        public ActionResult MarkAsPaid(int ID)
+        {
+            LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
+            var u = userProf.Jobs.Find(ID);
+            u.Payment_Complete = true;
+            userProf.SaveChanges();
+
+            //string AccountSid = "ACcd539f756b9224060b4e0568d0c614b3";
+            //string AuthToken = "d1dc9f49c5b32232aec0267fc582afcb";
+            //TwilioRestClient client;
+            //client = new TwilioRestClient(AccountSid, AuthToken);
+            //Message result = client.SendMessage(
+            //    "+13132419747", "+1" + u.Poster_Phone, "Greetings, from Alfred! Your task '" + u.Title + "' has been picked up.");
+
+            return View("Details", u);
+        }
+
         public ActionResult MarkComplete(int ID)
         {
             LazinessSolutionsEntities6 userJob = new LazinessSolutionsEntities6();
@@ -439,6 +458,7 @@ namespace Lazybones.Controllers
             u.Status = "Complete";    
             u.Date_Completed = DateTime.Now;
             userJob.SaveChanges();
+
             LazinessSolutionsEntities4 userDeet = new LazinessSolutionsEntities4();
             var z = userDeet.AspNetUsers.Find(User.Identity.GetUserId());
             var count = z.Badge_Count+1;

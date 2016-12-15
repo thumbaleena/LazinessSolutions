@@ -7,6 +7,9 @@
     function commentsHide() {
         document.getElementById("comments").style.display = "none";
     }
+    function confirmDelete() {
+        document.getElementById("confirmDelete").style.display = "inline";
+    }
 </script>
 @using (Html.BeginForm())
 {
@@ -20,6 +23,10 @@
     if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned"))
     {
         <a href="MarkComplete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Complete</a>
+    }
+    if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned"))
+    {
+        <a href="MarkAsPaid?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Paid</a>
     }
     <div class="container-fluid">
         <div class="row">
@@ -55,23 +62,27 @@
                         <div class="row">@Html.DisplayFor(model => model.Contact_By_Email)</div>
                     </div>
                 </div><br />
-                <div class="row">
+                <div class="row" style="float: right; padding-right: 25px;">
                     @if (Model.Poster == User.Identity.GetUserName())
                     {
-                        @Html.ActionLink("Edit Gig Details", "Edit", new { id = Model.ID })
-                        <br />
+                        
+                        <input type="button" value="Edit Gig Details" onclick="location.href='@Url.Action("Edit", new { id = Model.ID })'" />  
                     }
+                    &nbsp;
+                    &nbsp;
                     @if (((Model.Status == "Assigned") || (Model.Status == "Created")) && (Model.Poster == User.Identity.GetUserName()))
                     {
-                        <a href="Delete?ID=@Model.ID">Delete Gig</a> <br /> }
-                    @Html.ActionLink("Back to List", "Search")
+                        <input value="Delete" type="button" onclick="confirmDelete()"/>
+                    }
+                    <a href="Delete?ID=@Model.ID" class="btn" id="confirmDelete" style="display: none;">Confirm Delete</a> <br /> 
                 </div>
+                <div class="row">@Html.ActionLink("Back to List", "Search")</div>
             </div>
             <div class="col-sm-6" style="padding-right: 50px;">
                 <div class="row"><br /><strong>Status: &nbsp;</strong> @Html.DisplayFor(model => model.Status)</div>
                 <div class="row"><strong>Date Completed or Expired: &nbsp;</strong> @Html.DisplayFor(model => model.Date_Completed)</div>
                 <div class="row">
-                    <div class="col-sm-6" style="vertical-align: middle;">
+                    <div class="col-sm-6">
                         <strong>Payment Complete? &nbsp;</strong> @Html.DisplayFor(model => model.Payment_Complete) &nbsp;
                     </div>
                     <div class="col-sm-6">
