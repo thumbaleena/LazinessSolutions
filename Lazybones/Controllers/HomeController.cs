@@ -21,9 +21,7 @@ namespace Lazybones.Controllers
         public ActionResult Dashboard()
         {
             ViewBag.Message = "Dashboard";
-            LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-            var u = userProf.AspNetUsers.Find(User.Identity.GetUserId()).Badge_Count;
-            ViewBag.Badges = u;
+
             return RedirectToAction("UserProfile", "Manage");
         }
     }
