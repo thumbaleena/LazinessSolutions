@@ -16,10 +16,11 @@
         <select name="Category" style="margin-right: 70px">
            
             <option value="Category">Category</option>
-            <option value="Sloth Giving">Sloth Giving</option>
-            <option value="Dry Cleaning">Dry Cleaning</option>
-            <option value="Delivery">Delivery</option>
-            <option value="Test">Test</option>
+            <option value="Carryout">Carryout</option>
+            <option value="Auto Maintence">Auto Maintence</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Sloth">Sloth</option>
+            <option value="Cleaning">Cleaning</option>
             <option value="Other">Other</option>
         </select>
         <input type="date" name="Date" value="Date"/>
@@ -59,9 +60,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.Category)
         </td>
-        <td>
-            @item.Expirey_Time_Date.Value.Month/@item.Expirey_Time_Date.Value.Day/@item.Expirey_Time_Date.Value.Year
-        </td>
+      
+            @if (item.Expirey_Time_Date == null)
+            {
+                <td></td>
+            }
+            else
+                {
+                <td>
+                    @item.Expirey_Time_Date.Value.Month / @item.Expirey_Time_Date.Value.Day / @item.Expirey_Time_Date.Value.Year
+                </td>
+                }
+            
         <td>
             @Html.DisplayFor(modelItem => item.City)
         </td>
