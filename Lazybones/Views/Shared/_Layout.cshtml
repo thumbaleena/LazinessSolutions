@@ -6,19 +6,13 @@
     <title>@ViewBag.Title - Task Jeeves</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Html.DevExpress().GetStyleSheets(
-new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
-)
-    @Html.DevExpress().GetScripts(
-new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-new Script { ExtensionSuite = ExtensionSuite.Editors }
-)
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Shadows+Into+Light+Two" rel="stylesheet">
     <style>
-        td {padding: 5px;}
+        
+         td {padding: 5px;}
     </style>
 </head>
-<body style="background-color: rgba(128, 171, 166, .25);">
+<body style="background-color: rgba(128, 171, 166, .25); font-family: 'Didact Gothic', sans-serif;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

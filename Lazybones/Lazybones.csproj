@@ -180,7 +180,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AppActions.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -288,7 +287,11 @@
     <Content Include="Models\JobModel.edmx.diagram">
       <DependentUpon>JobModel.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\DidactGothic.ttf" />
+    <Content Include="fonts\ShadowsIntoLightTwo-Regular.ttf" />
+    <None Include="Properties\PublishProfiles\LazinessSolutions - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\LazinessSolutions.pubxml" />
+    <None Include="Properties\PublishProfiles\OutsourceMe - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

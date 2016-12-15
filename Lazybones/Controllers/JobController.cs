@@ -299,7 +299,6 @@ namespace Lazybones.Controllers
             existingJob.Best_Bid = editedProfile.Best_Bid;
             existingJob.Picture_Location = editedProfile.Picture_Location;
             existingJob.Date_Completed = editedProfile.Date_Completed;
-            //existingJob.Poster_Name = editedProfile.Poster_Name;
             existingJob.Getter_Name = editedProfile.Getter_Name;
             existingJob.Status = editedProfile.Status;
             existingJob.Payment_Complete = editedProfile.Payment_Complete;
@@ -314,18 +313,16 @@ namespace Lazybones.Controllers
             existingJob.Poster = editedProfile.Poster;
             existingJob.Bid_Amount = editedProfile.Bid_Amount;
             existingJob.Same_as_Home = editedProfile.Same_as_Home;
-
+            existingJob.Getter_Badges = editedProfile.Getter_Badges;
             try
             {
                 dbContext.SaveChanges();
-
                 return RedirectToAction("Dashboard", "Home");
             }
             catch (DataException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-
             }
             return RedirectToAction("Dashboard", "Home");
         }
@@ -349,7 +346,6 @@ namespace Lazybones.Controllers
                 }
             }
             ViewBag.Jobs = jobs;
-            // return View("../Home/Dashboard");
             return View();
         }
         public ActionResult History()
@@ -371,7 +367,6 @@ namespace Lazybones.Controllers
                 }
             }
             ViewBag.Jobs = jobs;
-            // return View("../Home/Dashboard");
             return View();
         }
 
@@ -379,25 +374,22 @@ namespace Lazybones.Controllers
         {
             LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
             var u = userProf.Jobs.Find( ID);
-
+            LazinessSolutionsEntities4 userDeet = new LazinessSolutionsEntities4();
+            var z = userDeet.AspNetUsers.Find(User.Identity.GetUserId());
             u.Getter = User.Identity.GetUserName();
             u.Status = "Assigned";
+            u.Getter_Badges = z.Badge_Count;
             userProf.SaveChanges();
 
             return View("Details", u);
-
-
         }
         public ActionResult Delete(int ID)
         {
             LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
             var u = userProf.Jobs.Find( ID);
-
             u.Status = "Cancelled";
             userProf.SaveChanges();
-
             return View("Details", u);
-
         }
 
         public ActionResult MarkComplete(int ID)
@@ -407,16 +399,12 @@ namespace Lazybones.Controllers
             u.Status = "Complete";    
             u.Date_Completed = DateTime.Now;
             userJob.SaveChanges();
-
             LazinessSolutionsEntities4 userDeet = new LazinessSolutionsEntities4();
             var z = userDeet.AspNetUsers.Find(User.Identity.GetUserId());
             var count = z.Badge_Count+1;
             z.Badge_Count = count;
             userDeet.SaveChanges();
-
             return View("Details", u);
-
         }
     }
-
 }
