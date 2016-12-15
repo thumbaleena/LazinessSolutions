@@ -27,8 +27,8 @@
                 <div class="row"><strong>Description: &nbsp;</strong> @Html.DisplayFor(model => model.Description)</div>
                 <div class="row"><strong>Category: &nbsp;</strong> @Html.DisplayFor(model => model.Category)</div>
                 <div class="row"><strong>Flat Rate Pay: &nbsp;</strong> $ @Html.DisplayFor(model => model.Pay)</div>
-                <div class="row"><strong>Starts: &nbsp;</strong> @Model.Start_Time_Date.Value.Month/@Model.Start_Time_Date.Value.Day/@Model.Start_Time_Date.Value.Year</div>
-                <div class="row"><strong>Expires: &nbsp;</strong> @Model.Expirey_Time_Date.Value.Month/@Model.Expirey_Time_Date.Value.Day/@Model.Expirey_Time_Date.Value.Year</div>
+                <div class="row"><strong>Starts: &nbsp;</strong> @Model.Start_Time_Date.Value.ToShortDateString()</div>
+                <div class="row"><strong>Expires: &nbsp;</strong> @Model.Expirey_Time_Date.Value.ToShortDateString()</div>
                 <div class="row"><strong>Address: &nbsp;</strong> @Html.DisplayFor(model => model.Address)</div>
                 <div class="row"><strong>City: &nbsp;</strong> @Html.DisplayFor(model => model.City)</div>
                 <div class="row"><strong>State: &nbsp;</strong> @Html.DisplayFor(model => model.State)</div>
