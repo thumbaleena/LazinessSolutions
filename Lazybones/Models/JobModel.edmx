@@ -37,6 +37,7 @@
           <Property Name="Comments" Type="nvarchar(max)" />
           <Property Name="Getter Badges" Type="int" Nullable="false" />
           <Property Name="Comment History" Type="nvarchar(max)" />
+          <Property Name="Poster Phone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsModelStoreContainer">
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
@@ -77,6 +78,7 @@
           <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Getter_Badges" Type="Int32" Nullable="false" />
           <Property Name="Comment_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Poster_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Jobs" EntityType="Self.Job" />
@@ -90,6 +92,7 @@
           <EntitySetMapping Name="Jobs">
             <EntityTypeMapping TypeName="LazinessSolutionsModel.Job">
               <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="Poster_Phone" ColumnName="Poster Phone" />
                 <ScalarProperty Name="Comment_History" ColumnName="Comment History" />
                 <ScalarProperty Name="Getter_Badges" ColumnName="Getter Badges" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />

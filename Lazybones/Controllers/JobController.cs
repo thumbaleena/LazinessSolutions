@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Twilio;
 
 namespace Lazybones.Controllers
 {
@@ -26,15 +27,22 @@ namespace Lazybones.Controllers
         {        
             // Creates a database reference to the user db
             LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
+            LazinessSolutionsEntities4 userDB = new LazinessSolutionsEntities4();
+            var u = userDB.AspNetUsers.Find(User.Identity.GetUserId());
             if (User.Identity.IsAuthenticated) {
                 job.Poster_Name = User.Identity.GetUserId();
                 job.Poster = User.Identity.GetUserName();
                 job.Status = "Created";
+                job.Poster_Phone = u.Mobile_Phone;
             }
             else
             {
                 job.Poster_Name = "Invalid User";
-            }           
+            } 
+            if (job.Start_Time_Date == null)
+            {
+                job.Start_Time_Date = DateTime.Now;
+            }
             job.Getter_Name = null;
             // Add the job passed to create post
             jobDB.Jobs.Add(job);
@@ -403,6 +411,16 @@ namespace Lazybones.Controllers
             u.Status = "Assigned";
             u.Getter_Badges = z.Badge_Count;
             userProf.SaveChanges();
+
+            var accountSid = "{{ ACcd539f756b9224060b4e0568d0c614b3 }}"; // Your Account SID from www.twilio.com/console
+            var authToken = "{{ d1dc9f49c5b32232aec0267fc582afcb }}";  // Your Auth Token from www.twilio.com/console
+
+            var twilio = new TwilioRestClient(accountSid, authToken);
+            var message = twilio.SendMessage(
+                "+3132419757", // From (Replace with your Twilio number)
+                "+"+u.Poster_Phone, // To (Replace with your phone number)
+                "Greetings, from Alfred! Your task '"+u.Title+"' has been picked up."
+                );
 
             return View("Details", u);
         }
