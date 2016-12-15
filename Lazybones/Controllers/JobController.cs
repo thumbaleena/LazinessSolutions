@@ -441,12 +441,12 @@ namespace Lazybones.Controllers
             u.Payment_Complete = true;
             userProf.SaveChanges();
 
-            //string AccountSid = "ACcd539f756b9224060b4e0568d0c614b3";
-            //string AuthToken = "d1dc9f49c5b32232aec0267fc582afcb";
-            //TwilioRestClient client;
-            //client = new TwilioRestClient(AccountSid, AuthToken);
-            //Message result = client.SendMessage(
-            //    "+13132419747", "+1" + u.Poster_Phone, "Greetings, from Alfred! Your task '" + u.Title + "' has been picked up.");
+            string AccountSid = "ACcd539f756b9224060b4e0568d0c614b3";
+            string AuthToken = "d1dc9f49c5b32232aec0267fc582afcb";
+            TwilioRestClient client;
+            client = new TwilioRestClient(AccountSid, AuthToken);
+            Message result = client.SendMessage(
+                "+13132419747", "+1" + u.Getter_Phone, "Greetings, from Alfred! " + u.Title + "' has paid you for "+ u.Title+".");
 
             return View("Details", u);
         }
@@ -460,7 +460,7 @@ namespace Lazybones.Controllers
             userJob.SaveChanges();
 
             LazinessSolutionsEntities4 userDeet = new LazinessSolutionsEntities4();
-            var z = userDeet.AspNetUsers.Find(User.Identity.GetUserId());
+            var z = userDeet.AspNetUsers.Find(u.Getter_Name);
             var count = z.Badge_Count+1;
             z.Badge_Count = count;
             userDeet.SaveChanges();
