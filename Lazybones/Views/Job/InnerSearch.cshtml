@@ -34,9 +34,16 @@
                 <td>
                     @item.Category
                 </td>
+                @if (item.Expirey_Time_Date == null)
+                {
+                    <td></td>
+                }
+                else
+                {
                 <td>
                     @item.Expirey_Time_Date.ToShortDateString()
                 </td>
+                }
                 <td>
                     @item.City
                 </td>

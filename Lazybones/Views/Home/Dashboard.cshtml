@@ -30,5 +30,8 @@
                 @Html.Action("History", "Job")
             </div>
             </div>
-        
+        @for (int x = 0; x<ViewBag.Badges; x++)
+        {
+            <img src="http://i.imgur.com/Ri6N46q.png"/>
+        }
     </div>
