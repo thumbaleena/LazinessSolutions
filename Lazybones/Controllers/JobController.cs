@@ -81,7 +81,10 @@ namespace Lazybones.Controllers
             List<Job> jobReturn = new List<Job>();
             foreach (Job x in jobs)
             {
-                if (x.Expirey_Time_Date.Value.CompareTo(DateTime.Now)>0)
+                if (x.Expirey_Time_Date == null)
+                {
+                    jobReturn.Add(x);
+                }else if (x.Expirey_Time_Date.Value.CompareTo(DateTime.Now)>0)
                 {
                     jobReturn.Add(x);
                 }
@@ -157,7 +160,7 @@ namespace Lazybones.Controllers
                         {
                         jobReturn.Add(x);
                         }*/
-                        if (x.Category.ToLower() != "test" && x.Category.ToLower() != "sloth giving" && x.Category.ToLower() != "dry cleaning" && x.Category.ToLower() != "delivery")
+                        if (x.Category.ToLower() != "Carryout" && x.Category.ToLower() != "Auto Maintence" && x.Category.ToLower() != "Shopping" && x.Category.ToLower() != "Sloth" && x.Category.ToLower() != "Cleaning")
                             {
                                 jobReturn.Add(x);
                             }
