@@ -68,17 +68,17 @@
                 <div class="row"><br /><strong>Status: &nbsp;</strong> @Html.DisplayFor(model => model.Status)</div>
                 <div class="row"><strong>Date Completed or Expired: &nbsp;</strong> @Html.DisplayFor(model => model.Date_Completed)</div>
                 <div class="row">
-                        <strong>Payment Complete? &nbsp;</strong> @Html.DisplayFor(model => model.Payment_Complete) &nbsp;
+                    <strong>Payment Complete? &nbsp;</strong> @Html.DisplayFor(model => model.Payment_Complete) &nbsp;
 
-                        @if (Model.Payment_Complete == false & Model.Poster == User.Identity.GetUserName())
-                        {
-                            <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
-                        }
+                    @if (Model.Payment_Complete == false & Model.Poster == User.Identity.GetUserName())
+                    {
+                        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
+                    }
                 </div>
                 <div class="row"><strong>Posted By: &nbsp;</strong> @Html.DisplayFor(model => model.Poster)</div>
                 <div class="row">
                     <strong>Assigned To: &nbsp;</strong> @Html.DisplayFor(model => model.Getter)
-                    <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" /> @Html.DisplayFor(model => model.Getter_Badges)
+                    <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" />@Html.DisplayFor(model => model.Getter_Badges)
                 </div>
                 <div class="row">
                     <input type="button" class="btn" onclick="commentsDisplay()" value="Add a Comment">
@@ -112,4 +112,8 @@
         </div><br/>
         <div class="row" style="padding-left: 25px;">@Html.ActionLink("Back to List", "Search")</div>
     </div>
+    <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year Site powered by baby sloths</p>
+            </footer>
 }
