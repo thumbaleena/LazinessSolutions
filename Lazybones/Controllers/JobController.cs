@@ -273,7 +273,27 @@ namespace Lazybones.Controllers
             ViewBag.isAdmin = getCurrentUser().Admin;
             return View(model);
         }
-
+        [HttpPost, ActionName("Details")]
+        public ActionResult Details(Lazybones.Models.Job editedProfile)
+        {
+            LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
+            Lazybones.Models.Job existingJob = dbContext.Jobs.Find(editedProfile.ID);
+            existingJob.Comments = "";
+            existingJob.Comment_History = User.Identity.GetUserName()+" "+DateTime.Now+" "+existingJob.Comments+"\n"+editedProfile.Comments;
+            try
+            {
+                dbContext.SaveChanges();
+                return RedirectToAction("Dashboard", "Home");
+                
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+                 return RedirectToAction("Dashboard", "Home");
+  
+        }
         public ActionResult Edit(int id)
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();

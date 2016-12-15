@@ -41,5 +41,6 @@ namespace Lazybones.Models
         public bool Payment_Complete { get; set; }
         public string Comments { get; set; }
         public int Getter_Badges { get; set; }
+        public string Comment_History { get; set; }
     }
 }

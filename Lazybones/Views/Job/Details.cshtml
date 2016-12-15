@@ -1,8 +1,13 @@
 ﻿@using Microsoft.AspNet.Identity
 @model Lazybones.Models.Job
+<script>
+    function commentsDisplay() {
+        document.getElementById("comments").style.display = "inline";
+    }
+</script>
 @using (Html.BeginForm())
 {
-
+    <input type="button" onclick="commentsDisplay()" value="Add a Comment">
     <h4>Gig Details</h4>
     <hr />
     <div class="form-horizontal">
@@ -10,180 +15,185 @@
         {
             <a href="SetGetter?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Take this Gig</a>
         }
-        @if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter==User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned"))
+        @if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned"))
         {
             <a href="MarkComplete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Complete</a>
         }
-            <br />
+        <br />
 
-            @Html.HiddenFor(model => model.ID)
-            <table>
-                <tr>
-                    <th>
-                        Title:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Title)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Description:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Description)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Starts:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Start_Time_Date)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Category:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Category)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Flat Rate Pay:
-                    </th>
-                    <td>
-                        $ @Html.DisplayFor(model => model.Pay)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Expires:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Expirey_Time_Date)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Status:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Status)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Date Completed or Expired:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Date_Completed)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Payment Complete?
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Payment_Complete)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Posted By:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Poster)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Gig Address:</th>
-                    <td>
-                        @Html.DisplayFor(model => model.Address)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Gig City:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.City)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Gig State:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.State)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Gig Zip Code:</th>
-                    <td>
-                        @Html.DisplayFor(model => model.Zip)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Assigned To:</th>
-                    <td>
-                        @Html.DisplayFor(model => model.Getter)
-                    </td>
-                    <td>
-                        <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px"/> @Html.DisplayFor(model => model.Getter_Badges)
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <td></td>
-                    <td>
-                        Call
-                    </td>
-                    <td>
-                        Text
-                    </td>
-                    <td>
-                        Email
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Contact Poster Via:
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.Contact_By_Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Contact_By_Text)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Contact_By_Email)
-                    </td>
-                </tr>
-            </table>
-
+        @Html.HiddenFor(model => model.ID)
+        <table>
+            <tr>
+                <th>
+                    Title:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Title)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Description:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Description)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Starts:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Start_Time_Date)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Category)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Flat Rate Pay:
+                </th>
+                <td>
+                    $ @Html.DisplayFor(model => model.Pay)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Expires:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Expirey_Time_Date)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Status:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Status)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Date Completed or Expired:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Date_Completed)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Payment Complete?
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Payment_Complete)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Posted By:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Poster)
+                </td>
+            </tr>
+            <tr>
+                <th>Gig Address:</th>
+                <td>
+                    @Html.DisplayFor(model => model.Address)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Gig City:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.City)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Gig State:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.State)
+                </td>
+            </tr>
+            <tr>
+                <th>Gig Zip Code:</th>
+                <td>
+                    @Html.DisplayFor(model => model.Zip)
+                </td>
+            </tr>
+            <tr>
+                <th>Assigned To:</th>
+                <td>
+                    @Html.DisplayFor(model => model.Getter)
+                </td>
+                <td>
+                    <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" /> @Html.DisplayFor(model => model.Getter_Badges)
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td></td>
+                <td>
+                    Call
+                </td>
+                <td>
+                    Text
+                </td>
+                <td>
+                    Email
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Contact Poster Via:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Contact_By_Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Contact_By_Text)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Contact_By_Email)
+                </td>
+            </tr>
+        </table>
+        <div id="comments" style="display: none;">
+            @Html.TextAreaFor(model => model.Comments)
+            <input type="submit" value="Save" class="btn btn-default" />
+            @Html.DisplayFor(model => model.Comment_History)
         </div>
-            //   string getterEmail = Model.Getter.ToString();
-            // only show payment button if current user is the poster and payment is not marked complete
-            if (Model.Payment_Complete == false & Model.Poster == User.Identity.GetUserName())
-            {
-                <br />
+
+</div>
+    //   string getterEmail = Model.Getter.ToString();
+    // only show payment button if current user is the poster and payment is not marked complete
+    if (Model.Payment_Complete == false & Model.Poster == User.Identity.GetUserName())
+    {
+        <br />
                 <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
-            }
-            <br />
-            
-            if (Model.Poster == User.Identity.GetUserName() || ViewBag.isAdmin)
-            {
-                @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
-                <br />
+    }
+    <br />
+
+    if (Model.Poster == User.Identity.GetUserName() || ViewBag.isAdmin)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+        <br />
 
     }
     if ((Model.Status == "Assigned") || (Model.Status == "Created"))
     {
         <a href="Delete?ID=@Model.ID" style="font-size: larger;">Delete</a> <br /> }
-            @Html.ActionLink("Back to List", "Search")
+    @Html.ActionLink("Back to List", "Search")
 
-        }
+}
