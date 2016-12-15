@@ -70,9 +70,18 @@
                             <th>
                                 Expires:
                             </th>
-                            <td>
-                                @Html.EditorFor(model => model.Expirey_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.Expirey_Time_Date.Value.ToShortDateString() } })
-                            </td>
+                            @if (Model.Expirey_Time_Date == null)
+                {
+                                <td>
+                                    @Html.EditorFor(model => model.Expirey_Time_Date, new { htmlAttributes = new { @class = "form-control", @Value = "" } })
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.EditorFor(model => model.Expirey_Time_Date, new { htmlAttributes = new { @class = "form-control", @Value = Model.Expirey_Time_Date.Value.ToShortDateString() } })
+                                </td>
+                            }
                         </tr>
                         <tr>
                             <th>Address:</th>
@@ -137,7 +146,14 @@
             </div>
             <div class="col-sm-6" style="padding-left: 100px;">
                 <div class="row"><br /><strong>Status: &nbsp;</strong> @Html.DisplayFor(model => model.Status)</div>
+                @if (Model.Date_Completed == null)
+                {
+                    <div class="row"><strong>Date Completed or Expired: &nbsp;</strong></div>
+                }
+                else
+                {
                 <div class="row"><strong>Date Completed or Expired: &nbsp;</strong> @Html.DisplayFor(model => model.Date_Completed)</div>
+                }
                 <div class="row"><strong>Posted By: &nbsp;</strong> @Html.DisplayFor(model => model.Poster)</div>
                 <div class="row">
                     <strong>Assigned To: &nbsp;</strong> @Html.DisplayFor(model => model.Getter) |
