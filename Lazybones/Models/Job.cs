@@ -42,5 +42,6 @@ namespace Lazybones.Models
         public string Comments { get; set; }
         public int Getter_Badges { get; set; }
         public string Comment_History { get; set; }
+        public string Poster_Phone { get; set; }
     }
 }

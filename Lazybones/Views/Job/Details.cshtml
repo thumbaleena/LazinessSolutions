@@ -32,7 +32,8 @@
                 <div class="row"><strong>Address: &nbsp;</strong> @Html.DisplayFor(model => model.Address)</div>
                 <div class="row"><strong>City: &nbsp;</strong> @Html.DisplayFor(model => model.City)</div>
                 <div class="row"><strong>State: &nbsp;</strong> @Html.DisplayFor(model => model.State)</div>
-                <div class="row"><strong>Zip: &nbsp;</strong> @Html.DisplayFor(model => model.Zip)</div> <br />
+                <div class="row"><strong>Zip: &nbsp;</strong> @Html.DisplayFor(model => model.Zip)</div>
+                <div class="row"><strong>Mobile Phone:</strong> @Html.DisplayFor(model => model.Poster_Phone)</div><br />
                 <div class="row" style="text-align: center;"><strong>Poster's preferred contact method:</strong></div>
                 <div class="row">
                     <div class="col-sm-4">
@@ -55,7 +56,7 @@
                     </div>
                 </div><br />
                 <div class="row">
-                    @if (Model.Poster == User.Identity.GetUserName() || ViewBag.isAdmin)
+                    @if (Model.Poster == User.Identity.GetUserName())
                     {
                         @Html.ActionLink("Edit Gig Details", "Edit", new { id = Model.ID })
                         <br />
@@ -80,30 +81,27 @@
                         }
                     </div>
                 </div>
-                        <div class="row"><strong>Posted By: &nbsp;</strong> @Html.DisplayFor(model => model.Poster)</div>
-                        <div class="row">
-                            <strong>Assigned To: &nbsp;</strong> @Html.DisplayFor(model => model.Getter)
-                            <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" /> @Html.DisplayFor(model => model.Getter_Badges)
-                        </div>
-                        <div class="row">
-                            <input type="button" class="btn" onclick="commentsDisplay()" value="Add a Comment">
-                            <div id="comments" style="display: none;">
-                                <br /> <br />
-                                <div>@Html.TextAreaFor(model => model.Comments, new { @style = "width: 80%;" })</div>
-                                <div style="float: right; padding-right: 120px;">
-                                    <input type="submit" value="Save" style="background-color: #FFF;" class="btn btn-default" /> &nbsp; <input type="button" class="btn" onclick="commentsHide()" value="Nevermind">
-                                </div><br />
-                                <div>
-                                    <br />
-                                    <strong>Comments History:</strong> <br />
-                                    @Html.DisplayFor(model => model.Comment_History)
-                                </div>
-                            </div>
+                <div class="row"><strong>Posted By: &nbsp;</strong> @Html.DisplayFor(model => model.Poster)</div>
+                <div class="row">
+                    <strong>Assigned To: &nbsp;</strong> @Html.DisplayFor(model => model.Getter)
+                    <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" /> @Html.DisplayFor(model => model.Getter_Badges)
+                </div>
+                <div class="row">
+                    <input type="button" class="btn" onclick="commentsDisplay()" value="Add a Comment">
+                    <div id="comments" style="display: none;">
+                        <br /> <br />
+                        <div>@Html.TextAreaFor(model => model.Comments, new { @style = "width: 80%;" })</div>
+                        <div style="float: right; padding-right: 120px;">
+                            <input type="submit" value="Save" style="background-color: #FFF;" class="btn btn-default" /> &nbsp; <input type="button" class="btn" onclick="commentsHide()" value="Nevermind">
+                        </div><br />
+                        <div>
+                            <br />
+                            <strong>Comments History:</strong> <br />
+                            @Html.DisplayFor(model => model.Comment_History)
                         </div>
                     </div>
-
                 </div>
             </div>
-
-            <br />
-                }
+        </div>
+    </div>
+}
