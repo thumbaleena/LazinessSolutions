@@ -225,19 +225,6 @@ namespace Lazybones.Controllers
             }
             return jobReturn;
         }
-        //public ActionResult Browse()
-        //{
-        //    LazinessSolutionsEntities6 jobDB = new LazinessSolutionsEntities6();
-        //    ViewBag.Message = "Search Postings";
-        //    var searchList = jobDB.Jobs.ToList();
-        //    List<Job> jobs = new List<Job>();
-        //    LazinessSolutionsEntities4 userProf = new LazinessSolutionsEntities4();
-        //    foreach (var job in searchList)
-        //    {
-        //                jobs.Add(job);
-        //    }
-        //    return View(jobs);
-        //}
 
         public ActionResult InnerSearch()
         {
@@ -258,7 +245,6 @@ namespace Lazybones.Controllers
                 }
             }
             ViewBag.Jobs = jobs;
-           // return View("../Home/Dashboard");
             return View();
 
         }
@@ -294,8 +280,8 @@ namespace Lazybones.Controllers
             try
             {
                 dbContext.SaveChanges();
-                return RedirectToAction("Dashboard", "Home");
-                
+                return View("Details", existingJob);
+
             }
             catch (DataException /* dex */)
             {
@@ -349,14 +335,14 @@ namespace Lazybones.Controllers
             try
             {
                 dbContext.SaveChanges();
-                return RedirectToAction("Dashboard", "Home");
+                return View("Details", existingJob);
             }
             catch (DataException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
-            return RedirectToAction("Dashboard", "Home");
+            return View("Details", existingJob);
         }
 
         public ActionResult GetterDash()

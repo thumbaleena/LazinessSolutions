@@ -47,7 +47,7 @@
                                 Starts:
                             </th>
                             <td>
-                                @Html.EditorFor(model => model.Start_Time_Date, new { htmlAttributes = new { @class = "form-control", @Value = Model.Start_Time_Date.Value.ToShortDateString() } })
+                                @Html.EditorFor(model => model.Start_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.Start_Time_Date.Value.ToShortDateString() } })
                             </td>
                         </tr>
                         <tr>
@@ -71,7 +71,7 @@
                                 Expires:
                             </th>
                             <td>
-                                @Html.EditorFor(model => model.Expirey_Time_Date, new { htmlAttributes = new { @class = "form-control", @Value = Model.Expirey_Time_Date.Value.ToShortDateString() } })
+                                @Html.EditorFor(model => model.Expirey_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = Model.Expirey_Time_Date.Value.ToShortDateString() } })
                             </td>
                         </tr>
                         <tr>
@@ -140,7 +140,7 @@
                 <div class="row"><strong>Date Completed or Expired: &nbsp;</strong> @Html.DisplayFor(model => model.Date_Completed)</div>
                 <div class="row"><strong>Posted By: &nbsp;</strong> @Html.DisplayFor(model => model.Poster)</div>
                 <div class="row">
-                    <strong>Assigned To: &nbsp;</strong> @Html.DisplayFor(model => model.Getter)
+                    <strong>Assigned To: &nbsp;</strong> @Html.DisplayFor(model => model.Getter) |
                     <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" /> @Html.DisplayFor(model => model.Getter_Badges)
                 </div>
                 <div class="row">
