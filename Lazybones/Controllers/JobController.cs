@@ -275,8 +275,9 @@ namespace Lazybones.Controllers
         {
             LazinessSolutionsEntities6 dbContext = new LazinessSolutionsEntities6();
             Lazybones.Models.Job existingJob = dbContext.Jobs.Find(editedProfile.ID);
+
+            existingJob.Comment_History += "("+User.Identity.GetUserName()+" "+DateTime.Now+") " + existingJob.Comments +" "+ editedProfile.Comments + "\n \n";
             existingJob.Comments = "";
-            existingJob.Comment_History = User.Identity.GetUserName()+" "+DateTime.Now+" "+existingJob.Comments+"\n"+editedProfile.Comments;
             try
             {
                 dbContext.SaveChanges();

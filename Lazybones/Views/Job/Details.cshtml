@@ -10,6 +10,9 @@
     function confirmDelete() {
         document.getElementById("confirmDelete").style.display = "inline";
     }
+    function confirmTake() {
+        document.getElementById("take").style.display = "inline";
+    }
 </script>
 @using (Html.BeginForm())
 {
@@ -18,9 +21,10 @@
     <hr />
     if (Model.Poster != User.Identity.GetUserName() && Model.Getter == null)
     {
-        <a href="SetGetter?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Take this Gig</a>
+        <input type="button" class="btn btn-info" onclick="confirmTake()" value="Take This Gig" style="float: right;">
+        <a href="SetGetter?ID=@Model.ID" class="btn" class="btn btn-info" id="take" role="button" style="float: right; display: none;">Confirm Gig</a>
     }
-    if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned") &&(Model.Payment_Complete==true))
+    if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned") && (Model.Payment_Complete == true))
     {
         <a href="MarkComplete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Complete</a>
     }
@@ -81,25 +85,26 @@
                     <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" />@Html.DisplayFor(model => model.Getter_Badges)
                 </div>
                 <div class="row">
-                    <input type="button" class="btn" onclick="commentsDisplay()" value="Add a Comment">
+                    @if ((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName()))
+                    {
+                    <input type="button" class="btn" onclick="commentsDisplay()" value="Add a Comment"> }
                     <div id="comments" style="display: none;">
                         <br /> <br />
-                        <div>@Html.TextAreaFor(model => model.Comments, new { @style = "width: 80%;" })</div>
+                        <div>@Html.TextAreaFor(model => model.Comments, new { @style = "width: 80%;", @Value="" })</div>
                         <div style="float: right; padding-right: 120px;">
                             <input type="submit" value="Save" style="background-color: #FFF;" class="btn btn-default" /> &nbsp; <input type="button" class="btn" onclick="commentsHide()" value="Nevermind">
                         </div><br />
-                    </div> <br/><br/>
+                    </div> <br /><br />
                     <div style="text-align: center;">
                         <strong>Comments History:</strong> <br />
-                        @Html.DisplayFor(model => model.Comment_History)
                     </div>
+                    @Html.DisplayFor(model => model.Comment_History)
                 </div>
             </div>
         </div>
         <div class="row" style="float: right; padding-right: 25px;">
             @if ((Model.Poster == User.Identity.GetUserName()) && (Model.Status != "Complete"))
             {
-
                 <input type="button" value="Edit Gig Details" onclick="location.href='@Url.Action("Edit", new { id = Model.ID })'" />
             }
             &nbsp;
@@ -109,11 +114,11 @@
                 <input value="Delete" type="button" onclick="confirmDelete()" />
             }
             <a href="Delete?ID=@Model.ID" class="btn" id="confirmDelete" style="display: none;">Confirm Delete</a> <br />
-        </div><br/>
+        </div><br />
         <div class="row" style="padding-left: 25px;">@Html.ActionLink("Back to List", "Search")</div>
     </div>
     <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year Site powered by baby sloths</p>
-            </footer>
+    <footer>
+        <p>&copy; @DateTime.Now.Year Site powered by baby sloths</p>
+    </footer>
 }
