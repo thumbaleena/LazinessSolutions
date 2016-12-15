@@ -342,6 +342,7 @@ namespace Lazybones.Controllers
             existingJob.Bid_Amount = editedProfile.Bid_Amount;
             existingJob.Same_as_Home = editedProfile.Same_as_Home;
             existingJob.Getter_Badges = editedProfile.Getter_Badges;
+            existingJob.Poster_Phone = editedProfile.Poster_Phone;
             try
             {
                 dbContext.SaveChanges();
@@ -409,18 +410,16 @@ namespace Lazybones.Controllers
             u.Getter_Badges = z.Badge_Count;
             userProf.SaveChanges();
 
-            var accountSid = "{{ ACcd539f756b9224060b4e0568d0c614b3 }}"; // Your Account SID from www.twilio.com/console
-            var authToken = "{{ d1dc9f49c5b32232aec0267fc582afcb }}";  // Your Auth Token from www.twilio.com/console
-
-            var twilio = new TwilioRestClient(accountSid, authToken);
-            var message = twilio.SendMessage(
-                "+3132419757", // From (Replace with your Twilio number)
-                "+"+u.Poster_Phone, // To (Replace with your phone number)
-                "Greetings, from Alfred! Your task '"+u.Title+"' has been picked up."
-                );
+            string AccountSid = "ACcd539f756b9224060b4e0568d0c614b3";
+            string AuthToken = "d1dc9f49c5b32232aec0267fc582afcb";
+            TwilioRestClient client;
+            client = new TwilioRestClient(AccountSid, AuthToken);
+            Message result = client.SendMessage(
+                "+13132419747", "+1"+u.Poster_Phone, "Greetings, from Alfred! Your task '" + u.Title + "' has been picked up.");
 
             return View("Details", u);
         }
+
         public ActionResult Delete(int ID)
         {
             LazinessSolutionsEntities6 userProf = new LazinessSolutionsEntities6();
