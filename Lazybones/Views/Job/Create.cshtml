@@ -21,9 +21,8 @@
             <div class="col-md-4">
                 @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
                 <br /><br />
-
                 @Html.DropDownListFor(model => model.Category, new List<SelectListItem> { new SelectListItem { Value = "Carryout", Text = "Carryout" },
-               new SelectListItem { Value = "Auto Maintence", Text = "Auto Maintence" }, new SelectListItem { Value = "Shopping", Text = "Shopping" }, new SelectListItem { Value = "Sloth", Text = "Sloth" }, new SelectListItem { Value = "Cleaning", Text = "Cleaning" },new SelectListItem { Value = "Other", Text = "Other" } })
+               new SelectListItem { Value = "Auto Maintence", Text = "Auto Maintenance" }, new SelectListItem { Value = "Shopping", Text = "Shopping" }, new SelectListItem { Value = "Sloth", Text = "Sloth" }, new SelectListItem { Value = "Cleaning", Text = "Cleaning" },new SelectListItem { Value = "Other", Text = "Other" } })
 
             </div>
             <div class="col-md-2">
@@ -62,11 +61,7 @@
             </div>
             <div class="col-md-1">
                 @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
-               
-               @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" ,@maxlength="2"} })
-                
-                
-
+                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" ,@maxlength="2"} })
                 @Html.ValidationMessageFor(model => model.State, "", htmlAttributes: new { @class = "warning control-label" })
             </div>
             <div class="col-md-1">
@@ -86,7 +81,7 @@
 
         <div class="row">
             <div class="col-md-2">
-                <strong>&nbsp;&nbsp;&nbsp;&nbsp; Date</strong>
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;Start Date</strong>
                 @*@Html.LabelFor(model => model.Start_Time_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 @Html.EditorFor(model => model.Start_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date", value = DateTime.Now } })
                
