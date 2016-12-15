@@ -38,7 +38,11 @@ namespace Lazybones.Controllers
             else
             {
                 job.Poster_Name = "Invalid User";
-            }           
+            } 
+            if (job.Start_Time_Date == null)
+            {
+                job.Start_Time_Date = DateTime.Now;
+            }
             job.Getter_Name = null;
             // Add the job passed to create post
             jobDB.Jobs.Add(job);
