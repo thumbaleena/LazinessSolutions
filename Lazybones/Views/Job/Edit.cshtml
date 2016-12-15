@@ -39,7 +39,7 @@
                     Starts:
                 </th>
                 <td>
-                    @Html.EditorFor(model => model.Start_Time_Date, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.EditorFor(model => model.Start_Time_Date, new {htmlAttributes = new {@class = "form-control", @Value = Model.Start_Time_Date.Value.ToShortDateString()}})
                 </td>
             </tr>
             <tr>
@@ -63,7 +63,7 @@
                     Expires:
                 </th>
                 <td>
-                    @Html.EditorFor(model => model.Expirey_Time_Date, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.EditorFor(model => model.Expirey_Time_Date, new {htmlAttributes = new {@class = "form-control", @Value = Model.Expirey_Time_Date.Value.ToShortDateString()}})
                 </td>
             </tr>
             <tr>
@@ -79,7 +79,7 @@
                     Date Completed or Expired:
                 </th>
                 <td>
-                    @Html.EditorFor(model => model.Date_Completed, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.EditorFor(model => model.Date_Completed, new {htmlAttributes = new {@class = "form-control", @Value = Model.Date_Completed.Value.ToShortDateString()}})
                 </td>
             </tr>
             <tr>
