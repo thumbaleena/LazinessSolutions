@@ -168,7 +168,7 @@ namespace Lazybones.Controllers
                         {
                         jobReturn.Add(x);
                         }*/
-                        if (x.Category.ToLower() != "Carryout" && x.Category.ToLower() != "Auto Maintence" && x.Category.ToLower() != "Shopping" && x.Category.ToLower() != "Sloth" && x.Category.ToLower() != "Cleaning")
+                        if (x.Category.ToLower() != "Carryout" && x.Category.ToLower() != "Auto Maintenance" && x.Category.ToLower() != "Shopping" && x.Category.ToLower() != "Sloth" && x.Category.ToLower() != "Cleaning")
                             {
                                 jobReturn.Add(x);
                             }

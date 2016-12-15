@@ -103,8 +103,11 @@ namespace Lazybones.Controllers
         //[HttpGet]
         public ActionResult UserProfile()
         {
+
                 LazinessSolutionsEntities4 dbContext = new LazinessSolutionsEntities4();
-               AspNetUser model= dbContext.AspNetUsers.Find(User.Identity.GetUserId());
+            var u = dbContext.AspNetUsers.Find(User.Identity.GetUserId()).Badge_Count;
+            ViewBag.Badges = u;
+            AspNetUser model= dbContext.AspNetUsers.Find(User.Identity.GetUserId());
             //return RedirectToAction("Dashboard", "Home");
 
             return View("../Home/Dashboard",model);
