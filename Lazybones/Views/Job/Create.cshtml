@@ -70,11 +70,11 @@
                 @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Zip, "", htmlAttributes: new { @class = "warning control-label" })
             </div>
-            <div class="col-md-1">
+            @*<div class="col-md-1">
                 @Html.LabelFor(model => model.Same_as_Home, htmlAttributes: new { @class = "control-label col-md-1" })
                 <br /><br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.CheckBoxFor(model => model.Same_as_Home)
-            </div>
+            </div>*@
 
         </div>
 
@@ -85,6 +85,7 @@
 
                 @Html.LabelFor(model => model.Start_Time_Date, htmlAttributes: new { @class = "control-label col-md-2" })
                 @Html.EditorFor(model => model.Start_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date", value = DateTime.Now } })
+               
             </div>
             <div class="col-md-2">
                 @Html.LabelFor(model => model.Expirey_Time_Date, htmlAttributes: new { @class = "control-label col-md-2" })

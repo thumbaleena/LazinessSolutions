@@ -11,14 +11,20 @@ namespace Lazybones.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Job
-    {
+    {[Required]
         public string Title { get; set; }
+        [Required]
         public string Description { get; set; }
+       
         public Nullable<System.DateTime> Start_Time_Date { get; set; }
+        
         public Nullable<System.DateTime> Expirey_Time_Date { get; set; }
+        [Required]
         public string Category { get; set; }
+        [Required]
         public Nullable<decimal> Pay { get; set; }
         public bool Best_Bid { get; set; }
         public string Picture_Location { get; set; }
@@ -30,9 +36,13 @@ namespace Lazybones.Models
         public bool Contact_By_Phone { get; set; }
         public bool Contact_By_Email { get; set; }
         public bool Contact_By_Text { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string City { get; set; }
+        [Required]
         public string Zip { get; set; }
+        [Required]
         public string State { get; set; }
         public string Getter { get; set; }
         public string Poster { get; set; }
