@@ -4,196 +4,102 @@
     function commentsDisplay() {
         document.getElementById("comments").style.display = "inline";
     }
+    function commentsHide() {
+        document.getElementById("comments").style.display = "none";
+    }
 </script>
 @using (Html.BeginForm())
 {
-    <input type="button" onclick="commentsDisplay()" value="Add a Comment">
-    <h4>Gig Details</h4>
+    @Html.HiddenFor(model => model.ID)
+    <h4>@Html.DisplayFor(model => model.Title)</h4>
     <hr />
-    <div class="form-horizontal">
-        @if (Model.Poster != User.Identity.GetUserName() && Model.Getter == null)
-        {
-            <a href="SetGetter?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Take this Gig</a>
-        }
-        @if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned"))
-        {
-            <a href="MarkComplete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Complete</a>
-        }
-        <br />
+    if (Model.Poster != User.Identity.GetUserName() && Model.Getter == null)
+    {
+        <a href="SetGetter?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Take this Gig</a>
+    }
+    if (((Model.Poster == User.Identity.GetUserName()) || (Model.Getter == User.Identity.GetUserName())) && (Model.Getter != null) && (Model.Status == "Assigned"))
+    {
+        <a href="MarkComplete?ID=@Model.ID" class="btn btn-info" role="button" style="float: right;">Mark as Complete</a>
+    }
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6" style="padding-left: 50px;">
+                <div class="row"><strong>Description: &nbsp;</strong> @Html.DisplayFor(model => model.Description)</div>
+                <div class="row"><strong>Category: &nbsp;</strong> @Html.DisplayFor(model => model.Category)</div>
+                <div class="row"><strong>Flat Rate Pay: &nbsp;</strong> $ @Html.DisplayFor(model => model.Pay)</div>
+                <div class="row"><strong>Starts: &nbsp;</strong> @Html.DisplayFor(model => model.Start_Time_Date)</div>
+                <div class="row"><strong>Expires: &nbsp;</strong> @Html.DisplayFor(model => model.Expirey_Time_Date)</div>
+                <div class="row"><strong>Address: &nbsp;</strong> @Html.DisplayFor(model => model.Address)</div>
+                <div class="row"><strong>City: &nbsp;</strong> @Html.DisplayFor(model => model.City)</div>
+                <div class="row"><strong>State: &nbsp;</strong> @Html.DisplayFor(model => model.State)</div>
+                <div class="row"><strong>Zip: &nbsp;</strong> @Html.DisplayFor(model => model.Zip)</div> <br />
+                <div class="row" style="text-align: center;"><strong>Poster's preferred contact method:</strong></div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="row">
+                            Call
+                        </div>
+                        <div class="row">@Html.DisplayFor(model => model.Contact_By_Phone)</div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            Text
+                        </div>
+                        <div class="row">@Html.DisplayFor(model => model.Contact_By_Text)</div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            Email
+                        </div>
+                        <div class="row">@Html.DisplayFor(model => model.Contact_By_Email)</div>
+                    </div>
+                </div><br />
+                    <div class="row">
+                        @if (Model.Poster == User.Identity.GetUserName() || ViewBag.isAdmin)
+                        {
+                            @Html.ActionLink("Edit Gig Details", "Edit", new { id = Model.ID })
+                            <br />
+                        }
+                        @if (((Model.Status == "Assigned") || (Model.Status == "Created")) && (Model.Poster == User.Identity.GetUserName()))
+                        {
+                            <a href="Delete?ID=@Model.ID">Delete Gig</a> <br /> }
+                        @Html.ActionLink("Back to List", "Search")
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row"><br /><strong>Status: &nbsp;</strong> @Html.DisplayFor(model => model.Status)</div>
+                    <div class="row"><strong>Date Completed or Expired: &nbsp;</strong> @Html.DisplayFor(model => model.Date_Completed)</div>
+                    <div class="row">
+                        <strong>Payment Complete? &nbsp;</strong> @Html.DisplayFor(model => model.Payment_Complete)
+                    </div>
+                    <div class="row"><strong>Posted By: &nbsp;</strong> @Html.DisplayFor(model => model.Poster)</div>
+                    <div class="row">
+                        <strong>Assigned To: &nbsp;</strong> @Html.DisplayFor(model => model.Getter)
+                        <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" /> @Html.DisplayFor(model => model.Getter_Badges)
+                    </div>
+                    <div class="row">
+                        <input type="button" class="btn" onclick="commentsDisplay()" value="Add a Comment">
+                        <div id="comments" style="display: none;">
+                            <br /> <br />
+                            <div>@Html.TextAreaFor(model => model.Comments, new { @style = "width: 80%;" })</div>
+                            <div style="float: right; padding-right: 120px;">
+                                <input type="submit" value="Save" style="background-color: #FFF;" class="btn btn-default" /> &nbsp; <input type="button" class="btn" onclick="commentsHide()" value="Nevermind">
+                            </div><br />
+                            <div>
+                                <br />
+                                <strong>Comments History:</strong> <br />
+                                @Html.DisplayFor(model => model.Comment_History)
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        @Html.HiddenFor(model => model.ID)
-        <table>
-            <tr>
-                <th>
-                    Title:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Title)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Description:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Description)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Starts:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Start_Time_Date)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Category:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Category)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Flat Rate Pay:
-                </th>
-                <td>
-                    $ @Html.DisplayFor(model => model.Pay)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Expires:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Expirey_Time_Date)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Status:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Status)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Date Completed or Expired:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Date_Completed)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Payment Complete?
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Payment_Complete)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Posted By:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Poster)
-                </td>
-            </tr>
-            <tr>
-                <th>Gig Address:</th>
-                <td>
-                    @Html.DisplayFor(model => model.Address)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Gig City:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.City)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Gig State:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.State)
-                </td>
-            </tr>
-            <tr>
-                <th>Gig Zip Code:</th>
-                <td>
-                    @Html.DisplayFor(model => model.Zip)
-                </td>
-            </tr>
-            <tr>
-                <th>Assigned To:</th>
-                <td>
-                    @Html.DisplayFor(model => model.Getter)
-                </td>
-                <td>
-                    <img src="http://downloadicons.net/sites/default/files/badge-icon-85756.png" width="35px" /> @Html.DisplayFor(model => model.Getter_Badges)
-                </td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td></td>
-                <td>
-                    Call
-                </td>
-                <td>
-                    Text
-                </td>
-                <td>
-                    Email
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Contact Poster Via:
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.Contact_By_Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Contact_By_Text)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Contact_By_Email)
-                </td>
-            </tr>
-        </table>
-        <div id="comments" style="display: none;">
-            @Html.TextAreaFor(model => model.Comments)
-            <input type="submit" value="Save" class="btn btn-default" />
-            @Html.DisplayFor(model => model.Comment_History)
+            </div>
         </div>
-
-</div>
-    //   string getterEmail = Model.Getter.ToString();
-    // only show payment button if current user is the poster and payment is not marked complete
-    if (Model.Payment_Complete == false & Model.Poster == User.Identity.GetUserName())
-    {
+        if (Model.Payment_Complete == false & Model.Poster == User.Identity.GetUserName())
+        {
         <br />
-                <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
-    }
-    <br />
-
-    if (Model.Poster == User.Identity.GetUserName() || ViewBag.isAdmin)
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+        <a href="https://venmo.com/?txn=pay&audience=private&recipients=@(Model.Getter)&amount=@(Model.Pay)&note=@(Model.Title)" target="_blank" class="btn" style="font-size: large; float: right; padding-right: 50px;"><img src="http://i.imgur.com/4WjiVhY.png" /> Send Payment with Venmo</a>
+        }
         <br />
-
-    }
-    if ((Model.Status == "Assigned") || (Model.Status == "Created"))
-    {
-        <a href="Delete?ID=@Model.ID" style="font-size: larger;">Delete</a> <br /> }
-    @Html.ActionLink("Back to List", "Search")
-
-}
+        }
