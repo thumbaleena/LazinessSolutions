@@ -19,6 +19,8 @@ namespace Lazybones.Models
         public string Preferred_Contact_Method { set; get; }
         public string State { set; get; }
         public string Zip { set; get; }
+        public bool Admin { set; get; }
+        public int Badge_Count { set; get; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
