@@ -4,137 +4,68 @@
         ViewBag.Title = "Create Job Test";
     }*@
 
-<h2>Create Job</h2>
+<h2>Post a New Gig</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
-
-        <div class="row">
-            <div class="col-md-4">
-                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-                <br /><br />
-                @Html.DropDownListFor(model => model.Category, new List<SelectListItem> { new SelectListItem { Value = "Carryout", Text = "Carryout" },
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6" style="padding-left: 50px; padding-right: 50px;">
+                    <div class="row"><strong>Title: &nbsp;</strong> @Html.EditorFor(model => model.Description)</div>
+                    <div class="row"><strong>Description: &nbsp;</strong> @Html.EditorFor(model => model.Description)</div>
+                    <div class="row">
+                        <strong>Category: &nbsp;</strong>     @Html.DropDownListFor(model => model.Category, new List<SelectListItem> { new SelectListItem { Value = "Carryout", Text = "Carryout" },
                new SelectListItem { Value = "Auto Maintence", Text = "Auto Maintenance" }, new SelectListItem { Value = "Shopping", Text = "Shopping" }, new SelectListItem { Value = "Sloth", Text = "Sloth" }, new SelectListItem { Value = "Cleaning", Text = "Cleaning" },new SelectListItem { Value = "Other", Text = "Other" } })
-
-            </div>
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.Pay, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.Pay, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Pay, "", htmlAttributes: new { @class = "warning control-label" })
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", htmlAttributes: new { @class = "warning control-label" })
+                    </div>
+                    <div class="row"><strong>Flat Rate Pay: &nbsp;</strong> $ @Html.EditorFor(model => model.Pay)</div>
+                    <div class="row"><strong>Starts: &nbsp;</strong>  @Html.EditorFor(model => model.Start_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date", value = DateTime.Now } })</div>
+                    <div class="row"><strong>Expires: &nbsp;</strong> @Html.EditorFor(model => model.Expirey_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date" } })</div>
 
 
-            </div>
-            <div class="col-md-4">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", htmlAttributes: new { @class = "warning control-label" })
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-3">
-                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", htmlAttributes: new { @class = "warning control-label" })
-            </div>
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.City, "", htmlAttributes: new { @class = "warning control-label" })
-            </div>
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" ,@maxlength="2"} })
-                @Html.ValidationMessageFor(model => model.State, "", htmlAttributes: new { @class = "warning control-label" })
-            </div>
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Zip, "", htmlAttributes: new { @class = "warning control-label" })
-            </div>
-            @*<div class="col-md-1">
-                @Html.LabelFor(model => model.Same_as_Home, htmlAttributes: new { @class = "control-label col-md-1" })
-                <br /><br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.CheckBoxFor(model => model.Same_as_Home)
-            </div>*@
-
-        </div>
-
-
-
-        <div class="row">
-            <div class="col-md-2">
-                <strong>&nbsp;&nbsp;&nbsp;&nbsp;Start Date</strong>
-                @*@Html.LabelFor(model => model.Start_Time_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                @Html.EditorFor(model => model.Start_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date", value = DateTime.Now } })
-               
-            </div>
-            <div class="col-md-2">
-                <strong>&nbsp;&nbsp;&nbsp;&nbsp;Expirey Date</strong>
-               @* @Html.LabelFor(model => model.Expirey_Time_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                @Html.EditorFor(model => model.Expirey_Time_Date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-            </div>
-        </div>
-
-        <br /><br />
-
-        <div class="form-group">
-       
-            @*@Html.LabelFor(model => model.Contact_By_Phone, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
-                <div>
-                    <strong>Contact By Phone</strong>
-                    &nbsp;&nbsp;@Html.CheckBoxFor(model => model.Contact_By_Phone)
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-           
-            @*@Html.LabelFor(model => model.Contact_By_Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
-                <div>
-                    <strong>Contact By Email</strong>
-                    &nbsp;&nbsp;&nbsp;&nbsp;@Html.CheckBoxFor(model => model.Contact_By_Email)
+                <div class="col-sm-6" style="padding-right: 50px;">
+                    <div class="row"><strong>Address: &nbsp;</strong> @Html.EditorFor(model => model.Address)</div>
+                    <div class="row"><strong>City: &nbsp;</strong> @Html.EditorFor(model => model.City)</div>
+                    <div class="row"><strong>State: &nbsp;</strong> @Html.EditorFor(model => model.State)</div>
+                    <div class="row"><strong>Zip: &nbsp;</strong> @Html.EditorFor(model => model.Zip)</div>
+                    <div class="row"><strong>Mobile Phone:</strong> @Html.EditorFor(model => model.Poster_Phone)</div> <hr />
+                    <div class="row" style="text-align: center;">
+                        <strong>Preferred contact method:</strong>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="row">
+                                Call
+                            </div>
+                            <div class="row">@Html.EditorFor(model => model.Contact_By_Phone)</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                Text
+                            </div>
+                            <div class="row">@Html.EditorFor(model => model.Contact_By_Text)</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                Email
+                            </div>
+                            <div class="row">@Html.EditorFor(model => model.Contact_By_Email)</div>
+                        </div>
+                    </div><br />
                 </div>
+                <div class="row" style="padding-left: 25px;">@Html.ActionLink("Back to List", "Search")</div>
             </div>
         </div>
-
-        <div class="form-group">
-            
-            @*@Html.LabelFor(model => model.Contact_By_Text, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
-                <strong>Contact By Text</strong>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.CheckBoxFor(model => model.Contact_By_Text)
-            </div>
-        </div>
-
-
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>
 }
 
 <div>
