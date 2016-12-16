@@ -31,7 +31,7 @@
           <Property Name="State" Type="nvarchar" MaxLength="2" />
           <Property Name="Zip" Type="nvarchar(max)" />
           <Property Name="Preferred_Contact_Method" Type="nvarchar" MaxLength="50" />
-          <Property Name="Badge_Count" Type="int" Nullable="false" />
+          <Property Name="Badge_Count" Type="int" />
           <Property Name="Admin" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="LazinessSolutionsModel1StoreContainer">
