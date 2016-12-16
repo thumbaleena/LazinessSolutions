@@ -3,16 +3,16 @@ namespace Lazybones.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ddb1 : DbMigration
+    public partial class asp5 : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.AspNetUsers", "City", c => c.String());
+            AddColumn("dbo.AspNetUsers", "Badge_Count", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.AspNetUsers", "City");
+            DropColumn("dbo.AspNetUsers", "Badge_Count");
         }
     }
 }

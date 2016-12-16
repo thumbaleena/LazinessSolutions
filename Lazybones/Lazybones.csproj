@@ -209,13 +209,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612071857006_ddb1.cs" />
-    <Compile Include="Migrations\201612071857006_ddb1.Designer.cs">
-      <DependentUpon>201612071857006_ddb1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612071859473_ddb11.cs" />
-    <Compile Include="Migrations\201612071859473_ddb11.Designer.cs">
-      <DependentUpon>201612071859473_ddb11.cs</DependentUpon>
+    <Compile Include="Migrations\201612161434469_asp5.cs" />
+    <Compile Include="Migrations\201612161434469_asp5.Designer.cs">
+      <DependentUpon>201612161434469_asp5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -379,11 +375,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612071857006_ddb1.resx">
-      <DependentUpon>201612071857006_ddb1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612071859473_ddb11.resx">
-      <DependentUpon>201612071859473_ddb11.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612161434469_asp5.resx">
+      <DependentUpon>201612161434469_asp5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
